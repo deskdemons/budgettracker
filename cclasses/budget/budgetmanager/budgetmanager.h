@@ -21,6 +21,8 @@ public:
 
     // Group of Methods that returns Budget Objects
     std::vector<Budget> all();
+
+    std::vector<Budget> filter_for_user(int user_id_value);
     std::vector<Budget> top_seven();
 
     // Returns all budget sorted by the money values

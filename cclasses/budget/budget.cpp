@@ -63,3 +63,8 @@ int Budget::string_to_integer(std::string string_value)
     ss >> i;
     return i;
 };
+
+int Budget::get_user_id()
+{
+    return user_id;
+}

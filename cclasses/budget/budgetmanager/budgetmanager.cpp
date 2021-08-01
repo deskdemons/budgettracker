@@ -64,3 +64,14 @@ bool BudgetManager::file_exsistance_assert()
         return true;
     }
 };
+
+std::vector<Budget> BudgetManager::filter_for_user(int user_id_value)
+{
+    std::vector<Budget> filtered_value;
+    for (int i = 0; i < all_budget.size(); i++)
+    {
+        if (all_budget[i].get_user_id() == user_id_value)
+            filtered_value.push_back(all_budget[i]);
+    }
+    return filtered_value;
+}
