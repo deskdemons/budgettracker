@@ -14,7 +14,7 @@ Budget::Budget(int id_input, std::string item_name_input, std::string category_i
     datetime.deserialize(datetime_input);
     amount = amount_input;
 
-    // For debugging purposes only
+    // TODO: For debugging purposes only
     std::cout << "Budget Object # " << id << " has been constructed." << std::endl;
 };
 
@@ -38,7 +38,7 @@ Budget::Budget(std::string from_csv_line)
         position = from_csv_line.find(",");
         temp = from_csv_line.substr(0, position);
 
-        // return_value.push_back(temp);
+        return_value.push_back(temp);
         from_csv_line = from_csv_line.substr(position + 1, from_csv_line.size() - 1);
     }
 
@@ -51,5 +51,5 @@ Budget::Budget(std::string from_csv_line)
     datetime.deserialize(return_value[3]);
 
     // TODO: Convert it into a money class
-    amount = return_value[4];
+    amount = return_value[4] + " " + return_value[5];
 };

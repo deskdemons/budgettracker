@@ -17,7 +17,10 @@ BudgetManager::BudgetManager()
     // Read the file line by line
     std::string temp;
     Budget temp_budget;
-
+    
+    // Initial variable name values
+    getline(fs,temp);
+    
     while (fs.eof() == 0)
     {
         getline(fs, temp);
