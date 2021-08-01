@@ -7,13 +7,15 @@
 
 int main()
 {
-    Budget b1("1,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300");
-    b1.display_information();
-
     BudgetManager bdb;
-    for (int i = 0; i < bdb.all().size(); i++)
+    int user_id_input;
+    std::cout << "Enter User_ID to filter" << std::endl;
+    std::cin >> user_id_input;
+    std::vector<Budget> my_bdb = bdb.filter_for_user(user_id_input);
+
+    for (int i = 0; i < my_bdb.size(); i++)
     {
-        Budget object = bdb.all()[i];
+        Budget object = my_bdb[i];
         object.display_information();
     }
     return 0;
