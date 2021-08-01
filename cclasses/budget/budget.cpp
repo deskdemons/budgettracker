@@ -6,9 +6,10 @@
 
 Budget::Budget(){};
 
-Budget::Budget(int id_input, std::string item_name_input, std::string category_input, std::string datetime_input, std::string amount_input)
+Budget::Budget(int id_input, int user_id_input, std::string item_name_input, std::string category_input, std::string datetime_input, std::string amount_input)
 {
     id = id_input;
+    user_id = user_id_input;
     item_name = item_name_input;
     category = category_input;
 
@@ -21,7 +22,7 @@ Budget::Budget(int id_input, std::string item_name_input, std::string category_i
 
 void Budget::display_information()
 {
-    std::cout << "Budget Info # " << id << std::endl;
+    std::cout << "Budget Info # " << id << " for User ID: " << user_id << std::endl;
     std::cout << "Title: " << item_name << std::endl;
     std::cout << "Category: " << category << std::endl;
     std::cout << "Datetime: " << datetime.getDateTime() << std::endl;
@@ -34,7 +35,7 @@ Budget::Budget(std::string from_csv_line)
     std::vector<std::string> return_value;
     int position;
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
     {
         position = from_csv_line.find(",");
         temp = from_csv_line.substr(0, position);
@@ -46,12 +47,13 @@ Budget::Budget(std::string from_csv_line)
     return_value.push_back(from_csv_line);
 
     id = string_to_integer(return_value[0]);
-    item_name = return_value[1];
-    category = return_value[2];
-    datetime.deserialize(return_value[3]);
+    user_id = string_to_integer(return_value[1]);
+    item_name = return_value[2];
+    category = return_value[3];
+    datetime.deserialize(return_value[4]);
 
     // TODO: Convert it into a money class
-    amount = return_value[4] + " " + return_value[5];
+    amount = return_value[5] + " " + return_value[6];
 };
 
 int Budget::string_to_integer(std::string string_value)

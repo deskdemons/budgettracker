@@ -1,17 +1,17 @@
-pk,title,category,datetime,currency,value
-1,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
-2,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
-3,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
-4,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
-5,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
-6,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
-7,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
-8,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
-9,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
-10,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
-11,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
-12,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
-13,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
-14,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
-15,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
-16,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
+pk,user_id,title,category,datetime,currency,value
+1,1,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
+2,2,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
+3,3,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
+4,1,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
+5,3,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
+6,2,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
+7,1,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
+8,4,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
+9,2,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
+10,1,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
+11,3,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
+12,4,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
+13,2,Rajeev ko Tshirt,Clothing,12th Jan 2021-12:17:23 PM,NRP,-1300
+14,1,Saurav ko jacket,Clothing,13th Jan 2021-12:17:23 PM,NRP,-2300
+15,4,Prasiddha ko moja,Clothing,12th Jan 2021-12:18:23 PM,NRP,-190
+16,1,Non Buff American Chupsey,Food,22th Feb 2021-12:17:23 PM,NRP,-270
