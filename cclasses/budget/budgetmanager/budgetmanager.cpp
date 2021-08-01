@@ -17,14 +17,15 @@ BudgetManager::BudgetManager()
     // Read the file line by line
     std::string temp;
     Budget temp_budget;
-    
+
     // Initial variable name values
-    getline(fs,temp);
-    
+    getline(fs, temp);
+
     while (fs.eof() == 0)
     {
         getline(fs, temp);
 
+        //TODO: Pass User ID here
         Budget b(temp);
         all_budget.push_back(b);
     }
@@ -51,7 +52,7 @@ bool BudgetManager::file_exsistance_assert()
         if (fout)
         {
             // If the creation is successful
-            fout << "#id,name,category,date,amount,currency" << std::endl;
+            fout << "#id,user_id,name,category,date,amount,currency" << std::endl;
 
             // Close the file handle after performing the operation
             fout.close();

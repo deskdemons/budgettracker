@@ -15,6 +15,8 @@ private:
     // TODO: Convert it into a money class
     std::string amount;
 
+    int string_to_integer(std::string string_value);
+
 public:
     Budget();
     Budget(std::string from_csv_line);

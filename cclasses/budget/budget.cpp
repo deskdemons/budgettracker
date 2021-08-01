@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 #include "budget.h"
 
@@ -44,12 +45,19 @@ Budget::Budget(std::string from_csv_line)
 
     return_value.push_back(from_csv_line);
 
-    // id = return_value[0];
-    id = 1;
+    id = string_to_integer(return_value[0]);
     item_name = return_value[1];
     category = return_value[2];
     datetime.deserialize(return_value[3]);
 
     // TODO: Convert it into a money class
     amount = return_value[4] + " " + return_value[5];
+};
+
+int Budget::string_to_integer(std::string string_value)
+{
+    int i;
+    std::istringstream ss(string_value);
+    ss >> i;
+    return i;
 };
