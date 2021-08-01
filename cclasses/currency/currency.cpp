@@ -16,8 +16,6 @@ std::string doubleToString(double num){
     ss<<num;
     ss>>str;
     return str;
-    
-    
 }
 Currency::Currency(){
     value = 0.0;

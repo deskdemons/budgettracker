@@ -9,6 +9,7 @@ class CurConverter{
         double converted;
     public:
         void currencyConverter(double val, std::string fromCur, std::string toCur);
+        std::string getConverted();
 };
 
 #endif
