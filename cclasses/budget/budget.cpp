@@ -68,3 +68,8 @@ int Budget::get_user_id()
 {
     return user_id;
 }
+
+std::string Budget::get_category()
+{
+    return category;
+}

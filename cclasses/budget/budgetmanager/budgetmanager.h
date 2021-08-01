@@ -23,6 +23,7 @@ public:
     std::vector<Budget> all();
 
     std::vector<Budget> filter_for_user(int user_id_value);
+    std::vector<Budget> filter_for_user_by_category(std::string category_string);
     std::vector<Budget> top_seven();
 
     // Returns all budget sorted by the money values
