@@ -50,7 +50,9 @@ Budget::Budget(std::string from_csv_line)
     user_id = string_to_integer(return_value[1]);
     item_name = return_value[2];
     category = return_value[3];
-    datetime.deserialize(return_value[4]);
+    DateTime temp_datetime;
+    temp_datetime.deserialize(return_value[4]);
+    datetime = temp_datetime;
 
     // TODO: Convert it into a money class
     amount = return_value[5] + " " + return_value[6];
@@ -72,4 +74,9 @@ int Budget::get_user_id()
 std::string Budget::get_category()
 {
     return category;
+}
+
+DateTime Budget::get_datettime()
+{
+    return datetime;
 }

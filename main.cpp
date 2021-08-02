@@ -19,5 +19,15 @@ int main()
         Budget object = my_f_bdb[i];
         object.display_information();
     }
+
+    bdb.sort_by_datetime();
+    my_f_bdb = bdb.filter_by_category("Food");
+
+    for (int i = 0; i < my_f_bdb.size(); i++)
+    {
+        Budget object = my_f_bdb[i];
+        object.display_information();
+    }
+
     return 0;
 }

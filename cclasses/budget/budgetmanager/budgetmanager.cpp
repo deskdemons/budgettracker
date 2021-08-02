@@ -123,7 +123,19 @@ std::vector<Budget> BudgetManager::top_seven()
 }
 
 // TODO: Complete this
-void BudgetManager::sorted_by_datetime()
+void BudgetManager::sort_by_datetime()
 {
-    int temp;
+    Budget temp;
+    for (int i = 0; i < all_budget.size() - 1; i++)
+    {
+        for (int j = 0; j < all_budget.size() - i - 1; j++)
+        {
+            if (all_budget[j].get_datettime() > all_budget[j + 1].get_datettime())
+            {
+                temp = all_budget[j];
+                all_budget[j] = all_budget[j + 1];
+                all_budget[j + 1] = temp;
+            }
+        }
+    }
 };

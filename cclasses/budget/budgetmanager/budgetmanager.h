@@ -27,10 +27,10 @@ public:
     std::vector<Budget> top_seven();
 
     // sorts itself by amount
-    void sorted_by_amount();
+    void sort_by_amount();
 
     // sort itself by datetime
-    void sorted_by_datetime();
+    void sort_by_datetime();
 
     // Should add it to file as well as update the manager itself
     void append(Budget);

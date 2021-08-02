@@ -466,5 +466,6 @@ bool DateTime::deserialize(std::string datetime)
     month = mm;
     day = dd;
     year = yy;
+
     return true;
 }
