@@ -10,33 +10,35 @@ class BudgetManager
 private:
     std::string file_name;
     std::vector<Budget> all_budget;
+    std::vector<Budget> all_users_budget;
 
-    // If file doesnot exist, it creates the file
     bool file_exsistance_assert();
+    std::vector<Budget> filter_for_user(int user_id_value);
 
 public:
-    // Automatically initialize itself to budget.csv file
-    // Should create the file if it doesnot exist
-    BudgetManager();
+    BudgetManager(int);
+
+    std::string get_file_name();
 
     // Group of Methods that returns Budget Objects
     std::vector<Budget> all();
-
-    std::vector<Budget> filter_for_user(int user_id_value);
-    std::vector<Budget> filter_for_user_by_category(std::string category_string);
+    std::vector<Budget> all_users();
+    std::vector<Budget> filter_by_category(std::string category_string);
     std::vector<Budget> top_seven();
 
-    // Returns all budget sorted by the money values
-    std::vector<Budget> sorted_by_amount();
+    // sorts itself by amount
+    void sorted_by_amount();
+
+    // sort itself by datetime
+    void sorted_by_datetime();
 
     // Should add it to file as well as update the manager itself
     void append(Budget);
+    void update(Budget);
 
     // Return total amount (Money Value)
     // TODO: Convert it to money class not int
     int total();
-
-    std::vector<Budget> filter_by_category(std::string category_string);
 };
 
 #endif
