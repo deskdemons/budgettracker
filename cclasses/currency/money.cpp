@@ -13,7 +13,7 @@ void Money::setMoney(double val, Currency cur, std::string typ){
     value=val;
     currency=cur;
     type=typ;
-    nrsEqAmt=value*cur.nrsEqRate;
+    nrsEqAmt=value/cur.nrsEqRate;
 }
 std::string doubleToString(double num){
     std::stringstream ss;
@@ -42,7 +42,7 @@ void Money::deserialize(std::string moneyStr){
     value=monVal;
     type = typ;
     currency = c;
-    nrsEqAmt = value*c.nrsEqRate;
+    nrsEqAmt = value/c.nrsEqRate;
 }
 
 bool Money::operator < (Money obj){
