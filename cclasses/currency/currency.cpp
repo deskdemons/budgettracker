@@ -56,3 +56,7 @@ Currency::Currency(std::string typ){
     nrsEqRate= strToDou(csvRates[position][1]);
 
 }
+
+std::string Currency::getCurType(){
+    return curType;
+}
