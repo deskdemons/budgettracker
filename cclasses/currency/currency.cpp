@@ -1,46 +1,17 @@
 #include<iostream>
 #include "currency.h"
-#include <sstream>
+#include<vector>
 
-bool currCheck(std::string type){
-    std::string curr[]={"npr","usd","inr","aud"};
-    for(int i=0; i<sizeof(curr)/sizeof(curr[0]); i++){
-        if(type==curr[i])
-            return true;
-    }
-    return false;
-}
-std::string doubleToString(double num){
-    std::stringstream ss;
-    std::string str;
-    ss<<num;
-    ss>>str;
-    return str;
-}
 Currency::Currency(){
-    value = 0.0;
-    type = "npr";
+    curType="NRS";
+    nrsEqRate=1.0;
 }
 
-bool Currency::setCurrency(double val, std::string typ){
-    if(currCheck(typ) && val>=0){
-        value = val;
-        type = typ;
-        currencyConverter(val, typ, "npr");
-        nrsEq = converted;
-        return true;
-    }else 
-        return false;
-}
-
-std::string Currency::getCurrency(){
-    return type+ "[" + doubleToString(value) +"]";
-}
-
-void Currency::deserialize(std::string curStr){
-    std::string typ = curStr.substr(0,3);
-    int lenStr = curStr.length()-5;
-    double curr = std::stod(curStr.substr(4,lenStr));
-    value=curr;
-    type=curStr;
+Currency::Currency(std::string typ){
+    /* std::vector<std::string> CurType;
+    std::vector<double> CurNrsEq; */
+    std::string CurType[] = {"NPR", "USD", "INR", "AUD"};
+    double CurNrsEq[]={1, 0.0084, 0.63, 0.011};
+    curType=typ;
+    nrsEqRate=CurNrsEq[1];//temporary code
 }
