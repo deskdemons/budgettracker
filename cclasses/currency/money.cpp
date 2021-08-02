@@ -22,13 +22,19 @@ std::string doubleToString(double num){
     ss>>str;
     return str;
 }
+double stringToDouble(std::string s){
+    std::stringstream st(s);
+    double x = 0;
+    st >> x;
+    return x;
+}
 std::string Money::getMoney(){
     return currency.curType+"["+doubleToString(value)+"]"+type;
 }
 void Money::deserialize(std::string moneyStr){
     int strLen = moneyStr.length();
     int lenStrMon = strLen-6;
-    double monVal= std::stod(moneyStr.substr(4,lenStrMon));
+    double monVal= stringToDouble(moneyStr.substr(4,lenStrMon));
     std::string typ = moneyStr.substr(strLen - 1,1);
     std::string curTyp = moneyStr.substr(0,3);
     Currency c(curTyp);
