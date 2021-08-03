@@ -5,30 +5,13 @@
 #include<sstream>
 #include<string>
 
-void insertCsv(std::vector<std::string> &curName){
-    std::ifstream myFile;
-    myFile.open("curRate.csv");
-    curName.clear();
-    while(myFile.good()){
-        std::string line;
-        std::string word;
-        std::getline(myFile, line);
-        std::stringstream s(line);
-        int k=0;
-        while(std::getline(s,word,',')){
-            if(k==0)
-                curName.push_back(word);
-                k++;
-        }
-    }
-}
 
 VectorCurrency::VectorCurrency(){
-    std::vector<std::string> curName;
-    insertCsv(curName);
+    Currency c0;
+    currencyNames=c0.namesCurr();
     std::vector<Currency> curVec;
-    for(int i=0; i<curName.size();i++){
-        Currency c(curName[i]);
+    for(int i=0; i<currencyNames.size();i++){
+        Currency c(currencyNames[i]);
         curVec.push_back(c);
     }
     allCurrency = curVec;

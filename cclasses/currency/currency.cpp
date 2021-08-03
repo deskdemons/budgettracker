@@ -32,10 +32,52 @@ double strToDou(std::string s){
     st >> x;
     return x;
 }
+void insertCsv(std::vector<std::string> &curName){
+    std::ifstream myFile;
+    myFile.open("curRate.csv");
+    curName.clear();
+    while(myFile.good()){
+        std::string line;
+        std::string word;
+        std::getline(myFile, line);
+        std::stringstream s(line);
+        int k=0;
+        while(std::getline(s,word,',')){
+            if(k==0)
+                curName.push_back(word);
+                k++;
+        }
+    }
+}
+
+std::vector<std::string> Currency:: namesCurr(){
+    std::vector<std::string> currName;
+    insertCsv(currName);
+    return currName;
+}
+bool Currency::isValidCurType(std::string curTyp){
+    std::vector<std::string> currNames = namesCurr();
+    int count=0;
+    for(int k=0; k<currNames.size();k++){
+        if(curTyp==currNames[k]){
+            count++;
+        }
+    }
+    if(count==0){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 Currency::Currency(std::string typ){
     std::vector<std::vector<std::string> > csvRates;
     insertCsv(csvRates);
+    
+    if(!Currency::isValidCurType(typ)){
+        std::string err="invalid currency name "+ typ;
+        throw err;
+    }
 
     curType=typ;
     std::vector< std::vector<std::string> >::iterator rows;
