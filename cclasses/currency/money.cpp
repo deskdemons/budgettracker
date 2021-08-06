@@ -31,7 +31,7 @@ std::string doubleToString(double num){
     return str;
 }
 
-bool isNumber(std::string s)
+bool is_a_number(std::string s)
 {
     for (int i = 0; i < s.length(); i++)
         
@@ -57,7 +57,7 @@ void Money::deserialize(std::string moneyStr){
     int lenStrMon = strLen-6;
     std::string moneyVal = moneyStr.substr(4,lenStrMon);
 
-    if(!isNumber(moneyVal)){
+    if(!is_a_number(moneyVal)){
         std::string err = "not a valid double number";
         throw err;
     }
