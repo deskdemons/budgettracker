@@ -36,7 +36,7 @@ bool is_a_number(std::string s)
     for (int i = 0; i < s.length(); i++)
         
         if (isdigit(s[i]) == false){
-            if(s[0]=='-' || s[0]=='+'){
+            if(s[0]=='-' || s[0]=='+' || s[i]=='.'){
                 continue;
             }
             return false;
