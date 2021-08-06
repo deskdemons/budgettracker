@@ -14,7 +14,7 @@ Budget::Budget(int id_input, int user_id_input, std::string item_name_input, std
     category = category_input;
 
     datetime.deserialize(datetime_input);
-    amount = amount_input;
+    amount.deserialize(amount_input);
 
     // TODO: For debugging purposes only
     std::cout << "Budget Object # " << id << " has been constructed." << std::endl;
@@ -26,7 +26,7 @@ void Budget::display_information()
     std::cout << "Title: " << item_name << std::endl;
     std::cout << "Category: " << category << std::endl;
     std::cout << "Datetime: " << datetime.getDateTime() << std::endl;
-    std::cout << "Amount: " << amount << std::endl;
+    std::cout << "Amount: " << amount.getMoney() << std::endl;
 };
 
 Budget::Budget(std::string from_csv_line)
@@ -53,9 +53,7 @@ Budget::Budget(std::string from_csv_line)
     DateTime temp_datetime;
     temp_datetime.deserialize(return_value[4]);
     datetime = temp_datetime;
-
-    // TODO: Convert it into a money class
-    amount = return_value[5] + " " + return_value[6];
+    amount.deserialize(return_value[5]);
 };
 
 int Budget::string_to_integer(std::string string_value)

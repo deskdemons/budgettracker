@@ -52,7 +52,7 @@ double stringToDouble(std::string s){
 std::string Money::getMoney(){
     return currency.curType+"["+doubleToString(value)+"]"+type;
 }
-void Money::deserialize(std::string moneyStr){
+void Money::deserialize(const std::string& moneyStr){
     int strLen = moneyStr.length();
     int lenStrMon = strLen-6;
     std::string moneyVal = moneyStr.substr(4,lenStrMon);

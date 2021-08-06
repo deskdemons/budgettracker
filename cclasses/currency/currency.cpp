@@ -5,7 +5,7 @@
 #include<sstream>
 #include<string>
 Currency::Currency(){
-    curType="NRS";
+    curType="NPR";
     nrsEqRate=1.0;
 }
 

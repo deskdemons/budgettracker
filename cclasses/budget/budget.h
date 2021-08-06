@@ -3,6 +3,7 @@
 
 #include <string>
 #include "../datetime/datetime.h"
+#include "../currency/money.h"
 
 class Budget
 {
@@ -15,8 +16,7 @@ private:
     std::string category;
     DateTime datetime;
 
-    // TODO: Convert it into a money class
-    std::string amount;
+    Money amount;
 
     int string_to_integer(std::string string_value);
 
