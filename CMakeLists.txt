@@ -3,10 +3,14 @@ project(BudgetTracker)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(BudgetTracker main.cpp)
-add_executable(BudgetTracker cclasses/budget/budget.cpp)
-add_executable(BudgetTracker cclasses/budget/budgetmanager/budgetmanager.cpp)
-add_executable(BudgetTracker cclasses/currency/money.cpp)
-add_executable(BudgetTracker cclasses/currency/currency.cpp)
-add_executable(BudgetTracker cclasses/currency/vectorCurrency.cpp)
-add_executable(BudgetTracker cclasses/datetime/datetime.cpp)
+add_executable(
+        BudgetTracker
+        main.cpp
+        cclasses/budget/budget.cpp
+        cclasses/budget/budgetmanager/budgetmanager.cpp
+        cclasses/currency/money.cpp
+        cclasses/currency/currency.cpp
+        cclasses/currency/vectorCurrency.cpp
+        cclasses/datetime/datetime.cpp
+        cclasses/budget/budgetmanager/write.cpp
+)

@@ -60,6 +60,7 @@ std::vector<Budget> BudgetManager::filter_for_user(int user_id_value)
 // Constructor, where user id is passed and manager instance is created
 BudgetManager::BudgetManager(int user_id_value)
 {
+    current_user_id = user_id_value;
     file_name = "budget.csv";
 
     file_exsistance_assert();
@@ -122,10 +123,10 @@ std::vector<Budget> BudgetManager::top_seven()
     return temp;
 }
 
-// TODO: Complete this
 void BudgetManager::sort_by_datetime()
 {
     Budget temp;
+    // Sort for current user
     for (int i = 0; i < all_budget.size() - 1; i++)
     {
         for (int j = 0; j < all_budget.size() - i - 1; j++)
@@ -135,6 +136,20 @@ void BudgetManager::sort_by_datetime()
                 temp = all_budget[j];
                 all_budget[j] = all_budget[j + 1];
                 all_budget[j + 1] = temp;
+            }
+        }
+    }
+
+    // Sort for all users
+    for (int i = 0; i < all_users_budget.size() - 1; i++)
+    {
+        for (int j = 0; j < all_users_budget.size() - i - 1; j++)
+        {
+            if (all_users_budget[j].get_datettime() > all_users_budget[j + 1].get_datettime())
+            {
+                temp = all_users_budget[j];
+                all_users_budget[j] = all_users_budget[j + 1];
+                all_users_budget[j + 1] = temp;
             }
         }
     }

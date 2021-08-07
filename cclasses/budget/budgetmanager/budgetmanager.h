@@ -11,6 +11,7 @@ private:
     std::string file_name;
     std::vector<Budget> all_budget;
     std::vector<Budget> all_users_budget;
+    int current_user_id;
 
     bool file_exsistance_assert();
     std::vector<Budget> filter_for_user(int user_id_value);
