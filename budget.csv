@@ -1,18 +1,4 @@
 pk,user_id,title,category,datetime,currency
-1,1,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,USD[56.44]e
-2,2,Saurav ko jacket,Clothing,13th Jan 2021 - 12:17:23 PM,USD[56.44]e
-3,3,Prasiddha ko moja,Clothing,12th Jan 2021 - 12:18:23 PM,USD[56.44]e
-4,2,Non Buff American Chupsey,Food,22th Feb 2021 - 12:17:23 PM,USD[56.44]e
-5,3,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,USD[56.44]e
-6,2,Saurav ko jacket,Clothing,13th Jan 2021 - 12:17:23 PM,USD[56.44]e
-7,1,Prasiddha ko moja,Clothing,12th Jan 2021 - 12:18:23 PM,USD[56.44]e
-8,4,Non Buff American Chupsey,Food,22th Feb 2021 - 12:17:23 PM,USD[56.44]e
-9,2,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,USD[56.44]e
-10,1,Saurav ko jacket,Clothing,13th Jan 2021 - 12:17:23 PM,USD[56.44]e
-11,3,Prasiddha ko moja,Clothing,12th Jan 2021 - 12:18:23 PM,USD[56.44]e
-12,4,Non Buff American Chupsey,Food,21st Feb 2021 - 12:17:23 PM,USD[56.44]e
-13,2,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,USD[56.44]e
-14,1,Saurav ko jacket,Clothing,13th Jan 2021 - 12:17:23 PM,USD[56.44]e
-15,4,Prasiddha ko moja,Clothing,12th Jan 2021 - 12:18:23 PM,USD[56.44]e
-16,1,Non Buff American Chupsey,Food,22th Feb 2021 - 12:17:23 PM,USD[56.44]e
-17,4,Non Buff American Chupsey,Food,23rd Feb 2021 - 12:17:23 PM,USD[56.44]e
+2,1,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,NPR[15]e
+3,1,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,EUR[12.1]e
+1,1,Engineering Salary From Mitrajan INC,Salary,12th Jan 2022 - 12:18:23 PM,USD[56.44]i

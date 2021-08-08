@@ -18,7 +18,7 @@ private:
     std::vector<Budget> filter_for_user(int user_id_value);
 
 public:
-    BudgetManager(int);
+    explicit BudgetManager(int);
 
     std::string get_file_name();
 
@@ -39,7 +39,6 @@ public:
     void update(Budget);
 
     // Return total amount (Money Value)
-    // TODO: Convert it to money class not int
     Money get_total_income_for_current_user();
     Money get_total_expense_for_current_user();
     Money get_total_for_current_user();
