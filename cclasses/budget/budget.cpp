@@ -105,5 +105,5 @@ void Budget::from_csv(std::string from_csv_line) {
     DateTime temp_datetime;
     temp_datetime.deserialize(return_value[4]);
     datetime = temp_datetime;
-    //    amount.deserialize(return_value[5]);
+    amount.deserialize(return_value[5]);
 }

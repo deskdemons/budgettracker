@@ -19,6 +19,12 @@ class Money{
         bool operator <= (Money obj);
         bool operator >= (Money obj);
         bool operator != (Money obj);
+
+        double get_nrs_eq_amt() const;
+        Currency get_currency();
+        bool is_income();
+        bool is_expense();
+
 };
 
 #endif

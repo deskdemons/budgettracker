@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "../budget.h"
+#include "../../currency/money.h"
 
 class BudgetManager
 {
@@ -39,7 +40,9 @@ public:
 
     // Return total amount (Money Value)
     // TODO: Convert it to money class not int
-    int total();
+    Money get_total_income_for_current_user();
+    Money get_total_expense_for_current_user();
+    Money get_total_for_current_user();
 };
 
 #endif

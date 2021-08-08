@@ -13,4 +13,4 @@ add_executable(
         cclasses/currency/vectorCurrency.cpp
         cclasses/datetime/datetime.cpp
         cclasses/budget/budgetmanager/write.cpp
-)
+        cclasses/budget/budget_calcs.cpp cclasses/budget/budgetmanager/budgetmanager_calcs.cpp cclasses/currency/money_getters.cpp)

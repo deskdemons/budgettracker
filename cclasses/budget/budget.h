@@ -28,11 +28,11 @@ public:
     void set_id(int id_no);
     int get_user_id();
     void from_csv(std::string from_csv_line);
-
     void set_user_id(int);
     DateTime get_datettime();
     std::string get_category();
     std::string serialize(int);
+    Money get_money();
 };
 
 #endif

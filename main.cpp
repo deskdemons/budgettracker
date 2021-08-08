@@ -10,19 +10,17 @@ int main()
 {
     int user_id_current = 1;
     BudgetManager bdb(user_id_current);
-
-    Budget b1("0,1,Prasiddha ko dhojha,Clothing,12th Jan 2022 - 12:18:23 PM,USD[56.44]e");
-    bdb.append(b1);
-
-    b1.from_csv("5,3,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,NPR[0]e");
-    bdb.append(b1);
-
-    b1.from_csv("9,2,Rajeev ko Tshirt,Clothing,12th Jan 2021 - 12:17:23 PM,NPR[0]e");
-    bdb.append(b1);
-
     std::vector<Budget> all_budgets = bdb.all();
     for ( int i =0 ; i < all_budgets.size() ; i++) {
         std::cout << all_budgets[i].serialize(user_id_current) << std::endl;
+        std::cout << all_budgets[i].get_money().get_nrs_eq_amt() << std::endl << std::endl ;
+    }
+    try{
+        std::cout << "The total for current user is" << bdb.get_total_for_current_user().getMoney() << std::endl;
+        std::cout << "The total income for current user is" << bdb.get_total_income_for_current_user().getMoney() << std::endl;
+        std::cout << "The total expense for current user is" << bdb.get_total_expense_for_current_user().getMoney() << std::endl;
+    } catch (std::string e){
+        std::cout << "Error occurred" << std::endl << e << std::endl;
     }
     return 0;
 }
