@@ -146,7 +146,7 @@ bool Signup::addDataToCsv(std::string uname,std::string pass,std::string full){
     int line;
     std::string userId;
     line = numOfUsers();
-    int id = line+1;
+    int id = line+2;
     std::string encryt = encryptfunc(pass);
     std::stringstream ss;
     ss << id;
