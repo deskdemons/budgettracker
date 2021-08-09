@@ -9,7 +9,7 @@ Currency Money::get_currency() {
 }
 
 bool Money::is_income() {
-    if (type == "i")  {
+    if (type == "i") {
         return true;
     }
     return false;

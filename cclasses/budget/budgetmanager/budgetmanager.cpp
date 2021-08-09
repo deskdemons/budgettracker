@@ -3,8 +3,7 @@
 #include "budgetmanager.h"
 
 // Constructor, where user id is passed and manager instance is created
-BudgetManager::BudgetManager(int user_id_value)
-{
+BudgetManager::BudgetManager(int user_id_value) {
     current_user_id = user_id_value;
     file_name = "budget.csv";
 
@@ -21,8 +20,7 @@ BudgetManager::BudgetManager(int user_id_value)
     // Initial variable name values
     getline(fs, temp);
 
-    while (fs.eof() == 0)
-    {
+    while (fs.eof() == 0) {
         getline(fs, temp);
 
         //TODO: Pass User ID here

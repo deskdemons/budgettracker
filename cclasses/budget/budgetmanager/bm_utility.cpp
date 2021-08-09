@@ -4,20 +4,17 @@
 
 
 // checks if a file exists or not, if doesnot exisit, it creates a file
-bool BudgetManager::file_exsistance_assert()
-{
+bool BudgetManager::file_exsistance_assert() {
     const char *fname = "budget.csv";
 
     std::fstream fs;
     fs.open(fname, std::ios::in);
 
-    if (!fs)
-    {
+    if (!fs) {
         // File doesnot exist
         //Create a file
         std::ofstream fout(fname);
-        if (fout)
-        {
+        if (fout) {
             // If the creation is successful
             fout << "pk,user_id,title,category,datetime,currency";
 
@@ -25,9 +22,7 @@ bool BudgetManager::file_exsistance_assert()
             fout.close();
         }
         return false;
-    }
-    else
-    {
+    } else {
         return true;
     }
 };

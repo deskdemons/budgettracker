@@ -7,7 +7,7 @@ Money BudgetManager::get_total_for_current_user() {
     Money expense = get_total_expense_for_current_user();
     Money income = get_total_income_for_current_user();
 
-    if (income.get_nrs_eq_amt() >= expense.get_nrs_eq_amt()){
+    if (income.get_nrs_eq_amt() >= expense.get_nrs_eq_amt()) {
         M.setMoney(income.get_nrs_eq_amt() - expense.get_nrs_eq_amt(), c, "i");
     } else {
         M.setMoney(expense.get_nrs_eq_amt() - income.get_nrs_eq_amt(), c, "e");
@@ -17,8 +17,8 @@ Money BudgetManager::get_total_for_current_user() {
 
 Money BudgetManager::get_total_income_for_current_user() {
     double total_amount_in_nrs = 0;
-    for (int i=0; i < all_budget.size() ; i++){
-        if (all_budget[i].get_money().is_income()){
+    for (int i = 0; i < all_budget.size(); i++) {
+        if (all_budget[i].get_money().is_income()) {
             total_amount_in_nrs += all_budget[i].get_money().get_nrs_eq_amt();
         }
     }
@@ -30,8 +30,8 @@ Money BudgetManager::get_total_income_for_current_user() {
 
 Money BudgetManager::get_total_expense_for_current_user() {
     double total_amount_in_nrs = 0;
-    for (int i=0; i < all_budget.size() ; i++){
-        if (all_budget[i].get_money().is_expense()){
+    for (int i = 0; i < all_budget.size(); i++) {
+        if (all_budget[i].get_money().is_expense()) {
             total_amount_in_nrs += all_budget[i].get_money().get_nrs_eq_amt();
         }
     }
