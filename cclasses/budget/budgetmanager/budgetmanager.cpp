@@ -30,7 +30,7 @@ bool BudgetManager::file_exsistance_assert()
         if (fout)
         {
             // If the creation is successful
-            fout << "pk,user_id,title,category,datetime,currency";
+            fout << "pk,user_id,title,category,datetime,currency" << std::endl;
 
             // Close the file handle after performing the operation
             fout.close();
