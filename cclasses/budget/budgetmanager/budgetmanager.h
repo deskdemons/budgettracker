@@ -48,6 +48,10 @@ public:
     Money get_total_expense_for_current_user();
 
     Money get_total_for_current_user();
+
+    // Graphs [Bar and Pie]
+    std::vector<std::vector<std::string > > get_graph_yearly_values();
+    std::vector<std::vector<std::string > > get_graph_monthly_values();
 };
 
 #endif

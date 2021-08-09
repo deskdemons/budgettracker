@@ -8,13 +8,10 @@
 class Budget {
 private:
     int id;
-    // TODO: Convert it to user class later on
     int user_id;
-
     std::string item_name;
     std::string category;
     DateTime datetime;
-
     Money amount;
 
     static int string_to_integer(const std::string &string_value);
@@ -22,7 +19,7 @@ private:
 public:
     Budget();
 
-    Budget(const std::string &from_csv_line);
+    explicit Budget(const std::string &from_csv_line);
 
     Budget(int id_input, int user_id_input, const std::string& item_name_input, const std::string& category_input,
            const std::string& datetime_input, const std::string& amount_input);
@@ -31,7 +28,7 @@ public:
 
     void set_id(int id_no);
 
-    int get_user_id();
+    int get_user_id() const;
 
     void from_csv(std::string from_csv_line);
 
