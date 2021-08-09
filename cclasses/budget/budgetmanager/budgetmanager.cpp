@@ -1,8 +1,6 @@
 #include <string>
 #include <fstream>
-
 #include "budgetmanager.h"
-
 
 // Constructor, where user id is passed and manager instance is created
 BudgetManager::BudgetManager(int user_id_value)
@@ -33,4 +31,4 @@ BudgetManager::BudgetManager(int user_id_value)
     }
 
     all_budget = filter_for_user(user_id_value);
-};
+}
