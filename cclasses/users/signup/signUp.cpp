@@ -114,7 +114,7 @@ bool Signup::fileExsistanceAssert()
         if (fout)
         {
             // If the creation is successful
-            fout << "#id,username,password,fullname,balance" << std::endl;
+            fout << "#id,username,password,fullname,balance";
 
             // Close the file handle after performing the operation
             fout.close();
