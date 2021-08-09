@@ -14,7 +14,7 @@ private:
     std::vector<Budget> all_users_budget;
     int current_user_id;
 
-    bool file_exsistance_assert();
+    static bool file_exsistance_assert();
     std::vector<Budget> filter_for_user(int user_id_value);
 
 public:
@@ -25,7 +25,7 @@ public:
     // Group of Methods that returns Budget Objects
     std::vector<Budget> all();
     std::vector<Budget> all_users();
-    std::vector<Budget> filter_by_category(std::string category_string);
+    std::vector<Budget> filter_by_category(const std::string& category_string);
     std::vector<Budget> top_seven();
 
     // sorts itself by amount
