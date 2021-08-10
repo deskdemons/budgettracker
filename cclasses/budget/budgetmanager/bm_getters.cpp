@@ -27,7 +27,7 @@ std::vector<std::string> BudgetManager::get_category_list(){
             }
         }
 
-        if (!is_present){
+        if (!is_present && temp.get_money().is_expense()){
             category_list.push_back(category);
         }
 
