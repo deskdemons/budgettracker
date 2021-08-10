@@ -1,8 +1,12 @@
 #include "budgetmanager.h"
 
 // Get values for use in pie chart
-std::vector<std::vector<std::string > > BudgetManager::get_graph_monthly_values() {
-    std::vector<std::vector<std::string > > monthly_values;
+std::vector<PieChart > BudgetManager::get_graph_monthly_values() {
+    std::vector<PieChart > monthly_values;
+    std::vector<std::string> category_list;
+
+
+
     return monthly_values;
 }
 

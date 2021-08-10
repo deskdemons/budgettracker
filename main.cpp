@@ -9,8 +9,8 @@ int main()
     try{
         int user_id_current = 1;
         BudgetManager bdb(user_id_current);
-
         std::vector<Budget> all_budgets = bdb.all();
+
         for ( int i =0 ; i < all_budgets.size() ; i++) {
             std::cout << all_budgets[i].serialize(user_id_current) << std::endl;
             std::cout << all_budgets[i].get_money().get_nrs_eq_amt() << std::endl << std::endl ;
@@ -29,6 +29,13 @@ int main()
         for(int i=0; i<bg_vec.size();i++){
             std::cout << "The total expense for month " << bg_vec[i].get_month() << " is " << bg_vec[i].get_total() << std::endl;
         }
+        std::cout << std::endl << "-- -- -- -- --" << std::endl;
+
+        std::vector<std::string> cat_list = bdb.get_category_list();
+        for(int i =0; i < cat_list.size(); i++){
+            std::cout << i << " Category is: " << cat_list[i] << std::endl;
+        }
+
 
     }catch (std::string e){
         std::cout << "ERROR " << e << std::endl;
