@@ -36,6 +36,11 @@ int main()
             std::cout << i << " Category is: " << cat_list[i] << std::endl;
         }
 
+        std::cout << std::endl << "-- -- -- -- --" << std::endl;
+        std::vector < PieChart> pie_list = bdb.get_graph_monthly_values();
+        for (int i=0; i<pie_list.size(); i++){
+            std::cout << "CATG: " << pie_list[i].get_category() << " AMT: " << pie_list[i].get_nrs_eq() << std::endl;
+        }
 
     }catch (std::string e){
         std::cout << "ERROR " << e << std::endl;

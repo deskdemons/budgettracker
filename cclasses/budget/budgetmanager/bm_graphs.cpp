@@ -3,9 +3,21 @@
 // Get values for use in pie chart
 std::vector<PieChart > BudgetManager::get_graph_monthly_values() {
     std::vector<PieChart > monthly_values;
-    std::vector<std::string> category_list;
+    std::vector<std::string> category_list = get_category_list();
 
-
+    for(int i =0; i< category_list.size(); i++){
+        Money money;
+        double nrs_total_amt = 0;
+        for(int j=0; j<all_budget.size(); j++){
+            if (all_budget[j].get_category() == category_list[i] && all_budget[j].get_money().is_expense()){
+                nrs_total_amt += all_budget[j].get_money().get_nrs_eq_amt();
+            }
+        }
+        Currency c;
+        money.setMoney(nrs_total_amt, c, "e");
+        PieChart pie_chart(category_list[i],money);
+        monthly_values.push_back(pie_chart);
+    }
 
     return monthly_values;
 }
