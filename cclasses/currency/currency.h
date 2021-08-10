@@ -1,17 +1,22 @@
 #ifndef CURRENCY_H
 #define CURRENCY_H
+
 #include<iostream>
-#include "curConverter.h"
-class Currency: protected CurConverter{
-    double nrsEq;
-    double value;
-    std::string type;
-    public:
-        Currency(); //default constructor, when object is made, value =0, type = npr
-        bool setCurrency(double val, std::string typ);  //sets currency example c1.setCurrency(55,"npr")
-        std::string getCurrency();  //returns string as serialized string like npr[55.67]
-        void deserialize(std::string curStr); //pass string like USD[150.55] and it will save value=150.55 and type="USD"
-        //we have inherited currencyConverter. c1.currencyConverter(55.54, from, "npr") is used internally to store equivalent npr of any currency for comparision purposes
+#include<vector>
+
+class Currency {
+
+public:
+    std::string curType;    // USD, NPR, etc
+    double nrsEqRate;   //equivalent rate wrt NPR. for ex: for USD, nrsEqRate = 0.0084
+    Currency(); //default constructor with curType NPR and nrsEqRate = 1
+    Currency(
+            std::string typ);  //pass string like USD, and it will construct object and automatically assign the nrsEqValue
+    std::string getCurType();   //returns curType as string like: "USD"
+    std::vector<std::string>
+    namesCurr();   //returns vector of string of available currency Type like: {"NPR",USD","INR","AUD","EUR"}
+    bool isValidCurType(
+            std::string curTyp);  //created for internal use only //returns true or false based on passed curType(like USD) exists inside csv file or not
 };
 
 #endif
