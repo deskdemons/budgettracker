@@ -345,3 +345,11 @@ bool DateTime::deserialize(std::string datetime) {
 
     return true;
 }
+
+int DateTime::get_month() {
+    return month;
+}
+
+int DateTime::get_year() {
+    return year;
+}

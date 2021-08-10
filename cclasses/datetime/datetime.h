@@ -36,6 +36,9 @@ public:
     void addDay(int d);
 
     void addYear(int y);
+
+    int get_month();
+    int get_year();
 };
 
 #endif

@@ -5,6 +5,7 @@
 #include <vector>
 #include "../budget.h"
 #include "../../currency/money.h"
+#include "../../bargraph/BarGraph.h"
 
 class BudgetManager {
 private:
@@ -50,7 +51,7 @@ public:
     Money get_total_for_current_user();
 
     // Graphs [Bar and Pie]
-    std::vector<std::vector<std::string > > get_graph_yearly_values();
+    std::vector<BarGraph > get_graph_yearly_values();
     std::vector<std::vector<std::string > > get_graph_monthly_values();
 };
 
