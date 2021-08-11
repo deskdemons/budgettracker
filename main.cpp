@@ -3,9 +3,46 @@
 
 #include "cclasses/budget/budget.h"
 #include "cclasses/budget/budgetmanager/budgetmanager.h"
+#include "cclasses/users/login/login.h"
+#include "cclasses/users/signup/signUp.h"
+#include "cclasses/users/authentication/authentication.h"
+void createUser(){
+    std::string username, password, fullname;
+    std::cout<<"Username : ";
+    std::cin>>username;
+    std::cout<<"Password : ";
+    std::cin>>password;
+    std::cout<<"Full Name : ";
+    std::cin>>fullname;
+    Signup s(username,password,fullname);
+}
+Login LoginUser(){
+    std::string username, password, fullname;
+    std::cout<<"Username : ";
+    std::cin>>username;
+    std::cout<<"Password : ";
+    std::cin>>password;
+    Login l(username,password);
+    return l;
+}
 
 int main()
 {
+    std::cout<<"Login or Signup?"<<std::endl;
+    char choice;
+    std::cin>>choice;
+    Login lusr;
+    switch (choice) {
+        case '1':
+             lusr = LoginUser();
+            break;
+            case '2':
+                createUser();
+                break;
+                default:
+                    lusr = LoginUser();
+    }
+.
     try{
         int user_id_current = 1;
         BudgetManager bdb(user_id_current);
