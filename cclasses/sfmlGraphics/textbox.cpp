@@ -31,7 +31,7 @@ Textbox::Textbox() {	//default constructor
 	textbox.setFont(font);
 	textbox.setCharacterSize(fontSize);
 	textbox.setFillColor(fontColor);
-	txtbg = TextBoxBg();
+	txtbg = RoundedRectangle();
 	txtbg.drawer();
 }
 Textbox::Textbox(sf::Vector2f position, sf::Vector2f dimension, int radius,std::string hintText, sf::Font& hintFont, int hintFontSize, sf::Color hintFontColor,std::string datatype, sf::Font& font, int fontSize, int maxLen, sf::Color fontColor, sf::Color bgColor, int outLineThickness, sf::Color outLineColor, int paddingL, int paddingT) {
@@ -64,7 +64,7 @@ Textbox::Textbox(sf::Vector2f position, sf::Vector2f dimension, int radius,std::
 	textbox.setFont(font);
 	textbox.setCharacterSize(fontSize);
 	textbox.setFillColor(fontColor);
-	txtbg = TextBoxBg(position, dimension, radius, bgColor, outLineThickness, outLineColor); // TextBoxBg txtbg = TextBoxBg(position, dimension, radius); removing TextBoxBg solve the problem
+	txtbg = RoundedRectangle(position, dimension, radius, bgColor, outLineThickness, outLineColor); // RoundedRectangle txtbg = RoundedRectangle(position, dimension, radius); removing RoundedRectangle solve the problem
 	txtbg.drawer();
 }
 
@@ -176,7 +176,7 @@ void Textbox::setPosition(sf::Vector2f position) {
 }
 void Textbox::setDimension(sf::Vector2f dimension) {
 	this->dimension = dimension;
-	txtbg.setDimension(dimension);	//dimension only used for textboxBg . 
+	txtbg.setDimension(dimension);	//dimension only used for RoundedRectangle . 
 }
 void Textbox::setRadius(int radius) {
 	this->radius = radius;

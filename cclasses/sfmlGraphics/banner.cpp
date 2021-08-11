@@ -19,7 +19,7 @@ Banner::Banner() {
 	text.setFont(font);
 	text.setCharacterSize(fontSize);
 	text.setFillColor(fontColor);
-	bannerBg = TextBoxBg(position, dimension, radius, bgColor, outLineThickness, outLineColor);
+	bannerBg = RoundedRectangle(position, dimension, radius, bgColor, outLineThickness, outLineColor);
 	bannerBg.drawer();
 }
 Banner::Banner(std::string bannerText, sf::Vector2f position, sf::Vector2f dimension, int radius, sf::Font& font, int fontSize, sf::Color fontColor, sf::Color bgColor, int outLineThickness, sf::Color outLineColor, int paddingL, int paddingT) {//position, dimension, radius, font, size of txt, txtColor, bgColor, outLineThickness, outLineColor
@@ -41,7 +41,7 @@ Banner::Banner(std::string bannerText, sf::Vector2f position, sf::Vector2f dimen
 	text.setFont(font);
 	text.setCharacterSize(fontSize);
 	text.setFillColor(fontColor);
-	bannerBg = TextBoxBg(position, dimension, radius, bgColor, outLineThickness, outLineColor); // TextBoxBg txtbg = TextBoxBg(position, dimension, radius); removing TextBoxBg solve the problem
+	bannerBg = RoundedRectangle(position, dimension, radius, bgColor, outLineThickness, outLineColor); // RoundedRectangle txtbg = RoundedRectangle(position, dimension, radius); removing RoundedRectangle solve the problem
 	bannerBg.drawer();
 }
 
@@ -57,7 +57,7 @@ void Banner::setPosition(sf::Vector2f position) {
 }
 void Banner::setDimension(sf::Vector2f dimension) {
 	this->dimension = dimension;
-	bannerBg.setDimension(dimension);	//dimension only used for textboxBg . 
+	bannerBg.setDimension(dimension);	//dimension only used for RoundedRectangle . 
 }
 void Banner::setRadius(int radius) {
 	this->radius = radius;

@@ -1,11 +1,11 @@
 #pragma once
-#ifndef TEXTBOXBG_H
-#define TEXTBOXBG_H
+#ifndef ROUNDEDRECTANGLE_H
+#define ROUNDEDRECTANGLE_H
 
 #include<iostream>
 #include<SFML\Graphics.hpp>
 
-class TextBoxBg {
+class RoundedRectangle {
 	sf::ConvexShape convex;	//sfml class to define convec shapes
 	sf::Vector2f position;	//x,y position given by user
 	sf::Vector2f dimension;	//width, height given by user
@@ -15,8 +15,8 @@ class TextBoxBg {
 	sf::Color outLineColor; //border color of the shape
 
 public:
-	TextBoxBg();
-	TextBoxBg(sf::Vector2f position, sf::Vector2f dimension, int radius, sf::Color bgColor, int borderThickness, sf::Color borderColor);//position, dimension, radius, fillColor, outLineThickness, outLineColor 
+	RoundedRectangle();
+	RoundedRectangle(sf::Vector2f position, sf::Vector2f dimension, int radius, sf::Color bgColor, int borderThickness, sf::Color borderColor);//position, dimension, radius, fillColor, outLineThickness, outLineColor 
 	void drawer();	//this function has the code that actually draws the shape
 	void setPosition(sf::Vector2f);	//sets position of the shape
 	void setDimension(sf::Vector2f);	//width,height vector for the shape

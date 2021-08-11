@@ -4,11 +4,11 @@
 
 #include <iostream>
 #include <SFML\Graphics.hpp>
-#include "textboxBg.h"
+#include "RoundedRectangle.h"
 
 class Banner {
 protected:
-	TextBoxBg bannerBg; //manually defined background shape of button class
+	RoundedRectangle bannerBg; //manually defined background shape 
 	sf::Text text;	//sfml text class
 
 	std::string bannerText;	//actual string of button

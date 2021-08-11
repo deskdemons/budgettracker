@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "cclasses/sfmlGraphics/textbox.h"
 #include "cclasses/sfmlGraphics/button.h"
-#include "cclasses/sfmlGraphics/textBoxBg.h"
+#include "cclasses/sfmlGraphics/roundedRectangle.h"
 #include "cclasses/sfmlGraphics/banner.h"
 
 int main() {

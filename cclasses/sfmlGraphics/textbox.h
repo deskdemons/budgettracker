@@ -4,7 +4,7 @@
 #include<iostream>
 #include<sstream>
 #include<SFML/Graphics.hpp>
-#include "textBoxBg.h"
+#include "RoundedRectangle.h"
 
 // Define keys:
 #define BACKSPACE_KEY 8
@@ -38,7 +38,7 @@ private:
 	int paddingL;	//text padding from left w.r.t border
 	int paddingT;	//text padding from top w.r.t border
 
-	TextBoxBg txtbg;	////manually defined background shape class
+	RoundedRectangle txtbg;	////manually defined background shape class
 
 public:
 	Textbox();	//default constructor with default values. you can see in cpp file

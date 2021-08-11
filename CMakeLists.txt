@@ -56,11 +56,11 @@ add_executable(
         cclasses/users/csvfile/CSVFile.h
         cclasses/sfmlGraphics/banner.h
         cclasses/sfmlGraphics/textbox.h
-        cclasses/sfmlGraphics/textboxBg.h
+        cclasses/sfmlGraphics/roundedRectangle.h
         cclasses/sfmlGraphics/button.h
         cclasses/sfmlGraphics/banner.cpp
         cclasses/sfmlGraphics/textbox.cpp
-        cclasses/sfmlGraphics/textboxBg.cpp
+        cclasses/sfmlGraphics/roundedRectangle.cpp
         cclasses/sfmlGraphics/button.cpp
 )
 

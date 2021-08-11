@@ -1,9 +1,9 @@
 #include<iostream>
-#include "textboxBg.h"
+#include "roundedRectangle.h"
 #include<cmath>
 #define PI 3.14159265
 
-TextBoxBg::TextBoxBg() { //default constructor
+RoundedRectangle::RoundedRectangle() { //default constructor
 	position = sf::Vector2f(50,50 );
 	dimension = sf::Vector2f(400,50 );
 	radius = 5;
@@ -12,7 +12,7 @@ TextBoxBg::TextBoxBg() { //default constructor
 	outLineColor = sf::Color(75, 75, 75);
 }
 
-TextBoxBg::TextBoxBg(sf::Vector2f position, sf::Vector2f dimension, int radius, sf::Color bgColor, int outLineThickness, sf::Color outLineColor) {
+RoundedRectangle::RoundedRectangle(sf::Vector2f position, sf::Vector2f dimension, int radius, sf::Color bgColor, int outLineThickness, sf::Color outLineColor) {
 	this->position = position;
 	this->dimension = dimension;
 	this->radius = radius;
@@ -21,7 +21,7 @@ TextBoxBg::TextBoxBg(sf::Vector2f position, sf::Vector2f dimension, int radius, 
 	this->outLineColor = outLineColor;
 }
 
-void TextBoxBg::drawer() {
+void RoundedRectangle::drawer() {
 	float unitDegree = PI / 180;
 	convex.setPointCount(364);
 	convex.setFillColor(bgColor);
@@ -57,32 +57,32 @@ void TextBoxBg::drawer() {
 }
 
 
-void TextBoxBg::setPosition(sf::Vector2f position) {
+void RoundedRectangle::setPosition(sf::Vector2f position) {
 	this->position = position;
 	drawer();
 }
-void TextBoxBg::setDimension(sf::Vector2f dimension) {
+void RoundedRectangle::setDimension(sf::Vector2f dimension) {
 	this->dimension = dimension;
 	drawer();
 }
-void TextBoxBg::setRadius(int radius){
+void RoundedRectangle::setRadius(int radius){
 	this->radius = radius;
 	drawer();
 }
-void TextBoxBg::setBgColor(sf::Color bgColor){
+void RoundedRectangle::setBgColor(sf::Color bgColor){
 	this->bgColor = bgColor;
 	drawer();
 }
-void TextBoxBg::setOutLineThickness(int outLineThickness) {
+void RoundedRectangle::setOutLineThickness(int outLineThickness) {
 	this->outLineThickness = outLineThickness;
 	drawer();
 }
-void TextBoxBg::setOutLineColor(sf::Color outLineColor){
+void RoundedRectangle::setOutLineColor(sf::Color outLineColor){
 	this->outLineColor = outLineColor;
 	drawer();
 }
 
 
-void TextBoxBg::drawBg(sf::RenderWindow& window) {
+void RoundedRectangle::drawBg(sf::RenderWindow& window) {
 	window.draw(convex);
 }
