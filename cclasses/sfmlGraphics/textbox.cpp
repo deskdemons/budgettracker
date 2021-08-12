@@ -32,7 +32,7 @@ Textbox::Textbox() {	//default constructor
 	textbox.setCharacterSize(fontSize);
 	textbox.setFillColor(fontColor);
 	txtbg = RoundedRectangle();
-	txtbg.drawer();
+
 }
 Textbox::Textbox(sf::Vector2f position, sf::Vector2f dimension, int radius,std::string hintText, sf::Font& hintFont, int hintFontSize, sf::Color hintFontColor,std::string datatype, sf::Font& font, int fontSize, int maxLen, sf::Color fontColor, sf::Color bgColor, int outLineThickness, sf::Color outLineColor, int paddingL, int paddingT) {
 	isSelected = false;
@@ -65,7 +65,7 @@ Textbox::Textbox(sf::Vector2f position, sf::Vector2f dimension, int radius,std::
 	textbox.setCharacterSize(fontSize);
 	textbox.setFillColor(fontColor);
 	txtbg = RoundedRectangle(position, dimension, radius, bgColor, outLineThickness, outLineColor); // RoundedRectangle txtbg = RoundedRectangle(position, dimension, radius); removing RoundedRectangle solve the problem
-	txtbg.drawer();
+
 }
 
 void Textbox::setSelected(bool sel) {

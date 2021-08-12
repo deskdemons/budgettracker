@@ -11,18 +11,18 @@ protected:
 	RoundedRectangle bannerBg; //manually defined background shape 
 	sf::Text text;	//sfml text class
 
-	std::string bannerText;	//actual string of button
-	sf::Vector2f position; //x,y coordinate of top left cornor of button
+	std::string bannerText;	//actual string of banner
+	sf::Vector2f position; //x,y coordinate of top left cornor of banner
 	sf::Vector2f dimension; //width, height of button
-	int radius;	//radius of curvature of corners of button
-	sf::Font font;	//font family of button text
+	int radius;	//radius of curvature of corners of banner
+	sf::Font font;	//font family of banner text
 	int fontSize;	//font size
 	sf::Color fontColor; //font color
-	sf::Color bgColor;	//background color of button
-	int outLineThickness;	//border thickness of button
-	sf::Color outLineColor;	//border color of button
-	int paddingL;	//text padding from left w.r.t border
-	int paddingT;	//text padding from top w.r.t border
+	sf::Color bgColor;	//background color of banner
+	int outLineThickness;	//border thickness of banner
+	sf::Color outLineColor;	//border color of banner
+	int paddingL;	//text padding from left w.r.t banner
+	int paddingT;	//text padding from top w.r.t banner
 
 public:
 	Banner();	//default constructor with default values. you can see in cpp file

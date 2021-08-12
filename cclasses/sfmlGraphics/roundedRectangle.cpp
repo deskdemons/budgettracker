@@ -10,6 +10,7 @@ RoundedRectangle::RoundedRectangle() { //default constructor
 	bgColor = sf::Color(180, 180, 180);
 	outLineThickness = 1;
 	outLineColor = sf::Color(75, 75, 75);
+	drawer();
 }
 
 RoundedRectangle::RoundedRectangle(sf::Vector2f position, sf::Vector2f dimension, int radius, sf::Color bgColor, int outLineThickness, sf::Color outLineColor) {
@@ -19,6 +20,7 @@ RoundedRectangle::RoundedRectangle(sf::Vector2f position, sf::Vector2f dimension
 	this->bgColor = bgColor;
 	this->outLineThickness = outLineThickness;
 	this->outLineColor = outLineColor;
+	drawer();
 }
 
 void RoundedRectangle::drawer() {

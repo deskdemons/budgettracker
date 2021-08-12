@@ -4,6 +4,7 @@
 #include "cclasses/sfmlGraphics/button.h"
 #include "cclasses/sfmlGraphics/roundedRectangle.h"
 #include "cclasses/sfmlGraphics/banner.h"
+#include "cclasses/sfmlGraphics/guiPieChart.h"
 
 int main() {
 
@@ -36,6 +37,21 @@ int main() {
     b1.setBgColor(sf::Color(255, 0, 0));	//setting background color
     b1.setPadding(50, 0);	//setting padding of text as (left, top)
     b1.setButtonText("Login");
+
+    std::vector<sf::Color> colors;  //making vector of colors for passing to piechart as argument
+    colors.push_back(sf::Color::Red);
+    colors.push_back(sf::Color::Green);
+    colors.push_back(sf::Color::Blue);
+    //colors.assign({ sf::Color::Red, sf::Color::Blue, sf::Color::Green }); //doesn't support in c++98
+    std::vector<double> percentages;    //making vector of percentage for passing to piechart
+    percentages.push_back(30.0);
+    percentages.push_back(45.0);
+    percentages.push_back(25.0);
+    //percentages.assign({ 30.0, 45.0, 25.0 });
+
+    GuiPieChart pie;   //another object. default constructor triggered
+    pie.setPosition(sf::Vector2f(700,300)); //position is set. but other parameters are default. default radius =100, percentage is 25% * 4, and 12 colors available as default
+    pie.setLabelFontSize(15);
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 
@@ -88,6 +104,7 @@ int main() {
             text2.drawTo(window);	//drawTo is defined inside the manually defined class. we are passing window by reference. the actual code that draws is this way: window.draw(shape) or window.draw(textbox) or window.draw(anything)
             text3.drawTo(window);	//things should be drawn orderly, i.e, here, text3 can overlap and overshadow text2 if the have same position. things that are drawn later is drawn at top
             b1.drawTo(window);	//drawing button
+            pie.drawTo(window);
             window.display();	//actually displaying things that is drawn in buffer
 
         }
