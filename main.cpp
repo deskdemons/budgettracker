@@ -52,6 +52,7 @@ int main() {
     GuiPieChart pie;   //another object. default constructor triggered
     pie.setPosition(sf::Vector2f(700,300)); //position is set. but other parameters are default. default radius =100, percentage is 25% * 4, and 12 colors available as default
     pie.setLabelFontSize(15);
+    
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 
