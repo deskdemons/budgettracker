@@ -1,5 +1,6 @@
 #include "guiPieChart.h"
 #include<cmath>
+#include <sstream>
 
 GuiPieChart::GuiPieChart() {
 
@@ -69,6 +70,14 @@ GuiPieChart::GuiPieChart(double radius, sf::Vector2f centerPosition, std::vector
     drawer();
 }
 
+std::string doubleToStringGui(double num) {
+    std::stringstream ss;
+    std::string str;
+    ss << num;
+    ss >> str;
+    return str;
+}
+
 void GuiPieChart::drawer() {
     length = percentages.size();
     double l = 0;
@@ -96,7 +105,7 @@ void GuiPieChart::drawer() {
         //making labels
 
         pieLabels[i];
-        pieLabels[i].setBannerText(labelTexts[i]);
+        pieLabels[i].setBannerText(doubleToStringGui(percentages[i]) + "% : " +labelTexts[i]);
         pieLabels[i].setPosition(sf::Vector2f(labelPosition.x, labelPosition.y  + (labelVerticalSpacing*i)));
         pieLabels[i].setDimension(labelBoxDimension);
         pieLabels[i].setRadius(labelBoxRadius);
