@@ -63,6 +63,8 @@ add_executable(
         cclasses/sfmlGraphics/roundedRectangle.cpp
         cclasses/sfmlGraphics/button.cpp
         cclasses/sfmlGraphics/guiPieChart.h
-        cclasses/sfmlGraphics/guiPiechart.cpp)
+        cclasses/sfmlGraphics/guiPiechart.cpp
+        cclasses/sfmlGraphics/guiBarGraph.h
+        cclasses/sfmlGraphics/guiBarGraph.cpp)
 
 target_link_libraries(BudgetTracker sfml-system sfml-window sfml-graphics sfml-audio sfml-network)

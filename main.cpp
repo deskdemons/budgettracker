@@ -5,6 +5,7 @@
 #include "cclasses/sfmlGraphics/roundedRectangle.h"
 #include "cclasses/sfmlGraphics/banner.h"
 #include "cclasses/sfmlGraphics/guiPieChart.h"
+#include "cclasses/sfmlGraphics/guiBarGraph.h"
 
 int main() {
 
@@ -50,9 +51,57 @@ int main() {
     //percentages.assign({ 30.0, 45.0, 25.0 });
 
     GuiPieChart pie;   //another object. default constructor triggered
-    pie.setPosition(sf::Vector2f(700,300)); //position is set. but other parameters are default. default radius =100, percentage is 25% * 4, and 12 colors available as default
+    pie.setPosition(sf::Vector2f(700,500)); //position is set. but other parameters are default. default radius =100, percentage is 25% * 4, and 12 colors available as default
     pie.setLabelFontSize(15);
-    
+
+    //making vectors to pass to bargraph setters
+    std::vector<std::string> lbltx;
+    lbltx.push_back("January");
+    lbltx.push_back(" ");
+    lbltx.push_back("February");
+    lbltx.push_back(" ");
+    lbltx.push_back("March");
+    lbltx.push_back(" ");
+
+    std::vector<sf::Color> barColors;
+    barColors.push_back(sf::Color::Blue);
+    barColors.push_back(sf::Color::Red);
+    barColors.push_back(sf::Color::Blue);
+    barColors.push_back(sf::Color::Red);
+    barColors.push_back(sf::Color::Blue);
+    barColors.push_back(sf::Color::Red);
+
+    std::vector<double> barVal;
+    barVal.push_back(600);
+    barVal.push_back(500);
+    barVal.push_back(900);
+    barVal.push_back(400);
+    barVal.push_back(650);
+    barVal.push_back(430);
+
+    std::vector<std::string> lbltxt;
+    lbltxt.push_back("Income");
+    lbltxt.push_back("Expense");
+    lbltxt.push_back("Income");
+    lbltxt.push_back("Expense");
+    lbltxt.push_back("Income");
+    lbltxt.push_back("Expense");
+
+    //creating bargraph class and setting properties
+    GuiBarGraph bar1;
+    bar1.setBarValues(barVal);
+    bar1.setPosition(sf::Vector2f(500,50));
+    bar1.setEachBarBottomTitle(lbltx);
+    bar1.setBarMaxHeight(250);
+    bar1.setBarColors(barColors);
+    bar1.setLabelTexts(lbltxt);
+    bar1.setLabelBoxDimension(sf::Vector2f(16,16));
+    bar1.setLabelBoxRadius(8);
+    bar1.setLabelFontSize(15);
+    bar1.setToggleLabel(true);
+    bar1.setTitlePadding(sf::Vector2f(15,10));
+    bar1.setBarWidth(20);
+
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 
@@ -100,14 +149,15 @@ int main() {
                             }
                             break;
             }
-            window.clear(sf::Color(155, 155, 155));	//clearing with color makes the background color of window as specified
-            text1.drawTo(window);	//drawing text by passing window by reference.
-            text2.drawTo(window);	//drawTo is defined inside the manually defined class. we are passing window by reference. the actual code that draws is this way: window.draw(shape) or window.draw(textbox) or window.draw(anything)
-            text3.drawTo(window);	//things should be drawn orderly, i.e, here, text3 can overlap and overshadow text2 if the have same position. things that are drawn later is drawn at top
-            b1.drawTo(window);	//drawing button
-            pie.drawTo(window);
-            window.display();	//actually displaying things that is drawn in buffer
-
         }
+        window.clear(sf::Color(155, 155, 155));	//clearing with color makes the background color of window as specified
+        text1.drawTo(window);	//drawing text by passing window by reference.
+        text2.drawTo(window);	//drawTo is defined inside the manually defined class. we are passing window by reference. the actual code that draws is this way: window.draw(shape) or window.draw(textbox) or window.draw(anything)
+        text3.drawTo(window);	//things should be drawn orderly, i.e, here, text3 can overlap and overshadow text2 if the have same position. things that are drawn later is drawn at top
+        b1.drawTo(window);	//drawing button
+        pie.drawTo(window);
+        bar1.drawTo(window);
+        window.display();	//actually displaying things that is drawn in buffer
+
     }
 }
