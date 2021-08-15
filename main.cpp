@@ -101,7 +101,7 @@ int main() {
     bar1.setToggleLabel(true);
     bar1.setTitlePadding(sf::Vector2f(15,10));
     bar1.setBarWidth(20);
-
+    
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 

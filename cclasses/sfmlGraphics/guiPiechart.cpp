@@ -121,6 +121,7 @@ void GuiPieChart::drawer() {
 
 void GuiPieChart::setRadius(double radius){
     this->radius = radius;
+    labelPosition = sf::Vector2f(position.x + radius + 20, position.y - radius +20);
     drawer();
 }
 void GuiPieChart::setPosition(sf::Vector2f centerPosition){
@@ -134,6 +135,9 @@ void GuiPieChart::setColor( std::vector<sf::Color> colorsVector){
 }
 void GuiPieChart::setPercentages(std::vector<double> percentages){
     this->percentages = percentages;
+    length = percentages.size();
+    fan = new sf::VertexArray[length];
+    pieLabels = new Banner[length];
     drawer();
 }
 void GuiPieChart::setLabelTexts(std::vector<std::string> labelTexts){
