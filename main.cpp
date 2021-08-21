@@ -6,6 +6,7 @@
 #include "cclasses/sfmlGraphics/banner.h"
 #include "cclasses/sfmlGraphics/guiPieChart.h"
 #include "cclasses/sfmlGraphics/guiBarGraph.h"
+#include "cclasses/sfmlGraphics/table.h"
 
 int main() {
 
@@ -34,7 +35,7 @@ int main() {
     Textbox text3(sf::Vector2f(  50,250 ), sf::Vector2f( 400, 70), 10,"password",fontHint, 30, sf::Color::Magenta,"secure", font, 30, 20, sf::Color(100, 0, 0), sf::Color(190, 190, 55), 3, sf::Color(0, 0, 0), 20, -10); //position, dimension, radius, hintText, hintFont, hintFontSize, hintFontColor,dataType, txtFont, fontSize, maxLen, txtColor, bgColor, borderThickness, borderColor, paddingLeft, paddingRight
 
     Button b1;	//object of manually defined button class. default constructor triggered
-    b1.setPosition(sf::Vector2f( 500,500));	//setting position of button. it overwrites the default position
+    b1.setPosition(sf::Vector2f( 200,330));	//setting position of button. it overwrites the default position
     b1.setBgColor(sf::Color(255, 0, 0));	//setting background color
     b1.setPadding(50, 0);	//setting padding of text as (left, top)
     b1.setButtonText("Login");
@@ -51,7 +52,7 @@ int main() {
     //percentages.assign({ 30.0, 45.0, 25.0 });
 
     GuiPieChart pie;   //another object. default constructor triggered
-    pie.setPosition(sf::Vector2f(700,500)); //position is set. but other parameters are default. default radius =100, percentage is 25% * 4, and 12 colors available as default
+    pie.setPosition(sf::Vector2f(900,500)); //position is set. but other parameters are default. default radius =100, percentage is 25% * 4, and 12 colors available as default
     pie.setLabelFontSize(15);
 
     //making vectors to pass to bargraph setters
@@ -101,7 +102,12 @@ int main() {
     bar1.setToggleLabel(true);
     bar1.setTitlePadding(sf::Vector2f(15,10));
     bar1.setBarWidth(20);
-    
+    //table
+    Table t1;
+    t1.setPosition(sf::Vector2f(50, 400));
+    t1.setTableBodyRowNum(4);
+
+
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 
@@ -142,6 +148,12 @@ int main() {
                                 b1.setFontColor(sf::Color(255, 255, 255));	//change the font color
                                 std::cout << "text1:" << text1.getText() << std::endl << "text2:" << text2.getText() << std::endl << "text3:" << text3.getText() <<std::endl;	//getText gives the text entered so far
                             }
+                            else if (t1.isMouseOverUp(window)) {
+                                t1.setTableLevelMinus();
+                            }
+                            else if (t1.isMouseOverDown(window)) {
+                                t1.setTableLevelPlus();
+                            }
                             else {								//if mouse click is not in any textbox, then remove focus from all textbox
                                 text1.setSelected(false);
                                 text2.setSelected(false);
@@ -157,6 +169,7 @@ int main() {
         b1.drawTo(window);	//drawing button
         pie.drawTo(window);
         bar1.drawTo(window);
+        t1.drawTo(window);
         window.display();	//actually displaying things that is drawn in buffer
 
     }
