@@ -1,6 +1,8 @@
-#include "iostream"
 #include "../../cclasses/budget/budgetmanager/budgetmanager.h"
 #include "ServerConnection.h"
+#include <fstream>
+#include "iostream"
+
 
 ServerConnection::ServerConnection() {
     // We initialize the server to run in port 4444 and listen to it
@@ -89,6 +91,9 @@ void ServerConnection::run_server() {
                         // This is for the last line, since are close the loop once no "\n" are found in the code
                         Budget temp_bud(full_string);
                         budgets_from_client.push_back(temp_bud);
+
+                        // Update the server database with the data from the client
+                        update_current_data(budgets_from_client);
                     }
 
 
@@ -127,9 +132,48 @@ std::string ServerConnection::read_full_budget_file() {
 }
 
 void ServerConnection::update_current_data(std::vector<Budget> received_data) {
-    // Open the file in replace mode
+    // We need to make sure the file exists before trying to delete it
+    file_exist_assert();
+    int removed_status = std::remove("budget.csv");
+    if (removed_status != 1){
+        throw ("Old file could not be removed");
+    }
     // write the initial line
-    // separate string into different strings and save it to a vector
+    file_exist_assert();
+
+    const char *fname = "budget.csv";
+    std::ofstream fout(fname);
+
     // loop through the vector and add it to the file
+    Budget empty_budget_object;
+    int i;
+    for (i = 0; i < received_data.size() - 1; i++) {
+        fout << received_data[i].serialize(received_data[i].get_user_id()) << std::endl;
+    }
+    // The "fout" below doesn't have "std::endl" at end so as not to have an empty line at end of csv file
+    // If empty line is present, it will create a budget object with empty values,
+    // Such that when we append a line, it writes one new empty budget object every time.
+    fout << received_data[i].serialize(received_data[i].get_user_id());
+    fout.close();
+}
+
+void ServerConnection::file_exist_assert() {
+    const char *fname = "budget.csv";
+
+    std::fstream fs;
+    fs.open(fname, std::ios::in);
+
+    if (!fs) {
+        // File doesnot exist
+        //Create a file
+        std::ofstream fout(fname);
+        if (fout) {
+            // If the creation is successful
+            fout << "pk,user_id,title,category,datetime,currency";
+
+            // Close the file handle after performing the operation
+            fout.close();
+        }
+    }
 }
 

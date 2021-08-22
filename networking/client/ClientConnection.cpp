@@ -1,5 +1,7 @@
 #include "ClientConnection.h"
 #include <iostream>
+#include <fstream>
+
 
 ClientConnection::ClientConnection() : buffer_chars(), received() {
     // We can use the values buffer_chars and received as their default initialized values, hence
@@ -60,6 +62,8 @@ std::vector<Budget> ClientConnection::get_from_server() {
     return return_value;
 }
 
+
+
 void ClientConnection::send_to_server(std::vector<Budget> send_value) {
     std::string sending_string;
     std::string text;
@@ -103,6 +107,57 @@ void ClientConnection::send_to_server(std::vector<Budget> send_value) {
         // hence checking if the data received back from the server is valid or not!
         if (received > 0 && buffer_chars[0] != 1){
             throw ("Networking Error, invalid confirmation form server received!");
+        }
+    }
+
+}
+
+void ClientConnection::update_with_data_from_server() {
+    std::vector<Budget> received_data;
+    received_data = get_from_server();
+
+    file_exist_assert();
+    int removed_status = std::remove("budget.csv");
+    if (removed_status != 1){
+        throw ("Old file could not be removed");
+    }
+    // write the initial line
+    file_exist_assert();
+
+    const char *fname = "budget.csv";
+    std::ofstream fout(fname);
+
+    // loop through the vector and add it to the file
+    Budget empty_budget_object;
+    int i;
+    for (i = 0; i < received_data.size() - 1; i++) {
+        fout << received_data[i].serialize(received_data[i].get_user_id()) << std::endl;
+    }
+    // The "fout" below doesn't have "std::endl" at end so as not to have an empty line at end of csv file
+    // If empty line is present, it will create a budget object with empty values,
+    // Such that when we append a line, it writes one new empty budget object every time.
+    fout << received_data[i].serialize(received_data[i].get_user_id());
+    fout.close();
+
+
+}
+
+void ClientConnection::file_exist_assert() {
+    const char *fname = "budget.csv";
+
+    std::fstream fs;
+    fs.open(fname, std::ios::in);
+
+    if (!fs) {
+        // File doesnot exist
+        //Create a file
+        std::ofstream fout(fname);
+        if (fout) {
+            // If the creation is successful
+            fout << "pk,user_id,title,category,datetime,currency";
+
+            // Close the file handle after performing the operation
+            fout.close();
         }
     }
 

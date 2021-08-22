@@ -10,6 +10,8 @@ private:
     sf::TcpSocket socket;
 
     std::string read_full_budget_file();
+    static void file_exist_assert();
+
 public:
     // Default constructor that will just initialize the port, listener and socket values,
     // That's the limit of this constructor
