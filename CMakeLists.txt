@@ -70,6 +70,8 @@ add_executable(
         cclasses/sfmlGraphics/table.h
         cclasses/sfmlGraphics/dropdownMenu.cpp
         cclasses/sfmlGraphics/dropdownMenu.h
+        cclasses/sfmlGraphics/sidebar.cpp
+        cclasses/sfmlGraphics/sidebar.h
         )
 
 target_link_libraries(BudgetTracker sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
