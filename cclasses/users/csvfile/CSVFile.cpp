@@ -6,6 +6,8 @@
 
 #include "CSVFile.h"
 
+
+//constructor which does preliminary work required while parsing the csv file which is provided as an argument
 CSVFile::CSVFile(std::string given_file_name){
     file_name = given_file_name;
     data = CSVFile::parse_csv(file_name);
@@ -20,7 +22,7 @@ CSVFile::CSVFile(std::string given_file_name){
     title = divide_single_line_csv(temp, CSVFile::find_no_of_items(temp));
 }
 
-
+// find no of items in the CSV file
 int CSVFile::find_no_of_items(std::string csv_line){
     int n = 0;
     int position;
@@ -35,6 +37,7 @@ int CSVFile::find_no_of_items(std::string csv_line){
     return n + 1;
 }
 
+// divides all the file into single lines of vector so that data can be easily handled
 std::vector<std::string> CSVFile::divide_single_line_csv(std::string csv_line, int no_of_items)
 {
     std::string temp;
@@ -53,6 +56,7 @@ std::vector<std::string> CSVFile::divide_single_line_csv(std::string csv_line, i
     return return_value;
 }
 
+// it parses the CSV file i.e. it returns vector of vector od string which contains all the data of the CSV file divided into required format
 std::vector<std::vector < std::string > > CSVFile::parse_csv(std::string file_name)
 {
     std::ifstream file;
@@ -80,6 +84,7 @@ std::vector<std::vector < std::string > > CSVFile::parse_csv(std::string file_na
     return return_value;
 }
 
+// Function used to display all the data of CSV file
 void CSVFile::display()
 {
     std::cout<<"\t"<<data[0][2];

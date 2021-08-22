@@ -1,10 +1,6 @@
-//
-// Created by paudelrajeev58 on 8/8/21.
-//
-
 #ifndef BUDGETTRACKER_AUTHENTICATION_H
 #define BUDGETTRACKER_AUTHENTICATION_H
-#include "string"
+#include <string>
 
 class Authentication {
 public:
