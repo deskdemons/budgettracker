@@ -108,7 +108,7 @@ int main() {
     t1.setPosition(sf::Vector2f(50, 400));
     t1.setTableBodyRowNum(4);
 
-    DropdownMenu d1;
+    DropdownMenu d1;    //object of dropdown menu
     d1.setPosition(sf::Vector2f(900,100));
     std::vector<std::string> names;
     names.push_back("Prasiddha");
@@ -117,8 +117,8 @@ int main() {
     names.push_back("Suyog");
     names.push_back("Prashant");
 
-    d1.setDropMenuList(names);
-    
+    d1.setDropMenuList(names);  
+
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 
@@ -159,20 +159,20 @@ int main() {
                                 b1.setFontColor(sf::Color(255, 255, 255));	//change the font color
                                 std::cout << "text1:" << text1.getText() << std::endl << "text2:" << text2.getText() << std::endl << "text3:" << text3.getText() <<std::endl;	//getText gives the text entered so far
                             }
-                            else if (t1.isMouseOverUp(window)) {
+                            else if (t1.isMouseOverUp(window)) {    //is scroll up button of table clicked?
                                 t1.setTableLevelMinus();
                             }
-                            else if (t1.isMouseOverDown(window)) {
+                            else if (t1.isMouseOverDown(window)) {   //is scroll down button of table clicked?
                                 t1.setTableLevelPlus();
                             }
-                            else if (d1.isMouseOverToggle(window)) {
+                            else if (d1.isMouseOverToggle(window)) { //is mouse over toggle button of drop down menu
                                 d1.toggleDropDown();
                             }
-                            else if (d1.isMouseOverItem(window)) {
-                                std::cout << d1.getChosenItemTxt() << std::endl;
+                            else if (d1.isMouseOverItem(window)) {  //is mouse over list item of drop down menu
+                                std::cout << d1.getChosenItemTxt() << std::endl;    //if yes, then get text corresponding to the chosen item
                             }
                             else {								//if mouse click is not in any textbox, then remove focus from all textbox
-                                text1.setSelected(false);
+                                text1.setSelected(false);  
                                 text2.setSelected(false);
                                 text3.setSelected(false);
                             }
@@ -184,10 +184,10 @@ int main() {
         text2.drawTo(window);	//drawTo is defined inside the manually defined class. we are passing window by reference. the actual code that draws is this way: window.draw(shape) or window.draw(textbox) or window.draw(anything)
         text3.drawTo(window);	//things should be drawn orderly, i.e, here, text3 can overlap and overshadow text2 if the have same position. things that are drawn later is drawn at top
         b1.drawTo(window);	//drawing button
-        pie.drawTo(window);
-        bar1.drawTo(window);
-        t1.drawTo(window);
-        d1.drawTo(window);
+        pie.drawTo(window); //drawing piechart
+        bar1.drawTo(window);    //drawing bargraph
+        t1.drawTo(window);  //drawing table
+        d1.drawTo(window);  //drawing dropdown menu
         window.display();	//actually displaying things that is drawn in buffer
 
     }
