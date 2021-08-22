@@ -1,7 +1,3 @@
-//
-// Created by paudelrajeev58 on 8/9/21.
-//
-
 #include<iostream>
 #include <string>
 #include <sstream>
@@ -87,12 +83,12 @@ std::vector<std::vector < std::string > > CSVFile::parse_csv(std::string file_na
 void CSVFile::display()
 {
     std::cout<<"\t"<<data[0][2];
-    /*for (int i = 0; i < data.size()-1; i++)
+    for (int i = 0; i < data.size()-1; i++)
     {
         for (int j = 0; j < data[i].size(); j++)
         {
             std::cout << title[j] << ": " << data[i][j] << std::endl;
         }
         std::cout <<std::endl << "--- --- " <<std::endl << std::endl;
-    }*/
+    }
 }

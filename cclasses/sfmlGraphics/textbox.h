@@ -4,7 +4,7 @@
 #include<iostream>
 #include<sstream>
 #include<SFML/Graphics.hpp>
-#include "RoundedRectangle.h"
+#include "roundedRectangle.h"
 
 // Define keys:
 #define BACKSPACE_KEY 8

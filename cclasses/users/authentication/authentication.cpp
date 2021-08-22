@@ -1,7 +1,3 @@
-//
-// Created by paudelrajeev58 on 8/8/21.
-//
-
 #include "authentication.h"
 #include <vector>
 #include "../csvfile/CSVFile.h"

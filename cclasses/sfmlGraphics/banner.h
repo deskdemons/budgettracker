@@ -3,8 +3,8 @@
 #define BANNER_H
 
 #include <iostream>
-#include <SFML\Graphics.hpp>
-#include "RoundedRectangle.h"
+#include <SFML/Graphics.hpp>
+#include "roundedRectangle.h"
 
 class Banner {
 protected:

@@ -1,7 +1,7 @@
 #ifndef GUIPIECHART_H
 #define GUIPIECHART_H
 #include<iostream>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "banner.h"
 #define PI 3.14159265
 

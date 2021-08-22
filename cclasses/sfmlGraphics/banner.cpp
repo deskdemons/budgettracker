@@ -55,9 +55,8 @@ void Banner::setPosition(sf::Vector2f position) {
 	text.setPosition(sf::Vector2f( position.x + paddingL , paddingT + position.y + ((dimension.y) / 2) - (fontSize / 1.5f) )); //yet to make horizontall centered
 	bannerBg.setPosition(position);
 }
-void Banner::setDimension(sf::Vector2f dimension) {
-	this->dimension = dimension;
-	bannerBg.setDimension(dimension);	//dimension only used for RoundedRectangle . 
+void Banner::setDimension(sf::Vector2f dim) {
+	bannerBg.setDimension(dim);	//dimension only used for RoundedRectangle .
 }
 void Banner::setRadius(int radius) {
 	this->radius = radius;

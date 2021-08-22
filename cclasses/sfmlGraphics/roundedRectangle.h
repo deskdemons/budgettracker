@@ -3,7 +3,8 @@
 #define ROUNDEDRECTANGLE_H
 
 #include<iostream>
-#include<SFML\Graphics.hpp>
+#include<SFML/Graphics.hpp>
+
 
 class RoundedRectangle {
 	sf::ConvexShape convex;	//sfml class to define convec shapes
