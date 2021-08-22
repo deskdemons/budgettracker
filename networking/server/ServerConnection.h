@@ -18,7 +18,7 @@ public:
     ServerConnection();
 
     // Getters and Setters for port variables
-    int get_port();
+    int get_port() const;
     void set_port( int );
 
     // Getters and setters for listener variables
