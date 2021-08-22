@@ -7,6 +7,7 @@
 #include "cclasses/sfmlGraphics/guiPieChart.h"
 #include "cclasses/sfmlGraphics/guiBarGraph.h"
 #include "cclasses/sfmlGraphics/table.h"
+#include "cclasses/sfmlGraphics/dropdownMenu.h"
 
 int main() {
 
@@ -107,7 +108,17 @@ int main() {
     t1.setPosition(sf::Vector2f(50, 400));
     t1.setTableBodyRowNum(4);
 
+    DropdownMenu d1;
+    d1.setPosition(sf::Vector2f(900,100));
+    std::vector<std::string> names;
+    names.push_back("Prasiddha");
+    names.push_back("Rajeev");
+    names.push_back("Saurav");
+    names.push_back("Suyog");
+    names.push_back("Prashant");
 
+    d1.setDropMenuList(names);
+    
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
 
@@ -154,6 +165,12 @@ int main() {
                             else if (t1.isMouseOverDown(window)) {
                                 t1.setTableLevelPlus();
                             }
+                            else if (d1.isMouseOverToggle(window)) {
+                                d1.toggleDropDown();
+                            }
+                            else if (d1.isMouseOverItem(window)) {
+                                std::cout << d1.getChosenItemTxt() << std::endl;
+                            }
                             else {								//if mouse click is not in any textbox, then remove focus from all textbox
                                 text1.setSelected(false);
                                 text2.setSelected(false);
@@ -170,6 +187,7 @@ int main() {
         pie.drawTo(window);
         bar1.drawTo(window);
         t1.drawTo(window);
+        d1.drawTo(window);
         window.display();	//actually displaying things that is drawn in buffer
 
     }
