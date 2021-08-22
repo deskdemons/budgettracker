@@ -185,11 +185,3 @@ void ServerConnection::set_port(int p) {
     port = p;
 }
 
-sf::TcpListener ServerConnection::get_listener() {
-    return listener;
-}
-
-void ServerConnection::set_listener(sf::TcpListener l) {
-    listener = l;
-}
-

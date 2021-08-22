@@ -21,10 +21,6 @@ public:
     int get_port() const;
     void set_port( int );
 
-    // Getters and setters for listener variables
-    sf::TcpListener get_listener();
-    void  set_listener(sf::TcpListener);
-
     // Starts accepting and responding to connections
     // Server will not listen to any messages before we start run_server
     void run_server();
