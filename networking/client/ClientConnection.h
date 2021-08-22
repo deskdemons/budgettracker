@@ -16,7 +16,7 @@ public:
 
     std::vector<Budget> get_from_server();
 
-    void send_to_server(std::string sending_text);
+    void send_to_server(std::vector<Budget>);
 };
 
 

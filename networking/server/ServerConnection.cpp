@@ -3,42 +3,95 @@
 #include "ServerConnection.h"
 
 ServerConnection::ServerConnection() {
+    // We initialize the server to run in port 4444 and listen to it
     port = 44444;
     listener.listen(port);
     listener.accept(socket);
 }
 
 void ServerConnection::run_server() {
+    // Here we store the data that is in process of being received to an array of objects which in case is chars
+    // as we are communication between server and client in chars
+
+    // An array of 100000 is used because it is a high enough value that the data that we received won't be larger
+    // than 100,000. Hence, 100000 was used.
     char buffer_chars[100000];
+
+    // The server will communicate in two ways a send mode and receive mode
+    // While in mode 'r' or receive mode, it will wait for data to come, to it i.e. client -> server
+    // While in mode 's' or send mode, it will send data to client i.e. server -> client
     char mode;
+
+    // This is initialized to store the size of the data that we have received from the opposite one in the connection
     std::size_t received;
 
-    std::string text = "connected";
-    socket.send(text.c_str(),text.length()+1);
+    // Here a local variable text is used to store the data that is to be sent to the client.
+    std::string text;
 
+    // By default, a server listens to a command before answering i.e. it is in receive mode, hence default mode is r
     mode = 'r';
     bool done = false;
     while (!done){
+        // Codes for send mode
         if(mode == 's'){
             text = "connected";
             socket.send(text.c_str(), text.length()+1);
             mode = 'r';
         }
+        // Codes for receive mode
         else if (mode == 'r'){
             socket.receive(buffer_chars, sizeof (buffer_chars), received);
             if(received > 0) {
+                // G COMMAND [get]
+                // This command will send the data of budgets from server, i.e. for restoring the db in client side
                 if (buffer_chars[0] == 'g'){
                     // Send full csv file contents
                     text = read_full_budget_file();
                     socket.send(text.c_str(), text.length()+1);
+                    // The mode will again be r after sending the data since,
+                    // i.e. the server will reset back to its original configuration
                     mode = 'r';
-                } else if(buffer_chars[0] == 'r'){
-                    text="w";
+                }
+
+                // B COMMAND [backup]
+                // Receive the stream of budget from the client to update the server database
+                else if(buffer_chars[0] == 'b'){
+                    // This is to send as a confirmation that the server has received the command and now whatever
+                    // is sent to the server from the above client will be set in the server database
+                    text="1";
                     socket.send(text.c_str(), text.length()+1);
+                    std::vector<Budget> budgets_from_client;
+
+                    // The actual stream of data that we receive from the client
                     socket.receive(buffer_chars, sizeof(buffer_chars), received);
                     if (received > 0){
+                        int position;
+                        std::string  full_string = buffer_chars;
 
+                        // This is here since, we don't know how may line we are receiving
+                        // hence, we are calculating such that once there are no more remaining "\n"
+                        // in the continuous string we received, it is the last csv line
+                        while (!done) {
+                            position = full_string.find("\n");
+
+                            if (position == -1) {
+                                done = true;
+                                continue;
+                            }
+
+                            std::string temp = full_string.substr(0, position);
+                            Budget temp_bud(temp);
+                            budgets_from_client.push_back(temp_bud);
+                            full_string = full_string.substr(position + 1, full_string.size() - 1);
+                        }
+
+
+                        // This is for the last line, since are close the loop once no "\n" are found in the code
+                        Budget temp_bud(full_string);
+                        budgets_from_client.push_back(temp_bud);
                     }
+
+
                 }else if (buffer_chars[0] == 'q'){
                     mode = 'q';
                     continue;
@@ -73,7 +126,7 @@ std::string ServerConnection::read_full_budget_file() {
 
 }
 
-void ServerConnection::update_current_data() {
+void ServerConnection::update_current_data(std::vector<Budget> received_data) {
     // Open the file in replace mode
     // write the initial line
     // separate string into different strings and save it to a vector

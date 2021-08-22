@@ -27,7 +27,7 @@ public:
     // Server will not listen to any messages before we start run_server
     void run_server();
 
-    void update_current_data();
+    void update_current_data(std::vector<Budget> received_data);
 };
 
 
