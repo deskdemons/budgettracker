@@ -1,88 +1,33 @@
-#include <iostream>
-#include <string>
+#include "iostream"
+#include "networking/client/ClientConnection.h"
+#include "networking/server/ServerConnection.h"
 
-#include "cclasses/budget/budget.h"
-#include "cclasses/budget/budgetmanager/budgetmanager.h"
-#include "cclasses/users/login/login.h"
-#include "cclasses/users/signup/signUp.h"
-#include "cclasses/users/authentication/authentication.h"
-void createUser(){
-    std::string username, password, fullname;
-    std::cout<<"Username : ";
-    std::cin>>username;
-    std::cout<<"Password : ";
-    std::cin>>password;
-    std::cout<<"Full Name : ";
-    std::cin>>fullname;
-    Signup s(username,password,fullname);
-}
-Login LoginUser(){
-    std::string username, password, fullname;
-    std::cout<<"Username : ";
-    std::cin>>username;
-    std::cout<<"Password : ";
-    std::cin>>password;
-    Login l(username,password);
-    return l;
-}
+int main(){
+    char connection_type;
+    std::cout << "Connection Type";
+    std::cin >> connection_type;
 
-int main()
-{
-    std::cout<<"Login or Signup?"<<std::endl;
-    char choice;
-    std::cin>>choice;
-    Login lusr;
-    switch (choice) {
-        case '1':
-             lusr = LoginUser();
-            break;
-            case '2':
-                createUser();
-                break;
-                default:
-                    lusr = LoginUser();
-    }
-.
-    try{
-        int user_id_current = 1;
-        BudgetManager bdb(user_id_current);
-        std::vector<Budget> all_budgets = bdb.all();
-
-        for ( int i =0 ; i < all_budgets.size() ; i++) {
-            std::cout << all_budgets[i].serialize(user_id_current) << std::endl;
-            std::cout << all_budgets[i].get_money().get_nrs_eq_amt() << std::endl << std::endl ;
+    if(connection_type == 'c'){
+        ClientConnection cc;
+        char continue_char;
+        bool done = false;
+        std::string received_string;
+        while(!done) {
+            for (int j =0; j<cc.get_from_server().size(); j++){
+                received_string += cc.get_from_server()[j].serialize() + "\n";
+            }
+            std::cout << received_string << " \n RECEIVED FROM SERVER" << std::endl;
+            std::cout << "Do You want to continue" ;
+            std::cin >> continue_char;
+            received_string = "";
+            if (continue_char == 'n')
+                done = true;
         }
-        try{
-            std::cout << "The total for current user is" << bdb.get_total_for_current_user().getMoney() << std::endl;
-            std::cout << "The total income for current user is" << bdb.get_total_income_for_current_user().getMoney() << std::endl;
-            std::cout << "The total expense for current user is" << bdb.get_total_expense_for_current_user().getMoney() << std::endl;
-        } catch (std::string e){
-            std::cout << "Error occurred" << std::endl << e << std::endl;
-        }
-
-        std::cout << std::endl << "-- -- -- -- --" << std::endl;
-
-        std::vector < BarGraph> bg_vec = bdb.get_graph_yearly_values();
-        for(int i=0; i<bg_vec.size();i++){
-            std::cout << "The total expense for month " << bg_vec[i].get_month() << " is " << bg_vec[i].get_total() << std::endl;
-        }
-        std::cout << std::endl << "-- -- -- -- --" << std::endl;
-
-        std::vector<std::string> cat_list = bdb.get_category_list();
-        for(int i =0; i < cat_list.size(); i++){
-            std::cout << i << " Category is: " << cat_list[i] << std::endl;
-        }
-
-        std::cout << std::endl << "-- -- -- -- --" << std::endl;
-        std::vector < PieChart> pie_list = bdb.get_graph_monthly_values();
-        for (int i=0; i<pie_list.size(); i++){
-            std::cout << "CATG: " << pie_list[i].get_category() << " AMT: " << pie_list[i].get_nrs_eq() << std::endl;
-        }
-
-    }catch (std::string e){
-        std::cout << "ERROR " << e << std::endl;
+    }else if (connection_type == 's'){
+        ServerConnection sc;
+        sc.run_server();
     }
 
-
+    system("pause");
     return 0;
 }
