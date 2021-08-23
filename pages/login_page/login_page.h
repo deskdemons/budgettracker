@@ -6,13 +6,18 @@
 #include "../../gui/textbox/textbox.h"
 #include "../../gui/button/button.h"
 #include "../../gui/banner/banner.h"
+#include "../../gui/rounded_rectangle/roundedRectangle.h"
 
 class LoginPage{
     bool isAuth;
-
+    RoundedRectangle backgroundRect;
+    Button loginPageShowBox;
     Textbox username;
     Textbox password;
     Button loginButton;
+    Button signupButton;
+    Button backupButton;
+    Button restoreButton;
 
 public:
     LoginPage();
