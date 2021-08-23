@@ -69,6 +69,19 @@ add_executable(
         cclasses/sfmlGraphics/roundedRectangle.cpp
         cclasses/sfmlGraphics/button.cpp
         cclasses/sfmlGraphics/guiPieChart.h
-        cclasses/sfmlGraphics/guiPiechart.cpp cclasses/sfmlGraphics/topbar.cpp cclasses/sfmlGraphics/topbar.h cclasses/currency/currencyExchange.cpp cclasses/currency/currencyExchange.h)
+        cclasses/sfmlGraphics/guiPiechart.cpp 
+        cclasses/sfmlGraphics/topbar.cpp 
+        cclasses/sfmlGraphics/topbar.h 
+        cclasses/currency/currencyExchange.cpp 
+        cclasses/currency/currencyExchange.h
+        cclasses/sfmlGraphics/guiBarGraph.h
+        cclasses/sfmlGraphics/guiBarGraph.cpp
+        cclasses/sfmlGraphics/table.cpp
+        cclasses/sfmlGraphics/table.h
+        cclasses/sfmlGraphics/dropdownMenu.cpp
+        cclasses/sfmlGraphics/dropdownMenu.h
+        cclasses/sfmlGraphics/sidebar.cpp
+        cclasses/sfmlGraphics/sidebar.h
+        )
 
 target_link_libraries(BudgetTracker sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
