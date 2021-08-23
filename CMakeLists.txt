@@ -80,7 +80,7 @@ add_executable(
         gui/dropdown_menu/dropdownMenu.h
         gui/sidebar/sidebar.cpp
         gui/sidebar/sidebar.h
-
-)
+        pages/login_page/login_page.cpp
+        pages/login_page/login_page.h pages/dashboard_page/dashboard_page.h pages/dashboard_page/dashboard_page.cpp)
 
 target_link_libraries (BudgetTracker sfml-graphics sfml-window sfml-system sfml-network)
