@@ -3,9 +3,15 @@ project(BudgetTracker)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(SFML_INCLUDE_DIR "D:/clionSfml/SFML-2.5.1 64bit/include")
-set(SFML_LIBRARY_DIR "D:/clionSfml/SFML-2.5.1 64bit/lib")
-set(SFML_DIR "D:/clionSfml/SFML-2.5.1 64bit/lib/cmake/SFML")
+cmake_minimum_required(VERSION 3.13)
+project(setbudget)
+
+set(CMAKE_CXX_STANDARD 98)
+
+set(SFML_INCLUDE_DIR "/home/Softwares/SDK/SFML-2.5.1/include")
+set(SFML_LIBRARY_DIR "/home/Softwares/SDK/SFML-2.5.1/lib")
+set(SFML_DIR "/home/Softwares/SDK/SFML-2.5.1/lib/cmake/SFML")
+
 
 link_directories(SFML_LIBRARY_DIR)
 include_directories(SFML_INCLUDE_DIR)
@@ -63,7 +69,11 @@ add_executable(
         cclasses/sfmlGraphics/roundedRectangle.cpp
         cclasses/sfmlGraphics/button.cpp
         cclasses/sfmlGraphics/guiPieChart.h
-        cclasses/sfmlGraphics/guiPiechart.cpp
+        cclasses/sfmlGraphics/guiPiechart.cpp 
+        cclasses/sfmlGraphics/topbar.cpp 
+        cclasses/sfmlGraphics/topbar.h 
+        cclasses/currency/currencyExchange.cpp 
+        cclasses/currency/currencyExchange.h
         cclasses/sfmlGraphics/guiBarGraph.h
         cclasses/sfmlGraphics/guiBarGraph.cpp
         cclasses/sfmlGraphics/table.cpp

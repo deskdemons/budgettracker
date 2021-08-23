@@ -1,6 +1,3 @@
-//
-// Created by paudelrajeev58 on 8/9/21.
-//
 #include "signUp.h"
 #include <iostream>
 #include <fstream>
@@ -11,6 +8,7 @@
 #include "../login/login.h"
 #include "../csvfile/CSVFile.h"
 
+// creates user when all informations are passed
 Signup::Signup(std::string u ,std::string p,std::string f):username(u),password(p),fullname(f)
 {
     fileExsistanceAssert();
@@ -43,6 +41,8 @@ Signup::Signup()
         Signup s;
     }
 }
+
+// used to encrypt password to store in file so that even if accessed they have no idea
 std::string Signup::encryptfunc(std::string text)
 {
     char temp;
@@ -72,10 +72,13 @@ std::string Signup::encryptfunc(std::string text)
 
 }
 
+// returns if username is valid or not
 bool Signup::setdata(){
     bool valid = isUsernameValid(username);
     return valid;
 }
+
+// checks if username is valid or not
 bool Signup::isUsernameValid(std::string uname){
     std::vector<std::vector < std::string > > vecData;
     int x;
@@ -99,6 +102,8 @@ bool Signup::isUsernameValid(std::string uname){
     }
     return true;
 }
+
+//check if file exists or not if not then it creates
 bool Signup::fileExsistanceAssert()
 {
     const char *fname = "secretdata.csv";
@@ -127,6 +132,7 @@ bool Signup::fileExsistanceAssert()
     }
 };
 
+// returns no of users so that it can give new user Id for new user created
 int Signup::numOfUsers(){
     int lines = 0;
     std::ifstream myfile("secretdata.csv");
@@ -141,6 +147,7 @@ int Signup::numOfUsers(){
     return lines-2;
 }
 
+// adds data to csv if all the requirements are met
 bool Signup::addDataToCsv(std::string uname,std::string pass,std::string full){
     fileExsistanceAssert();
     int line;

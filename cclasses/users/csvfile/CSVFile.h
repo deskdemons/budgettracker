@@ -1,7 +1,3 @@
-//
-// Created by paudelrajeev58 on 8/9/21.
-//
-
 #ifndef BUDGETTRACKER_CSVFILE_H
 #define BUDGETTRACKER_CSVFILE_H
 #include <vector>

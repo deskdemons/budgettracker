@@ -39,6 +39,8 @@ Login::Login()
         Login l;
     }
 }
+
+// when username and password is passed it checks by calling functions
 Login::Login(std::string u,std::string p)
 {
     fileExsistanceAssert();
@@ -65,6 +67,8 @@ Login::Login(std::string u,std::string p)
         Login l;
     }
 }
+
+// gets all the data from csv for authenticating
 void Login::getData(std::string username){
     std::vector<std::vector < std::string > > vecData;
     std::string encry ;
@@ -87,6 +91,7 @@ void Login::getData(std::string username){
 
 }
 
+//checks if file exists or not
 bool Login::fileExsistanceAssert()
 {
     const char *fname = "secretdata.csv";
@@ -115,6 +120,7 @@ bool Login::fileExsistanceAssert()
     }
 };
 
+// changes string to int
 int Login::strToInt(std::string s){
     std::stringstream st(s);
     int x = 0;
@@ -122,12 +128,13 @@ int Login::strToInt(std::string s){
     return x;
 }
 
+// sets username and password to the object which are data members
 void Login::setupass(std::string uname,std::string pass){
     username= uname;
     password=pass;
 }
 
-
+// returns user object by retrieving all the data
 User Login::returnUserObject(){
     User u;
     u.setData(username,fullname,userId,balance);
