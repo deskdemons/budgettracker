@@ -1,44 +1,59 @@
-#include "iostream"
-#include "networking/client/ClientConnection.h"
-#include "networking/server/ServerConnection.h"
+#include<iostream>
+#include <SFML/Graphics.hpp>
+#include "gui/sidebar/sidebar.h"
+#include "pages/login_page/login_page.h"
+#include "pages/dashboard_page//dashboard_page.h"
 
-int main(){
-    try{
-        char connection_type;
-        std::cout << "Connection Type";
-        std::cin >> connection_type;
+int main() {
 
-        if(connection_type == 'c'){
-            ClientConnection cc;
-            char continue_char;
-            bool done = false;
-            std::string received_string;
-            std::vector<Budget> data_from_server;
-            while(!done) {
-                try{
-                    data_from_server = cc.get_from_server();
-                }catch (std::string errorr){
-                    std::cout << "TOP ERR: " << errorr << std::endl;
-                }
-                for (int j =0; j<data_from_server.size(); j++){
-                    received_string += data_from_server[j].serialize() + "\n";
-                }
-                std::cout << received_string << " \n RECEIVED FROM SERVER" << std::endl;
-                std::cout << "Do You want to continue" ;
-                std::cin >> continue_char;
-                received_string = "";
-                if (continue_char == 'n')
-                    done = true;
+    sf::RenderWindow window;
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;	// for smoother graphics
+    sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2) - 640, (sf::VideoMode::getDesktopMode().height / 2) - 360);
+    window.create(sf::VideoMode(1280, 720), "setBudGet", sf::Style::Default, settings);
+    window.setPosition(centerWindow);	//centerwindow is defined above. it's position is set so that the window is displayed symmetrically on the screen
+    window.setKeyRepeatEnabled(true);
+
+    Sidebar s1;
+    LoginPage l1;
+    DashboardPage d1;
+
+    while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
+        sf::Event event;
+        std::string openedTab = s1.getChosenTab();
+        while (window.pollEvent(event)) {	//it is analogous to fps. polling means recording the events many times per second continuously while the program runs
+            if(event.type == sf::Event::Closed){
+                window.close();
             }
-        }else if (connection_type == 's'){
-            ServerConnection sc;
-            sc.run_server();
+            else{
+                if(l1.isLoggedIn() == false){
+                    l1.eventHandler(event, window);
+                }else{
+                    if(openedTab == "Dashboard"){
+                        d1.eventHandler(event, window);
+                    }
+                    else{
+                    //other pages logic in else if
+                    }
+                }
+            }
         }
 
-        system("pause");
+        window.clear(sf::Color::White);	//clearing with color makes the background color of window as specified
 
-    } catch (std::string err){
-        std::cout << "BOTTOM ERR: " <<err << std::endl;
+        if(l1.isLoggedIn() == false){
+            l1.drawTo(window);
+        }
+        else{
+            if(openedTab == "Dashboard"){
+                d1.drawTo(window);
+            }
+            else{
+                //other pages logic in else if
+            }
+        }
+
+        window.display();	//actually displaying things that is drawn in buffer
+
     }
-    return 0;
 }
