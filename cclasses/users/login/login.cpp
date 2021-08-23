@@ -9,33 +9,33 @@
 #include "../authentication/authentication.h"
 #include "../user.h"
 
-Login::Login()
-{
-    fileExsistanceAssert();
-    std::string uname,pass;
-    std::cout<<"For Login";
-    std::cout<<"\nUsername: ";
-    std::cin>>uname;
-    std::cout<<"Password: ";
-    std::cin>> pass;
-    bool isGen;
-    Authentication a;
-    std::string encryptedPassword;
-    isGen = a.isGenuine(uname,pass);
-    if(isGen == true){
-        setupass(uname,pass);
-        getData(uname);
-        User u = returnUserObject();
-        std::cout<<"\nUser's username = "<<username;
-        std::cout<<"\nUser's Fullname = "<<fullname;
-        std::cout<<"\nUser's UserID = "<<userId;
-        std::cout<<"\nUser's Balance = "<<balance;
-    }
-    else{
-        std::cout<<"wrong credentials please try again";
-        Login l;
-    }
-}
+//Login::Login()
+//{
+//    fileExsistanceAssert();
+//    std::string uname,pass;
+//    std::cout<<"For Login";
+//    std::cout<<"\nUsername: ";
+//    std::cin>>uname;
+//    std::cout<<"Password: ";
+//    std::cin>> pass;
+//    bool isGen;
+//    Authentication a;
+//    std::string encryptedPassword;
+//    isGen = a.isGenuine(uname,pass);
+//    if(isGen == true){
+//        setupass(uname,pass);
+//        getData(uname);
+//        User u = returnUserObject();
+//        std::cout<<"\nUser's username = "<<username;
+//        std::cout<<"\nUser's Fullname = "<<fullname;
+//        std::cout<<"\nUser's UserID = "<<userId;
+//        std::cout<<"\nUser's Balance = "<<balance;
+//    }
+//    else{
+//        std::cout<<"wrong credentials please try again";
+//        Login l;
+//    }
+//}
 
 // when username and password is passed it checks by calling functions
 Login::Login(std::string u,std::string p)
@@ -44,7 +44,6 @@ Login::Login(std::string u,std::string p)
     std::string uname,pass;
     uname = u;
     pass = p;
-    bool isGen;
     Authentication a;
     std::string encryptedPassword;
     isGen = a.isGenuine(uname,pass);
@@ -57,11 +56,10 @@ Login::Login(std::string u,std::string p)
         std::cout<<"\nUser's Fullname = "<<fullname;
         std::cout<<"\nUser's UserID = "<<userId;
         std::cout<<"\nUser's Balance = "<<balance;
-
     }
     else{
         std::cout<<"wrong credentials please try again";
-        Login l;
+        //Login l;
     }
 }
 

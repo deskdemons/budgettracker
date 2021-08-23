@@ -7,11 +7,15 @@
 #include "../../gui/button/button.h"
 #include "../../gui/banner/banner.h"
 #include "../../gui/rounded_rectangle/roundedRectangle.h"
+#include "../signup_page/signup_page.h"
 
 class LoginPage{
-    bool isAuth;
+    SignupPage s;
+    bool isAuth, isWrong;
+    std::string uname, pass;
     RoundedRectangle backgroundRect;
     Button loginPageShowBox;
+    Banner wrongCredentials;
     Textbox username;
     Textbox password;
     Button loginButton;

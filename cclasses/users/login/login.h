@@ -8,6 +8,7 @@ class Login
 {
 public:
     std::string username, password,fullname;
+    bool isGen;
     int userId,balance;
     int strToInt(std::string);
     Login(std::string,std::string);

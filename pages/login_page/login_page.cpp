@@ -1,8 +1,10 @@
+#include "../../cclasses/users/login/login.h"
 #include "login_page.h"
 #include "../signup_page/signup_page.h"
-
+#include "../../utility/utility.h"
 LoginPage::LoginPage() {    //constructor
     isAuth = false;  //when program first starts, its not logged in, so false
+    isWrong = false;
     drawer();   //drawer is called after object is contructed. obviously, because after construction of object, we need to draw what the page has
 }
 
@@ -18,7 +20,8 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
             break;
             case sf::Event::MouseButtonPressed:
                 if (signupButton.isMouseOver(window)){
-
+                    std::cout<<"hello world"<<std::endl;
+                    Util_SignupMode = true;
                 }
                 if(username.isMouseOver(window)){
                     username.setSelected(true);
@@ -29,7 +32,13 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                     password.setSelected(true);
                 }
                 else if(loginButton.isMouseOver(window)){
-                    loginButton.setBgColor(sf::Color::Blue);
+                    loginButton.setOutLineThickness(3);
+                    loginButton.setOutLineColor(sf::Color::Red);
+                    uname = username.getText();
+                    pass = password.getText();
+                    Login l1(uname, pass);
+                    isAuth = l1.isGen ;
+                    isWrong = !l1.isGen;
                     std::cout<<"username:" <<username.getText()<<std::endl;
                     std::cout<<"password:" <<password.getText()<<std::endl;
                 }
@@ -41,7 +50,7 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
     }
 }
 
-bool LoginPage::isLoggedIn(){
+bool LoginPage::isLoggedIn() {
     return isAuth;
 }
 
@@ -59,16 +68,16 @@ void LoginPage::drawer() {
     backgroundRect.setRadius(20);
     backgroundRect.setPosition(sf::Vector2f(200,150));
 
-    username.setPosition(sf::Vector2f(450,290));
+    username.setPosition(sf::Vector2f(450,280));
     username.setHintText("username");
     username.setBgColor(sf::Color::White);
 
-    password.setPosition(sf::Vector2f(450,375));
+    password.setPosition(sf::Vector2f(450,365));
     password.setHintText("password");
     password.setDataType("secure");
     password.setBgColor(sf::Color::White);
 
-    loginButton.setPosition(sf::Vector2f(565, 450));
+    loginButton.setPosition(sf::Vector2f(565, 440));
     loginButton.setDimension(sf::Vector2f(150,50));
     loginButton.setBgColor(sf::Color::White);
     loginButton.setPadding(50,0);
@@ -78,15 +87,25 @@ void LoginPage::drawer() {
     signupButton.setDimension(sf::Vector2f(150,40));
     signupButton.setOutLineColor(sf::Color::Red);
     signupButton.setBgColor(sf::Color::Red);
+    signupButton.setRadius(10);
     signupButton.setPadding(45,0);
     signupButton.setFontColor(sf::Color::White);
     signupButton.setButtonText("Signup");
+
+    wrongCredentials.setBannerText("Username or Password was wrong! Please Try Again");
+    wrongCredentials.setBgColor(sf::Color::Red);
+    wrongCredentials.setFontColor(sf::Color::White);
+    wrongCredentials.setDimension(sf::Vector2f(500,40));
+    wrongCredentials.setPadding(12,0);
+    wrongCredentials.setOutLineColor(sf::Color::Red);
+    wrongCredentials.setPosition(sf::Vector2f(400,550));
 
     backupButton.setPosition(sf::Vector2f(900, 650));
     backupButton.setDimension(sf::Vector2f(150,30));
     backupButton.setOutLineColor(sf::Color::Red);
     backupButton.setBgColor(sf::Color::Red);
     backupButton.setPadding(40,0);
+    backupButton.setRadius(10);
     backupButton.setFontColor(sf::Color::White);
     backupButton.setButtonText("Backup");
     backupButton.setFontSize(20);
@@ -96,6 +115,7 @@ void LoginPage::drawer() {
     restoreButton.setDimension(sf::Vector2f(150,30));
     restoreButton.setBgColor(sf::Color::Red);
     restoreButton.setPadding(40,0);
+    restoreButton.setRadius(10);
     restoreButton.setFontColor(sf::Color::White);
     restoreButton.setButtonText("Restore");
 }
@@ -109,4 +129,7 @@ void LoginPage::drawTo(sf::RenderWindow &window){
     backupButton.drawTo(window);
     signupButton.drawTo(window);
     restoreButton.drawTo(window);
+    if (isWrong == true){
+        wrongCredentials.drawTo(window);
+    }
 }
