@@ -39,6 +39,7 @@ public:
     std::string get_category();
 
     std::string serialize(int);
+    std::string serialize();
 
     Money get_money();
 };

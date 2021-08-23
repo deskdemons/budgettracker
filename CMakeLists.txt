@@ -1,17 +1,11 @@
-# cmake_minimum_required(VERSION <specify CMake version here>)
+cmake_minimum_required(VERSION 3.13)
 project(BudgetTracker)
 
 set(CMAKE_CXX_STANDARD 98)
 
-cmake_minimum_required(VERSION 3.13)
-project(setbudget)
-
-set(CMAKE_CXX_STANDARD 98)
-
-set(SFML_INCLUDE_DIR "/home/Softwares/SDK/SFML-2.5.1/include")
-set(SFML_LIBRARY_DIR "/home/Softwares/SDK/SFML-2.5.1/lib")
-set(SFML_DIR "/home/Softwares/SDK/SFML-2.5.1/lib/cmake/SFML")
-
+set(SFML_INCLUDE_DIR "C:/SDK/SFML-2.5.1/include")
+set(SFML_LIBRARY_DIR "C:/SDK/SFML-2.5.1/lib")
+set(SFML_DIR "C:/SDK/SFML-2.5.1/lib/cmake/SFML")
 
 link_directories(SFML_LIBRARY_DIR)
 include_directories(SFML_INCLUDE_DIR)
@@ -60,6 +54,10 @@ add_executable(
         cclasses/users/login/login.h
         cclasses/users/csvfile/CSVFile.cpp
         cclasses/users/csvfile/CSVFile.h
+        networking/client/ClientConnection.cpp
+        networking/client/ClientConnection.h
+        networking/server/ServerConnection.cpp
+        networking/server/ServerConnection.h
         cclasses/sfmlGraphics/banner.h
         cclasses/sfmlGraphics/textbox.h
         cclasses/sfmlGraphics/roundedRectangle.h
@@ -82,6 +80,7 @@ add_executable(
         cclasses/sfmlGraphics/dropdownMenu.h
         cclasses/sfmlGraphics/sidebar.cpp
         cclasses/sfmlGraphics/sidebar.h
-        )
 
-target_link_libraries(BudgetTracker sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
+)
+
+target_link_libraries (BudgetTracker sfml-graphics sfml-window sfml-system sfml-network)
