@@ -8,6 +8,7 @@
 #include "cclasses/sfmlGraphics/guiBarGraph.h"
 #include "cclasses/sfmlGraphics/table.h"
 #include "cclasses/sfmlGraphics/dropdownMenu.h"
+#include "cclasses/sfmlGraphics/sidebar.h"
 
 int main() {
 
@@ -117,7 +118,9 @@ int main() {
     names.push_back("Suyog");
     names.push_back("Prashant");
 
-    d1.setDropMenuList(names);  
+    d1.setDropMenuList(names);
+
+    Sidebar s1;
 
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event Event;
@@ -171,6 +174,9 @@ int main() {
                             else if (d1.isMouseOverItem(window)) {  //is mouse over list item of drop down menu
                                 std::cout << d1.getChosenItemTxt() << std::endl;    //if yes, then get text corresponding to the chosen item
                             }
+                            else if(s1.isMouseOverTab(window)){
+                                std::cout<<s1.getChosenTab()<<std::endl;
+                            }
                             else {								//if mouse click is not in any textbox, then remove focus from all textbox
                                 text1.setSelected(false);  
                                 text2.setSelected(false);
@@ -188,6 +194,7 @@ int main() {
         bar1.drawTo(window);    //drawing bargraph
         t1.drawTo(window);  //drawing table
         d1.drawTo(window);  //drawing dropdown menu
+        s1.drawTo(window);
         window.display();	//actually displaying things that is drawn in buffer
 
     }
