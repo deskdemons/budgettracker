@@ -16,6 +16,8 @@ Sidebar::Sidebar(){
     seeReportFontColor= sf::Color::Black;
     forexBgColor= sf::Color::White;
     forexFontColor= sf::Color::Black;
+    backupBgColor = sf::Color(250,102,102);
+    backupFontColor = sf::Color::White;
     logoutBgColor= sf::Color::White;
     logoutFontColor= sf::Color::Black;
 
@@ -108,6 +110,17 @@ void Sidebar::drawer() {
     forex.setFontColor(forexFontColor);
     forex.setBgColor(forexBgColor);
 
+    backup.setButtonText("Backup");
+    backup.setPosition(sf::Vector2f(20,530));
+    backup.setDimension(sf::Vector2f(160,40));
+    backup.setFont(font);
+    backup.setFontSize(20);
+    backup.setPadding(45,0);
+    backup.setRadius(10);
+    backup.setOutLineThickness(0);
+    backup.setFontColor(backupFontColor);
+    backup.setBgColor(backupBgColor);
+
     logout.setButtonText("Log Out");
     logout.setPosition(sf::Vector2f(20,660));
     logout.setDimension(sf::Vector2f(160,40));
@@ -199,6 +212,14 @@ bool Sidebar::isMouseOverTab(sf::RenderWindow &window){
     }
 }
 
+bool Sidebar::isMouseOverBackup(sf::RenderWindow &window) {
+    if(backup.isMouseOver(window)){
+        return true;
+    }
+    else
+        return false;
+}
+
 std::string Sidebar::getChosenTab(){
     return chosenTab;
 }
@@ -214,5 +235,6 @@ void Sidebar::drawTo(sf::RenderWindow &window) {
     addIncome.drawTo(window);
     seeReport.drawTo(window);
     forex.drawTo(window);
+    backup.drawTo(window);
     logout.drawTo(window);
 }
