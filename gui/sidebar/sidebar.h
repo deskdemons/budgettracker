@@ -28,6 +28,8 @@ class Sidebar{
     sf::Color seeReportFontColor;
     sf::Color forexBgColor;
     sf::Color forexFontColor;
+    sf::Color backupBgColor;
+    sf::Color backupFontColor;
     sf::Color logoutBgColor;
     sf::Color logoutFontColor;
 
@@ -36,6 +38,7 @@ class Sidebar{
     Button addIncome;
     Button seeReport;
     Button forex;
+    Button backup;
     Button logout;
 public:
     Sidebar();  //default constructor
@@ -44,6 +47,7 @@ public:
     void setCurrency(std::string cur);  // setter for balance currency
     void unselectedTabMaker();  // used internally for making all tabs normal and making selected tab diff color
     bool isMouseOverTab(sf::RenderWindow &window);  // bool for is mouse over any of the tabs
+    bool isMouseOverBackup(sf::RenderWindow &window);
 
     std::string getChosenTab(); // returns chosen tab as a string
     void drawer();  // logic to draw stuffs
