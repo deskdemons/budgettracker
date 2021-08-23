@@ -11,9 +11,11 @@ public:
     std::string viewName;
     sf::CircleShape userShape; //circle shape for user profile
     sf::Texture userPic; //user profile default photo texture
-    std::string setViewText(); // views text like DashBoard,
-    std::string setUsername();
 
+    void setViewText(std::string viewText); // views text like DashBoard,
+    void setUsername(std::string userName);
+
+    void drawer();
     Topbar();// constructor which makes all the topBar when object is made
     void drawTo(sf::RenderWindow&); // to Render in the window
 };

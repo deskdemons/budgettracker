@@ -17,10 +17,9 @@ void DashboardPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
 }
 
 void DashboardPage::drawer() {
-    example.setPosition(sf::Vector2f(100,100));
-    example.setBannerText("dashboard page");
+    topbarDashboard.setViewText("Dashboard Page");
 }
 
 void DashboardPage::drawTo(sf::RenderWindow &window) {
-    example.drawTo(window);
+    topbarDashboard.drawTo(window);
 }

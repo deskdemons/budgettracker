@@ -2,7 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include "gui/sidebar/sidebar.h"
 #include "pages/login_page/login_page.h"
-#include "pages/dashboard_page//dashboard_page.h"
+#include "pages/dashboard_page/dashboard_page.h"
+#include "pages/add_expense_page/add_expense_page.h"
+#include "pages/add_income_page/add_income_page.h"
+#include "pages/forex_page/forex_page.h"
+#include "pages/see_report_page/see_report_page.h"
+
 
 int main() {
 
@@ -17,6 +22,10 @@ int main() {
     Sidebar s1;
     LoginPage l1;
     DashboardPage d1;
+    AddExpensePage e1;
+    AddIncomePage i1;
+    ForexPage f1;
+    SeeReportPage sr1;
 
     while (window.isOpen()) {	//this is always true when program is run. it is only false when program closes
         sf::Event event;
@@ -29,11 +38,31 @@ int main() {
                 if(l1.isLoggedIn() == false){
                     l1.eventHandler(event, window);
                 }else{
+                    if(event.type == sf::Event::MouseButtonPressed){
+                        if(s1.isMouseOverTab(window)){
+                            //nothing needs to be done
+                        }
+                        else if(s1.isMouseOverBackup(window)){
+                            std::cout<<"cout: backup button clicked"<<std::endl;
+                        }
+                        else if(s1.isMouseOverLogout(window)){
+                            std::cout<<"cout: logout button clicked"<<std::endl;
+                        }
+                    }
                     if(openedTab == "Dashboard"){
                         d1.eventHandler(event, window);
                     }
-                    else{
-                    //other pages logic in else if
+                    else if(openedTab == "Add Expense"){
+                        e1.eventHandler(event, window);
+                    }
+                    else if(openedTab == "Add Income"){
+                        i1.eventHandler(event, window);
+                    }
+                    else if(openedTab == "Forex"){
+                        f1.eventHandler(event, window);
+                    }
+                    else if(openedTab == "See Report"){
+                        sr1.eventHandler(event, window);
                     }
                 }
             }
@@ -45,11 +74,21 @@ int main() {
             l1.drawTo(window);
         }
         else{
+            s1.drawTo(window);
             if(openedTab == "Dashboard"){
                 d1.drawTo(window);
             }
-            else{
-                //other pages logic in else if
+            else if(openedTab == "Add Expense"){
+                e1.drawTo(window);
+            }
+            else if(openedTab == "Add Income"){
+                i1.drawTo(window);
+            }
+            else if(openedTab == "Forex"){
+                f1.drawTo(window);
+            }
+            else if(openedTab == "See Report"){
+                sr1.drawTo(window);
             }
         }
 

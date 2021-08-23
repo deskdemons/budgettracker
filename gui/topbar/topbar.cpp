@@ -3,31 +3,38 @@
 
 Topbar::Topbar() {
     // TODO this is just temporary it is to be done while making whole system
-    viewName = "Dashboard";
-    username = "Rajeev Paudel";
-    b1.setBgColor(sf::Color(250,250,250));
-    b1.setPosition(sf::Vector2f(200,20));
+    viewName = "Page-Name";
+    username = "User-Name";
+
+    drawer();
+
+}
+void Topbar::drawer(){
+    b1.setBgColor(sf::Color(76,76,76));
+    b1.setPosition(sf::Vector2f(220,20));
     b1.setRadius(0);
-    b1.setOutLineColor(sf::Color(250,250,250));
+    b1.setFontColor(sf::Color::White);
+    b1.setOutLineColor(sf::Color(76,76,76));
     b1.setDimension(sf::Vector2f(400,50));
-    b1.setBannerText(setViewText());
+    b1.setBannerText(viewName);
     b1.setPadding(50,0);
 
-    userPic.loadFromFile("img/icon.png");
-    b2.setBgColor(sf::Color(250,250,250));
-    b2.setPosition(sf::Vector2f(600,20));
-    b2.setRadius(0);
-    b2.setOutLineColor(sf::Color(250,250,250));
-    b2.setDimension(sf::Vector2f(1280-650,50));
-    b2.setPadding(350,0);
-    b2.setBannerText(setUsername());
 
+    b2.setBgColor(sf::Color(76,76,76));
+    b2.setPosition(sf::Vector2f(620,20));
+    b2.setRadius(0);
+    b2.setFontColor(sf::Color::White);
+    b2.setOutLineColor(sf::Color(76,76,76));
+    b2.setDimension(sf::Vector2f(1280-640,50));
+    b2.setPadding(350,0);
+    b2.setBannerText(username);
+
+    userPic.loadFromFile("img/icon.png");
     userPic.setSmooth(true);
     userShape.setRadius(20);
     userShape.setFillColor(sf::Color::White);
     userShape.setPosition(1280-100, 25);
     userShape.setTexture(&userPic);
-
 }
 
 void Topbar::drawTo(sf::RenderWindow& window) {
@@ -36,11 +43,13 @@ void Topbar::drawTo(sf::RenderWindow& window) {
     window.draw(userShape);
 }
 
-//TODO returns view to be done while making pages
-std::string Topbar::setViewText() {
-    return viewName;
+
+void Topbar::setViewText(std::string viewText) {
+    this->viewName = viewText;
+    drawer();
 }
-//TODO: returns global uer
-std::string Topbar::setUsername() {
-    return username;
+
+void Topbar::setUsername(std::string userName) {
+    this->username = userName;
+    drawer();
 }

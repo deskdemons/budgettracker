@@ -48,6 +48,7 @@ public:
     void unselectedTabMaker();  // used internally for making all tabs normal and making selected tab diff color
     bool isMouseOverTab(sf::RenderWindow &window);  // bool for is mouse over any of the tabs
     bool isMouseOverBackup(sf::RenderWindow &window);
+    bool isMouseOverLogout(sf::RenderWindow &window);
 
     std::string getChosenTab(); // returns chosen tab as a string
     void drawer();  // logic to draw stuffs

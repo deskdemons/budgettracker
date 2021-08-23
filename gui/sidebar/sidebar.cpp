@@ -18,8 +18,8 @@ Sidebar::Sidebar(){
     forexFontColor= sf::Color::Black;
     backupBgColor = sf::Color(250,102,102);
     backupFontColor = sf::Color::White;
-    logoutBgColor= sf::Color::White;
-    logoutFontColor= sf::Color::Black;
+    logoutBgColor= sf::Color(250,102,102);
+    logoutFontColor= sf::Color::White;
 
     font.loadFromFile("Roboto-Regular.ttf");
     drawer();
@@ -154,8 +154,6 @@ void Sidebar::unselectedTabMaker(){
     seeReportFontColor= sf::Color::Black;
     forexBgColor= sf::Color::White;
     forexFontColor= sf::Color::Black;
-    logoutBgColor= sf::Color::White;
-    logoutFontColor= sf::Color::Black;
 }
 
 bool Sidebar::isMouseOverTab(sf::RenderWindow &window){
@@ -199,21 +197,20 @@ bool Sidebar::isMouseOverTab(sf::RenderWindow &window){
         drawer();
         return true;
     }
-    else if(logout.isMouseOver(window)){
-        unselectedTabMaker();
-        logoutBgColor = sf::Color(76,76,76);
-        logoutFontColor = sf::Color::White;
-        chosenTab = "Log Out";
-        drawer();
-        return true;
-    }
     else{
         return false;
     }
 }
 
 bool Sidebar::isMouseOverBackup(sf::RenderWindow &window) {
-    if(backup.isMouseOver(window)){
+    if(backup.isMouseOver(window)){ //doing
+        return true;
+    }
+    else
+        return false;
+}
+bool Sidebar::isMouseOverLogout(sf::RenderWindow &window) {
+    if(logout.isMouseOver(window)){ //doing
         return true;
     }
     else

@@ -81,6 +81,16 @@ add_executable(
         gui/sidebar/sidebar.cpp
         gui/sidebar/sidebar.h
         pages/login_page/login_page.cpp
-        pages/login_page/login_page.h pages/dashboard_page/dashboard_page.h pages/dashboard_page/dashboard_page.cpp)
+        pages/login_page/login_page.h
+        pages/dashboard_page/dashboard_page.h
+        pages/dashboard_page/dashboard_page.cpp
+        pages/add_expense_page/add_expense_page.h
+        pages/add_expense_page/add_expense_page.cpp
+        pages/add_income_page/add_income_page.h
+        pages/add_income_page/add_income_page.cpp
+        pages/forex_page/forex_page.h
+        pages/forex_page/forex_page.cpp
+        pages/see_report_page/see_report_page.h
+        pages/see_report_page/see_report_page.cpp)
 
 target_link_libraries (BudgetTracker sfml-graphics sfml-window sfml-system sfml-network)
