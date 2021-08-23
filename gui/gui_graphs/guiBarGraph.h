@@ -3,7 +3,7 @@
 #define GUIBARGRAPH_H
 
 #include<iostream>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "../banner/banner.h"
 
 class GuiBarGraph {
