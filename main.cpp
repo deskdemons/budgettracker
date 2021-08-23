@@ -9,6 +9,7 @@
 #include "cclasses/sfmlGraphics/topbar.h"
 
 int main() {
+//    how to exchange currency is given below
 //    currencyExchange c1;
 //    float vali;
 //    vali = c1.currencyConverter(800, "NPR","NPR");
