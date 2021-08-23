@@ -1,9 +1,5 @@
-//
-// Created by paudelrajeev58 on 8/21/21.
-//
-
 #include "topbar.h"
-#include "banner.h"
+#include "../banner/banner.h"
 
 Topbar::Topbar() {
     // TODO this is just temporary it is to be done while making whole system

@@ -1,7 +1,3 @@
-//
-// Created by asaurav on 8/9/21.
-//
-
 #include "budget.h"
 
 void Budget::set_id(int id_no) {

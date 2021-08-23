@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "roundedRectangle.h"
-#include "banner.h"
+#include "../rounded_rectangle/roundedRectangle.h"
+#include "../banner/banner.h"
 
 class Button : public Banner{	//inherited from banner class. button and banner are almost similar except for which button is clickable
 											

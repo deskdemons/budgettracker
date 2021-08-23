@@ -1,7 +1,3 @@
-//
-// Created by paudelrajeev58 on 8/9/21.
-//
-
 #ifndef BUDGETTRACKER_LOGIN_H
 #define BUDGETTRACKER_LOGIN_H
 

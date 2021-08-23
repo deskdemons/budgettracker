@@ -1,6 +1,3 @@
-//
-// Created by paudelrajeev58 on 8/9/21.
-//
 #include "login.h"
 #include<vector>
 #include<sstream>

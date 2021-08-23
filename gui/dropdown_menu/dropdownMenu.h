@@ -3,8 +3,8 @@
 #define DROPDOWNMENU_H
 
 #include<iostream>
-#include "button.h"
-#include "banner.h"
+#include "../button/button.h"
+#include "../banner/banner.h"
 
 class DropdownMenu {
     std::vector<std::string> dropList;  //list of items of drop list in form of vector of string

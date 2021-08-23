@@ -3,8 +3,8 @@
 #define TABLE_H
 #include<SFML/Graphics.hpp>
 #include<vector>
-#include "banner.h"
-#include "button.h"
+#include "../banner/banner.h"
+#include "../button/button.h"
 
 class Table {
     std::vector<std::vector<std::string> > contents;	//Row<Column<elements> > , where elements is string and length of column of all row has to be same(obviously)

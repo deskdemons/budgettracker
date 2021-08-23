@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "roundedRectangle.h"
+#include "../rounded_rectangle/roundedRectangle.h"
 
 class Banner {
 protected:

@@ -4,7 +4,7 @@
 
 #include<iostream>
 #include <SFML\Graphics.hpp>
-#include "banner.h"
+#include "../banner/banner.h"
 
 class GuiBarGraph {
     sf::Vector2f position;	//position of top left cornor of bargraph. i.e, top of vertical scale of graph

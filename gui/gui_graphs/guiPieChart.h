@@ -2,7 +2,7 @@
 #define GUIPIECHART_H
 #include<iostream>
 #include <SFML/Graphics.hpp>
-#include "banner.h"
+#include "../banner/banner.h"
 #define PI 3.14159265
 
 class GuiPieChart {

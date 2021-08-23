@@ -1,8 +1,8 @@
 #ifndef SIDEBAR_H
 #define SIDEBAR_H
 #include<iostream>
-#include "roundedRectangle.h"
-#include "button.h"
+#include "../rounded_rectangle/roundedRectangle.h"
+#include "../button/button.h"
 
 class Sidebar{
     std::string amt;    //amount of money user has as balance

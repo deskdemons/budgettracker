@@ -58,28 +58,28 @@ add_executable(
         networking/client/ClientConnection.h
         networking/server/ServerConnection.cpp
         networking/server/ServerConnection.h
-        cclasses/sfmlGraphics/banner.h
-        cclasses/sfmlGraphics/textbox.h
-        cclasses/sfmlGraphics/roundedRectangle.h
-        cclasses/sfmlGraphics/button.h
-        cclasses/sfmlGraphics/banner.cpp
-        cclasses/sfmlGraphics/textbox.cpp
-        cclasses/sfmlGraphics/roundedRectangle.cpp
-        cclasses/sfmlGraphics/button.cpp
-        cclasses/sfmlGraphics/guiPieChart.h
-        cclasses/sfmlGraphics/guiPiechart.cpp 
-        cclasses/sfmlGraphics/topbar.cpp 
-        cclasses/sfmlGraphics/topbar.h 
+        gui/banner/banner.h
+        gui/textbox/textbox.h
+        gui/rounded_rectangle/roundedRectangle.h
+        gui/button/button.h
+        gui/banner/banner.cpp
+        gui/textbox/textbox.cpp
+        gui/rounded_rectangle/roundedRectangle.cpp
+        gui/button/button.cpp
+        gui/gui_graphs/guiPieChart.h
+        gui/gui_graphs/guiPiechart.cpp
+        gui/topbar/topbar.cpp
+        gui/topbar/topbar.h
         cclasses/currency/currencyExchange.cpp 
         cclasses/currency/currencyExchange.h
-        cclasses/sfmlGraphics/guiBarGraph.h
-        cclasses/sfmlGraphics/guiBarGraph.cpp
-        cclasses/sfmlGraphics/table.cpp
-        cclasses/sfmlGraphics/table.h
-        cclasses/sfmlGraphics/dropdownMenu.cpp
-        cclasses/sfmlGraphics/dropdownMenu.h
-        cclasses/sfmlGraphics/sidebar.cpp
-        cclasses/sfmlGraphics/sidebar.h
+        gui/gui_graphs/guiBarGraph.h
+        gui/gui_graphs/guiBarGraph.cpp
+        gui/table/table.cpp
+        gui/table/table.h
+        gui/dropdown_menu/dropdownMenu.cpp
+        gui/dropdown_menu/dropdownMenu.h
+        gui/sidebar/sidebar.cpp
+        gui/sidebar/sidebar.h
 
 )
 

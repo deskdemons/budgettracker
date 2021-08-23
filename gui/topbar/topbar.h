@@ -1,10 +1,6 @@
-//
-// Created by paudelrajeev58 on 8/21/21.
-//
-
 #ifndef SFMLSIKDAI_TOPBAR_H
 #define SFMLSIKDAI_TOPBAR_H
-#include "banner.h"
+#include "../banner/banner.h"
 
 class Topbar{
 private:
