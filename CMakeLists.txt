@@ -1,8 +1,7 @@
-# cmake_minimum_required(VERSION <specify CMake version here>)
+cmake_minimum_required(VERSION 3.13)
 project(BudgetTracker)
 
 set(CMAKE_CXX_STANDARD 98)
-
 
 set(SFML_INCLUDE_DIR "C:/SDK/SFML-2.5.1/include")
 set(SFML_LIBRARY_DIR "C:/SDK/SFML-2.5.1/lib")
@@ -18,7 +17,6 @@ if(SFML_FOUND)
     message(STATUS "SFML_LIBRARIES: ${SFML_LIBRARIES}")
     message(STATUS "SFML_VERSION: ${SFML_VERSION}")
 endif()
-
 
 add_executable(
         BudgetTracker
@@ -60,6 +58,29 @@ add_executable(
         networking/client/ClientConnection.h
         networking/server/ServerConnection.cpp
         networking/server/ServerConnection.h
+        cclasses/sfmlGraphics/banner.h
+        cclasses/sfmlGraphics/textbox.h
+        cclasses/sfmlGraphics/roundedRectangle.h
+        cclasses/sfmlGraphics/button.h
+        cclasses/sfmlGraphics/banner.cpp
+        cclasses/sfmlGraphics/textbox.cpp
+        cclasses/sfmlGraphics/roundedRectangle.cpp
+        cclasses/sfmlGraphics/button.cpp
+        cclasses/sfmlGraphics/guiPieChart.h
+        cclasses/sfmlGraphics/guiPiechart.cpp 
+        cclasses/sfmlGraphics/topbar.cpp 
+        cclasses/sfmlGraphics/topbar.h 
+        cclasses/currency/currencyExchange.cpp 
+        cclasses/currency/currencyExchange.h
+        cclasses/sfmlGraphics/guiBarGraph.h
+        cclasses/sfmlGraphics/guiBarGraph.cpp
+        cclasses/sfmlGraphics/table.cpp
+        cclasses/sfmlGraphics/table.h
+        cclasses/sfmlGraphics/dropdownMenu.cpp
+        cclasses/sfmlGraphics/dropdownMenu.h
+        cclasses/sfmlGraphics/sidebar.cpp
+        cclasses/sfmlGraphics/sidebar.h
+
 )
 
 target_link_libraries (BudgetTracker sfml-graphics sfml-window sfml-system sfml-network)
