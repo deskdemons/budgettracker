@@ -56,6 +56,7 @@ void Banner::setPosition(sf::Vector2f position) {
 	bannerBg.setPosition(position);
 }
 void Banner::setDimension(sf::Vector2f dim) {
+	this->dimension = dim;
 	bannerBg.setDimension(dim);	//dimension only used for RoundedRectangle .
 }
 void Banner::setRadius(int radius) {
