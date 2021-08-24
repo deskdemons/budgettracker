@@ -4,10 +4,12 @@
 
 class User {
 private:
-    std::string username,fullname;
-    int userId,balance;
+
 public:
-    void setData(std::string,std::string,int,int);
+    std::string username,fullname;
+    int userId;
+    float balance;
+    void setData(std::string,std::string,int,float );
 };
 
 
