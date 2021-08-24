@@ -1,22 +1,25 @@
-#pragma once
-#ifndef BUDGETTRACKER_LOGIN_PAGE_H
-#define BUDGETTRACKER_LOGIN_PAGE_H
+
+#ifndef BUDGETTRACKER_SIGNUP_PAGE_H
+#define BUDGETTRACKER_SIGNUP_PAGE_H
+
+#pragma  once
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include "../../gui/textbox/textbox.h"
 #include "../../gui/button/button.h"
 #include "../../gui/banner/banner.h"
 #include "../../gui/rounded_rectangle/roundedRectangle.h"
-#include "../signup_page/signup_page.h"
 
-class LoginPage{
-    SignupPage s;
-    bool isAuth, isWrong;
-    std::string uname, pass;
+//bool  Auth_SignupMode ;
+
+class SignupPage{
+    bool isWrongUsername,isUserMade;
+    std::string uname,fname,pass;
     RoundedRectangle backgroundRect;
-    Button loginPageShowBox;
-    Banner wrongCredentials;
+    Button SignupPageShowBox;
+    Banner wrongUsername,userMade;
     Textbox username;
+    Textbox fullname;
     Textbox password;
     Button loginButton;
     Button signupButton;
@@ -24,7 +27,7 @@ class LoginPage{
     Button restoreButton;
 
 public:
-    LoginPage();
+    SignupPage();
 
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
 
@@ -34,4 +37,8 @@ public:
     void drawTo(sf::RenderWindow &window);
 
 };
-#endif //BUDGETTRACKER_LOGIN_PAGE_H
+
+
+
+
+#endif //BUDGETTRACKER_SIGNUP_PAGE_H

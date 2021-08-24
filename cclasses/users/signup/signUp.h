@@ -6,6 +6,7 @@ class Signup {
 public:
     Signup(std::string,std::string,std::string);
     Signup();
+    bool wrongUsername,isDone;
 private:
     std::string username, password, fullname;
     bool setdata();

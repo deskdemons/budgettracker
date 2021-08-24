@@ -91,6 +91,6 @@ add_executable(
         pages/forex_page/forex_page.h
         pages/forex_page/forex_page.cpp
         pages/see_report_page/see_report_page.h
-        pages/see_report_page/see_report_page.cpp)
+        pages/see_report_page/see_report_page.cpp pages/signup_page/signup_page.cpp pages/signup_page/signup_page.h utility/utility.cpp utility/utility.h)
 
 target_link_libraries (BudgetTracker sfml-graphics sfml-window sfml-system sfml-network)

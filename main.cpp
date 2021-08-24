@@ -2,27 +2,31 @@
 #include <SFML/Graphics.hpp>
 #include "gui/sidebar/sidebar.h"
 #include "pages/login_page/login_page.h"
+#include "pages/signup_page/signup_page.h"
+#include "cclasses/users/signup/signUp.h"
 #include "pages/dashboard_page/dashboard_page.h"
 #include "pages/add_expense_page/add_expense_page.h"
 #include "pages/add_income_page/add_income_page.h"
 #include "pages/forex_page/forex_page.h"
 #include "pages/see_report_page/see_report_page.h"
-
+#include "utility/utility.h"
 
 int main() {
-
     sf::RenderWindow window;
+    window.setFramerateLimit(60);
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;	// for smoother graphics
     sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2) - 640, (sf::VideoMode::getDesktopMode().height / 2) - 360);
     window.create(sf::VideoMode(1280, 720), "setBudGet", sf::Style::Default, settings);
     window.setPosition(centerWindow);	//centerwindow is defined above. it's position is set so that the window is displayed symmetrically on the screen
     window.setKeyRepeatEnabled(true);
+    window.setFramerateLimit(60);
 
     window.setFramerateLimit(60);
 
     Sidebar s1;
     LoginPage l1;
+    SignupPage su1;
     DashboardPage d1;
     AddExpensePage e1;
     AddIncomePage i1;
@@ -37,9 +41,13 @@ int main() {
                 window.close();
             }
             else{
-                if(l1.isLoggedIn() == false){
+                if(l1.isLoggedIn() == false && Util_SignupMode == false){
                     l1.eventHandler(event, window);
-                }else{
+                } else if (Util_SignupMode == true)
+                {
+                    su1.eventHandler(event,window);
+                }
+                else{
                     if(event.type == sf::Event::MouseButtonPressed){
                         if(s1.isMouseOverTab(window)){
                             //nothing needs to be done
@@ -53,6 +61,7 @@ int main() {
                     }
                     if(openedTab == "Dashboard"){
                         d1.eventHandler(event, window);
+                        //d1.drawer();
                     }
                     else if(openedTab == "Add Expense"){
                         e1.eventHandler(event, window);
@@ -72,8 +81,11 @@ int main() {
 
         window.clear(sf::Color::White);	//clearing with color makes the background color of window as specified
 
-        if(l1.isLoggedIn() == false){
+        if(l1.isLoggedIn() == false && Util_SignupMode == false){
             l1.drawTo(window);
+        }
+        else if (Util_SignupMode    == true){
+            su1.drawTo(window);
         }
         else{
             s1.drawTo(window);

@@ -1,7 +1,6 @@
 #include "authentication.h"
 #include <vector>
 #include "../csvfile/CSVFile.h"
-#include <iostream>
 
 // function to check if the login info provided is authentic or not
 bool Authentication::isGenuine(std::string uname, std::string pass){
@@ -35,24 +34,8 @@ std::string Authentication::encryptFunc(std::string text){
     int i;
     for(i = 0; text[i] != '\0'; ++i){
         temp = text[i];
-        if(temp >= 'a' && temp <= 'z'){
-            temp += 5;
-
-            if(temp < 'a'){
-                temp = temp + 'z' + 'a' - 1;
-            }
-
-            text[i] = temp;
-        }
-        else if(temp >= 'A' && temp <= 'Z'){
-            temp += 5;
-
-            if(temp < 'A'){
-                temp = temp + 'Z' + 'A' - 1;
-            }
-
-            text[i] = temp;
-        }
+        temp += text.size();
+        text[i] = temp;
     }
     return text;
 

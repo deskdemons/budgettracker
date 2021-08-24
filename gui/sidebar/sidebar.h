@@ -1,6 +1,7 @@
 #ifndef SIDEBAR_H
 #define SIDEBAR_H
 #include<iostream>
+#include <sstream>
 #include "../rounded_rectangle/roundedRectangle.h"
 #include "../button/button.h"
 
@@ -42,7 +43,7 @@ class Sidebar{
     Button logout;
 public:
     Sidebar();  //default constructor
-
+    std::string floatToString(float num) ;
     void setAmount(std::string amt);    // setter for user balance amount
     void setCurrency(std::string cur);  // setter for balance currency
     void unselectedTabMaker();  // used internally for making all tabs normal and making selected tab diff color
