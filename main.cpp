@@ -22,6 +22,8 @@ int main() {
     window.setKeyRepeatEnabled(true);
     window.setFramerateLimit(60);
 
+    window.setFramerateLimit(60);
+
     Sidebar s1;
     LoginPage l1;
     SignupPage su1;

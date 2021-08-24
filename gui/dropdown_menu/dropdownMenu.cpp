@@ -183,7 +183,7 @@ void DropdownMenu::setToggleDropFont(sf::Font toggleDropFont){
     drawer();
 }
 void DropdownMenu::setToggleDropFontSize(int toggleDropFontSize){
-    this->fontSize = toggleDropFontSize;
+    this->toggleDropFontSize = toggleDropFontSize;
     drawer();
 }
 void DropdownMenu::setToggleDropFontColor(sf::Color toggleDropFontColor){

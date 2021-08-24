@@ -2,7 +2,6 @@
 #include "login_page.h"
 #include "../../utility/utility.h"
 LoginPage::LoginPage() {    //constructor
-
     isAuth = false;  //when program first starts, its not logged in, so false
     isWrong = false;
     Util_SignupMode = false;

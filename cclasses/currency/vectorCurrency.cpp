@@ -1,10 +1,5 @@
 #include "vectorCurrency.h"
-#include<iostream>
 #include<vector>
-#include<fstream>
-#include<sstream>
-#include<string>
-
 
 VectorCurrency::VectorCurrency() {
     Currency c0;
