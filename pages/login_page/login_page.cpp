@@ -32,18 +32,18 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                     password.setSelected(true);
                 }
                 else if(loginButton.isMouseOver(window)){
-                    loginButton.setOutLineThickness(3);
-                    loginButton.setOutLineColor(sf::Color::Red);
                     uname = username.getText();
                     pass = password.getText();
-                    Login l1(uname, pass);
-                    isAuth = l1.isGen ;
-                    isWrong = !l1.isGen;
-                    if (l1.isGen){
-                        globalUser = l1.u1;
+                    if (uname != "" && pass != ""){
+                        loginButton.setOutLineThickness(3);
+                        loginButton.setOutLineColor(sf::Color::Red);
+                        Login l1(uname, pass);
+                        isAuth = l1.isGen ;
+                        isWrong = !l1.isGen;
+                        if (l1.isGen){
+                            globalUser = l1.u1;
+                        }
                     }
-                    std::cout<<"username:" <<username.getText()<<std::endl;
-                    std::cout<<"password:" <<password.getText()<<std::endl;
                 }
                 else{
                     username.setSelected(false);

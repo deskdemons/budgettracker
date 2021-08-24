@@ -1,6 +1,5 @@
 #include "add_expense_page.h"
 #include "../../cclasses/currency/vectorCurrency.h"
-#include "../../cclasses/budget/budget.h"
 #include "../../cclasses/budget/budgetmanager/budgetmanager.h"
 #include "../../utility/utility.h"
 
@@ -101,6 +100,11 @@ AddExpensePage::AddExpensePage() {
     amountBox.setHintText("");
     amountBox.setBgColor(sf::Color::White);
 
+    zeroWarning.setPosition(555, 540);
+    zeroWarning.setCharacterSize(20);
+    zeroWarning.setFont(font);
+    zeroWarning.setFillColor(sf::Color::Red);
+
     addPic.loadFromFile("img/addicon.png");
     addPic.setSmooth(true);
     addCircle.setRadius(20);
@@ -155,13 +159,13 @@ void AddExpensePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                 currencyMenu.toggleDropDown();
             }
             else if(currencyMenu.isMouseOverItem(window)){
-                std::cout<<currencyMenu.getChosenItemTxt()<<std::endl;
+                currencyMenu.getChosenItemTxt();
             }
             else if(categoryMenu.isMouseOverToggle(window)){
                 categoryMenu.toggleDropDown();
             }
             else if(categoryMenu.isMouseOverItem(window)){
-                std::cout<<categoryMenu.getChosenItemTxt()<<std::endl;
+                categoryMenu.getChosenItemTxt();
             }
             else if(amountBox.isMouseOver(window)){
                 amountBox.setSelected(true);
@@ -171,9 +175,23 @@ void AddExpensePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                 amountBox.setSelected(false);
             }
             else if(addButton.isMouseOver(window)){
-                std::cout<<"Add button Clicked"<<std::endl;
                 BudgetManager bd(globalUser.userId);
-
+                providedAmount= strToDou(amountBox.getText());
+                providedCategory=categoryMenu.getChosenItemTxt();
+                providedTitle = titleBox.getText();
+                providedCurrency = currencyMenu.getChosenItemTxt();
+                std::cout<<globalUser.userId<<std::endl<<providedTitle<<std::endl<<providedCategory<<std::endl<<providedCategory<<std::endl<<providedAmount<<std::endl;
+                if (providedCategory != "" && providedTitle != ""&& providedCurrency != "" && providedAmount != 0){
+                    Currency c(providedCurrency);
+                    Money m1;
+                    m1.setMoney(providedAmount,providedCurrency, "e");
+                    DateTime d;
+                    Budget b1(0,globalUser.userId, providedTitle, providedCategory, d.getDateTime(), m1.getMoney());
+                    bd.append(b1);
+                    zeroWarning.setString("");
+                } else{
+                    zeroWarning.setString("Please Don't leave any inputs empty!");
+                }
             }
 
             else{
@@ -198,10 +216,18 @@ void AddExpensePage::drawTo(sf::RenderWindow &window) {
     window.draw(amountText);
     window.draw(amountWarning);
     amountBox.drawTo(window);
+    window.draw(zeroWarning);
     addButton.drawTo(window);
     currencyMenu.drawTo(window);
     categoryMenu.drawTo(window);
     window.draw(dropdownButtonShape);
     window.draw(dropdownButtonShape2);
     window.draw(addCircle);
+}
+
+double AddExpensePage::strToDou(std::string s) {
+    std::stringstream st(s);
+    double x = 0;
+    st >> x;
+    return x;
 }

@@ -19,8 +19,11 @@ class AddExpensePage{
     DropdownMenu currencyMenu,categoryMenu;
     Textbox titleBox,amountBox;
     Button addButton;
-    sf::Text titleText,currencyText,categoryText,amountText,amountWarning;
+    std::string providedTitle,providedCategory,providedCurrency;
+    double providedAmount;
+    sf::Text titleText,currencyText,categoryText,amountText,amountWarning,zeroWarning;
     sf::Font font;
+    double strToDou(std::string s);
     std::vector<std::string> categoryVector;
 
 public:
