@@ -5,81 +5,25 @@
 #include "../../utility/utility.h"
 
 AddExpensePage::AddExpensePage() {
+    categoryVector.push_back("Food");
+    categoryVector.push_back("Clothing");
+    categoryVector.push_back("Travel");
+    categoryVector.push_back("Electronics");
+    categoryVector.push_back("Entertainment");
+    categoryVector.push_back("Health");
+    categoryVector.push_back("Miscellaneous");
+
     font.loadFromFile("Roboto-Regular.ttf");
-    drawer();
-}
-
-void AddExpensePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
-    switch(event.type){
-        case sf::Event::TextEntered:
-            if (amountBox.isFocus()){
-                if(event.text.unicode == '1' ||
-                event.text.unicode == '2' ||
-                event.text.unicode == '3' ||
-                event.text.unicode == '4' ||
-                event.text.unicode == '5' ||
-                event.text.unicode == '6' ||
-                event.text.unicode == '7' ||
-                event.text.unicode == '8' ||
-                event.text.unicode == '9' ||
-                event.text.unicode == '0' ||
-                event.text.unicode == '.' ||
-                event.text.unicode == BACKSPACE_KEY) {
-                    amountWarning.setString("");
-                    amountBox.typedOn(event);
-//                    output_1.setString(t_amount_text_box.getText() + " " + dropdown_currency_list.getChosenItemTxt());
-//                    convert_value();
-//                    output_2.setString(converted_value_str + " " + dropdown_currency_list_2.getChosenItemTxt());
-                }
-                else {
-                    amountWarning.setString("Only Numbers Allowed");
-                }
-            }
-            else if(titleBox.isFocus()){
-                titleBox.typedOn(event);
-            }
-            break;
-        case sf::Event::MouseButtonPressed:
-            //code
-            if(amountBox.isMouseOver(window)){
-                amountBox.setSelected(true);
-                titleBox.setSelected(false);
-            } else if(titleBox.isMouseOver(window)){
-                titleBox.setSelected(true);
-                amountBox.setSelected(false);
-            }
-            else if(categoryMenu.isMouseOverToggle(window)){
-                categoryMenu.toggleDropDown();
-            }
-            else if(currencyMenu.isMouseOverToggle(window)){
-                currencyMenu.toggleDropDown();
-            }
-
-            else if(addButton.isMouseOver(window)){
-                std::cout<<"Add button Clicked"<<std::endl;
-                BudgetManager bd(globalUser.userId);
-                
-            }
-
-            else{
-                amountBox.setSelected(false);
-                titleBox.setSelected(false);
-            }
-            break;
-    }
-}
-
-void AddExpensePage::drawer() {
-    topbarAddExpense.setViewText("Add Expense");
-
-    titleText.setPosition(sf::Vector2f(300,120));
+    titleText.setPosition(sf::Vector2f(300,115));
     titleText.setString("Title");
-    titleText.setCharacterSize(25);
+    titleText.setCharacterSize(35);
     titleText.setFillColor(sf::Color::Black);
     titleText.setFont(font);
 
     titleBox.setPosition(sf::Vector2f(300,160));
     titleBox.setDimension(sf::Vector2f(840,70));
+    titleBox.setPadding(10,0);
+    titleBox.setFontSize(30);
     titleBox.setHintText("");
     titleBox.setBgColor(sf::Color::White);
 
@@ -99,6 +43,16 @@ void AddExpensePage::drawer() {
     currencyMenu.setToggleDropFontColor(sf::Color::White);
     currencyMenu.setRadius(5);
     currencyMenu.setToggleDropRadius(5);
+
+    VectorCurrency vc;
+    std::vector<Currency> v_cur = vc.getAll();
+    std::vector<std::string> v_cur_str;
+    for (int z=0; z<v_cur.size(); z++){
+        v_cur_str.push_back(v_cur[z].getCurType());
+    }
+
+    currencyMenu.setDropMenuList(v_cur_str);
+    categoryMenu.setDropMenuList(categoryVector);
 
     dropdownButtonTexture.loadFromFile("img/dropdownarrowicon1.png");
     dropdownButtonShape.setFillColor(sf::Color::White);
@@ -142,7 +96,7 @@ void AddExpensePage::drawer() {
 
     amountBox.setPosition(sf::Vector2f(300,450));
     amountBox.setDimension(sf::Vector2f(840,70));
-    amountBox.setPadding(10,5);
+    amountBox.setPadding(10,0);
     amountBox.setFontSize(30);
     amountBox.setHintText("");
     amountBox.setBgColor(sf::Color::White);
@@ -161,6 +115,77 @@ void AddExpensePage::drawer() {
     addButton.setPadding(175,0);
     addButton.setRadius(10);
     addButton.setDimension(sf::Vector2f (350,50));
+
+    drawer();
+}
+
+void AddExpensePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
+    switch(event.type){
+        case sf::Event::TextEntered:
+            if (amountBox.isFocus()){
+                if(event.text.unicode == '1' ||
+                event.text.unicode == '2' ||
+                event.text.unicode == '3' ||
+                event.text.unicode == '4' ||
+                event.text.unicode == '5' ||
+                event.text.unicode == '6' ||
+                event.text.unicode == '7' ||
+                event.text.unicode == '8' ||
+                event.text.unicode == '9' ||
+                event.text.unicode == '0' ||
+                event.text.unicode == '.' ||
+                event.text.unicode == BACKSPACE_KEY) {
+                    amountWarning.setString("");
+                    amountBox.typedOn(event);
+//                    output_1.setString(t_amount_text_box.getText() + " " + dropdown_currency_list.getChosenItemTxt());
+//                    convert_value();
+//                    output_2.setString(converted_value_str + " " + dropdown_currency_list_2.getChosenItemTxt());
+                }
+                else {
+                    amountWarning.setString("Only Numbers Allowed");
+                }
+            }
+            else if(titleBox.isFocus()){
+                titleBox.typedOn(event);
+            }
+            break;
+        case sf::Event::MouseButtonPressed:
+            //code
+            if(currencyMenu.isMouseOverToggle(window)){
+                currencyMenu.toggleDropDown();
+            }
+            else if(currencyMenu.isMouseOverItem(window)){
+                std::cout<<currencyMenu.getChosenItemTxt()<<std::endl;
+            }
+            else if(categoryMenu.isMouseOverToggle(window)){
+                categoryMenu.toggleDropDown();
+            }
+            else if(categoryMenu.isMouseOverItem(window)){
+                std::cout<<categoryMenu.getChosenItemTxt()<<std::endl;
+            }
+            else if(amountBox.isMouseOver(window)){
+                amountBox.setSelected(true);
+                titleBox.setSelected(false);
+            } else if(titleBox.isMouseOver(window)){
+                titleBox.setSelected(true);
+                amountBox.setSelected(false);
+            }
+            else if(addButton.isMouseOver(window)){
+                std::cout<<"Add button Clicked"<<std::endl;
+                BudgetManager bd(globalUser.userId);
+
+            }
+
+            else{
+                amountBox.setSelected(false);
+                titleBox.setSelected(false);
+            }
+            break;
+    }
+}
+
+void AddExpensePage::drawer() {
+    topbarAddExpense.setViewText("Add Expense");
 
 }
 

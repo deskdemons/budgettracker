@@ -3,6 +3,7 @@
 #define BUDGETTRACKER_ADD_EXPENSE_PAGE_H
 #include <SFML/Graphics.hpp>
 #include<iostream>
+#include <vector>
 #include "../../gui/textbox/textbox.h"
 #include "../../gui/button/button.h"
 #include "../../gui/banner/banner.h"
@@ -20,6 +21,7 @@ class AddExpensePage{
     Button addButton;
     sf::Text titleText,currencyText,categoryText,amountText,amountWarning;
     sf::Font font;
+    std::vector<std::string> categoryVector;
 
 public:
     AddExpensePage();
