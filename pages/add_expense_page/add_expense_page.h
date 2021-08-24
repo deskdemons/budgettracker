@@ -7,9 +7,20 @@
 #include "../../gui/button/button.h"
 #include "../../gui/banner/banner.h"
 #include "../../gui/topbar/topbar.h"
+#include "../../gui/dropdown_menu/dropdownMenu.h"
 
 class AddExpensePage{
     Topbar topbarAddExpense;
+    sf::CircleShape addCircle;
+    sf::RectangleShape dropdownButtonShape,dropdownButtonShape2;
+    sf::Texture dropdownButtonTexture;
+    sf::Texture addPic;
+    DropdownMenu currencyMenu,categoryMenu;
+    Textbox titleBox,amountBox;
+    Button addButton;
+    sf::Text titleText,currencyText,categoryText,amountText,amountWarning;
+    sf::Font font;
+
 public:
     AddExpensePage();
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
