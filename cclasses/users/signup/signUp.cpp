@@ -15,11 +15,13 @@ Signup::Signup(std::string u ,std::string p,std::string f):username(u),password(
     bool valid = isUsernameValid(username);
     if (valid){
         addDataToCsv(username,password,fullname);
-        Login l;
+        isDone = true;
+        //Login l;
     }
     else{
         std::cout<<"\nPlease Try Different Username.\n\n";
-        Signup s;
+        wrongUsername = true;
+        //Signup s;
     }
 }
 Signup::Signup()
@@ -34,7 +36,7 @@ Signup::Signup()
     bool valid = isUsernameValid(username);
     if (valid){
         addDataToCsv(username,password,fullname);
-        Login l;
+//        Login l;
     }
     else{
         std::cout<<"\nPlease Try Different Username.\n\n";
@@ -49,27 +51,10 @@ std::string Signup::encryptfunc(std::string text)
     int i;
     for(i = 0; text[i] != '\0'; ++i){
         temp = text[i];
-        if(temp >= 'a' && temp <= 'z'){
-            temp += 5;
-
-            if(temp < 'a'){
-                temp += 'z' + 'a' - 1;
-            }
-
-            text[i] = temp;
-        }
-        else if(temp >= 'A' && temp <= 'Z'){
-            temp += 5;
-
-            if(temp < 'A'){
-                temp += 'Z' + 'A' - 1;
-            }
-
-            text[i] = temp;
-        }
+        temp += text.size();
+        text[i] = temp;
     }
     return text;
-
 }
 
 // returns if username is valid or not

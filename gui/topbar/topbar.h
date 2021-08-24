@@ -7,7 +7,7 @@ private:
 
 public:
     Banner b1,b2;
-    std::string username;
+    std::string uname;
     std::string viewName;
     sf::CircleShape userShape; //circle shape for user profile
     sf::Texture userPic; //user profile default photo texture

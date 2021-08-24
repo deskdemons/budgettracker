@@ -1,7 +1,9 @@
 #include "sidebar.h"
+#include "../../utility/utility.h"
 
 Sidebar::Sidebar(){
-    amt = "10000";
+    std::string temp = floatToString(globalUser.balance);
+    amt = temp;
     cur = "USD";
     balanceTxt = "Current Balance";
     chosenTab = "Dashboard";
@@ -221,8 +223,17 @@ std::string Sidebar::getChosenTab(){
     return chosenTab;
 }
 
+std::string Sidebar::floatToString(float num) {
+    std::stringstream ss;
+    std::string str;
+    ss << num;
+    ss >> str;
+    return str;
+}
+
 void Sidebar::drawTo(sf::RenderWindow &window) {
     background.drawBg(window);
+    //setAmount(amt);
     balanceBackground.drawBg(window);
     window.draw(amount);
     window.draw(currency);
@@ -235,3 +246,4 @@ void Sidebar::drawTo(sf::RenderWindow &window) {
     backup.drawTo(window);
     logout.drawTo(window);
 }
+
