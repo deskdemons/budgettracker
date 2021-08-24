@@ -50,6 +50,13 @@ void SignupPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                     fname = fullname.getText();
                     Signup s(uname,pass,full);
                     isWrongUsername = s.wrongUsername;
+
+                    if(s.isDone){
+                        std::cout << "TRUE"<< std::endl;
+                    } else{
+                        std::cout << "False"<< std::endl;
+                    }
+
                     isUserMade = s.isDone;
                     if (isUserMade == true){
                         signupButton.setOutLineColor(sf::Color::Blue);
