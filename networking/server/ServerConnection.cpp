@@ -33,42 +33,42 @@ void ServerConnection::run_server() {
     // By default, a server listens to a command before answering i.e. it is in receive mode, hence default mode is r
     mode = 'r';
     bool done = false;
-    while (!done){
+    while (!done) {
         // Codes for send mode
-        if(mode == 's'){
+        if (mode == 's') {
             text = "connected";
-            socket.send(text.c_str(), text.length()+1);
+            socket.send(text.c_str(), text.length() + 1);
             mode = 'r';
         }
-        // Codes for receive mode
-        else if (mode == 'r'){
-            socket.receive(buffer_chars, sizeof (buffer_chars), received);
-            if(received > 0) {
+            // Codes for receive mode
+        else if (mode == 'r') {
+            socket.receive(buffer_chars, sizeof(buffer_chars), received);
+            if (received > 0) {
                 // G COMMAND [get]
                 // This command will send the data of budgets from server, i.e. for restoring the db in client side
-                if (buffer_chars[0] == 'g'){
+                if (buffer_chars[0] == 'g') {
                     // Send full csv file contents
                     text = read_full_budget_file();
-                    socket.send(text.c_str(), text.length()+1);
+                    socket.send(text.c_str(), text.length() + 1);
                     // The mode will again be r after sending the data since,
                     // i.e. the server will reset back to its original configuration
                     mode = 'r';
                 }
 
-                // B COMMAND [backup]
-                // Receive the stream of budget from the client to update the server database
-                else if(buffer_chars[0] == 'b'){
+                    // B COMMAND [backup]
+                    // Receive the stream of budget from the client to update the server database
+                else if (buffer_chars[0] == 'b') {
                     // This is to send as a confirmation that the server has received the command and now whatever
                     // is sent to the server from the above client will be set in the server database
-                    text="1";
-                    socket.send(text.c_str(), text.length()+1);
+                    text = "1";
+                    socket.send(text.c_str(), text.length() + 1);
                     std::vector<Budget> budgets_from_client;
 
                     // The actual stream of data that we receive from the client
                     socket.receive(buffer_chars, sizeof(buffer_chars), received);
-                    if (received > 0){
+                    if (received > 0) {
                         int position;
-                        std::string  full_string = buffer_chars;
+                        std::string full_string = buffer_chars;
 
                         // This is here since, we don't know how may line we are receiving
                         // hence, we are calculating such that once there are no more remaining "\n"
@@ -97,14 +97,13 @@ void ServerConnection::run_server() {
                     }
 
 
-                }else if (buffer_chars[0] == 'q'){
+                } else if (buffer_chars[0] == 'q') {
                     mode = 'q';
                     continue;
                 }
                 mode = 's';
             }
-        }
-        else if (mode == 'q'){
+        } else if (mode == 'q') {
             done = true;
         }
     }
@@ -114,15 +113,15 @@ void ServerConnection::run_server() {
 std::string ServerConnection::read_full_budget_file() {
     BudgetManager bdb(0);
 
-    std::vector<Budget> all_user_contents =  bdb.all_users();
+    std::vector<Budget> all_user_contents = bdb.all_users();
 
     std::string full_budget_text;
 
-    for (int i =0; i<all_user_contents.size(); i++){
+    for (int i = 0; i < all_user_contents.size(); i++) {
         full_budget_text += all_user_contents[i].serialize();
 
         // We are not sending \n at end of the connection
-        if (i != all_user_contents.size() -1){
+        if (i != all_user_contents.size() - 1) {
             full_budget_text += "\n";
         }
     }
@@ -135,7 +134,7 @@ void ServerConnection::update_current_data(std::vector<Budget> received_data) {
     // We need to make sure the file exists before trying to delete it
     file_exist_assert();
     int removed_status = std::remove("budget.csv");
-    if (removed_status != 1){
+    if (removed_status != 1) {
         throw ("Old file could not be removed");
     }
     // write the initial line

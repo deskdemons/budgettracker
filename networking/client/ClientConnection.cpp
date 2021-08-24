@@ -56,14 +56,13 @@ std::vector<Budget> ClientConnection::get_from_server() {
         }
 
         // This is for the last line, since are close the loop once no "\n" are found in the code
-        if(full_string != "connected"){
+        if (full_string != "connected") {
             Budget temp_bud(full_string);
             return_value.push_back(temp_bud);
         }
     }
     return return_value;
 }
-
 
 
 void ClientConnection::send_to_server(std::vector<Budget> send_value) {
@@ -107,7 +106,7 @@ void ClientConnection::send_to_server(std::vector<Budget> send_value) {
 
         // Once the server has processed the data that we send from client, we receive 1 back from server as string
         // hence checking if the data received back from the server is valid or not!
-        if (received > 0 && buffer_chars[0] != 1){
+        if (received > 0 && buffer_chars[0] != 1) {
             throw ("Networking Error, invalid confirmation form server received!");
         }
     }
@@ -120,7 +119,7 @@ void ClientConnection::update_with_data_from_server() {
 
     file_exist_assert();
     int removed_status = std::remove("budget.csv");
-    if (removed_status == 1){
+    if (removed_status == 1) {
         throw ("Old file could not be removed");
     }
     // write the initial line
@@ -132,12 +131,12 @@ void ClientConnection::update_with_data_from_server() {
     // loop through the vector and add it to the file
     Budget empty_budget_object;
     int i;
-    fout << "pk,user_id,title,category,datetime,currency"<< std::endl;
+    fout << "pk,user_id,title,category,datetime,currency" << std::endl;
     for (i = 0; i < received_data.size() - 1; i++) {
-        try{
+        try {
             fout << received_data[i].serialize(received_data[i].get_user_id()) << std::endl;
-        }catch (std::string errorr){
-            std::cout << "Garbage value obtained for serialization"<< errorr << std::endl;
+        } catch (std::string errorr) {
+            std::cout << "Garbage value obtained for serialization" << errorr << std::endl;
         }
     }
     // The "fout" below doesn't have "std::endl" at end so as not to have an empty line at end of csv file
@@ -145,8 +144,8 @@ void ClientConnection::update_with_data_from_server() {
     // Such that when we append a line, it writes one new empty budget object every time.
     try {
         fout << received_data[i].serialize(received_data[i].get_user_id());
-    } catch (std::string errorr){
-        std::cout << "Garbage value obtained for serialization" << errorr<< std::endl;
+    } catch (std::string errorr) {
+        std::cout << "Garbage value obtained for serialization" << errorr << std::endl;
     }
     fout.close();
 
@@ -169,10 +168,10 @@ void ClientConnection::file_exist_assert() {
 
             // Close the file handle after performing the operation
             fout.close();
-        }else{
+        } else {
             std::cout << "File creation clientconnection.cpp creation unsucessful" << std::endl;
         }
-    }else{
+    } else {
         std::cout << "File exist after deletion" << std::endl;
     }
 

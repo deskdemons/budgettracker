@@ -82,7 +82,7 @@ ForexPage::ForexPage() {
     VectorCurrency vc;
     std::vector<Currency> v_cur = vc.getAll();
     std::vector<std::string> v_cur_str;
-    for (int z=0; z < v_cur.size(); z++) {
+    for (int z = 0; z < v_cur.size(); z++) {
         v_cur_str.push_back(v_cur[z].getCurType());
     }
 

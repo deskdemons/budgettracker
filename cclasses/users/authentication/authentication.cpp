@@ -3,36 +3,33 @@
 #include "../csvfile/CSVFile.h"
 
 // function to check if the login info provided is authentic or not
-bool Authentication::isGenuine(std::string uname, std::string pass){
-    std::vector<std::vector < std::string > > vecData;
-    std::string encry ;
+bool Authentication::isGenuine(std::string uname, std::string pass) {
+    std::vector<std::vector<std::string> > vecData;
+    std::string encry;
     int x;
     encry = encryptFunc(pass);
     CSVFile cs1("secretdata.csv");
     vecData = cs1.parse_csv("secretdata.csv"); //gets all login info from the file
-    for (int i = 1; i < vecData.size(); i++)
-    {
-        if (vecData[i][1] == uname && vecData[i][2] == encry){
-            x=1;
+    for (int i = 1; i < vecData.size(); i++) {
+        if (vecData[i][1] == uname && vecData[i][2] == encry) {
+            x = 1;
             break;
-        }
-        else
-        {
-            x=0;
+        } else {
+            x = 0;
 
         }
     }
-    if (x==1){
+    if (x == 1) {
         return true;
     }
     return false;
 }
 
 //function to encrypt the password entered by user by passing as an argument
-std::string Authentication::encryptFunc(std::string text){
+std::string Authentication::encryptFunc(std::string text) {
     char temp;
     int i;
-    for(i = 0; text[i] != '\0'; ++i){
+    for (i = 0; text[i] != '\0'; ++i) {
         temp = text[i];
         temp += text.size();
         text[i] = temp;

@@ -6,7 +6,7 @@ SeeReportPage::SeeReportPage() {
 }
 
 void SeeReportPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
-    switch(event.type){
+    switch (event.type) {
         case sf::Event::TextEntered:
             //code
             break;

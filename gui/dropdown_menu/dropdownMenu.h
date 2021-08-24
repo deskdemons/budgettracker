@@ -43,14 +43,15 @@ class DropdownMenu {
 
     bool isOpen;    //is toggle state on or off
 
-    Button* dropButton; //dynamic initialization of itemLists. Because item lists is a button in itself
+    Button *dropButton; //dynamic initialization of itemLists. Because item lists is a button in itself
     Button toggleDrop;  //toggle button
     Banner chosenItem;  //banner that shows chosen item
     sf::Text hint;  // hint text object that is shown when nothing is selected
 public:
     DropdownMenu();
 
-    void setDropMenuList(std::vector<std::string> dropList);    //setter for drop down list. ex: std::vector<std::string> list = ({"USD","NPR","EUR"});
+    void setDropMenuList(
+            std::vector<std::string> dropList);    //setter for drop down list. ex: std::vector<std::string> list = ({"USD","NPR","EUR"});
     void setPosition(sf::Vector2f position);    //setter for position of dropdown menu. ex: sf::Vector2f(100, 100);
     void setDimension(sf::Vector2f dimension);  //dimension of dropdown menu.
     void setRadius(int radius); // radius of curvature of drop down menu banner
@@ -82,13 +83,15 @@ public:
     void setToggleDropOutLineColor(sf::Color toggleDropOutLineColor);   //toggle button border color
     void setToggleDropPadding(sf::Vector2f toggleDropPadding);  //toggle button text("v") padding
 
-    bool isMouseOverToggle(sf::RenderWindow& window);   // bool , true or false based on mouse pointer is above toggle button.
-    void toggleDropDown();  // it toggles, i.e., it makes list open if its already closed and closes if its already opened
+    bool isMouseOverToggle(
+            sf::RenderWindow &window);   // bool , true or false based on mouse pointer is above toggle button.
+    void
+    toggleDropDown();  // it toggles, i.e., it makes list open if its already closed and closes if its already opened
     bool isMouseOverItem(sf::RenderWindow &window); // is mouse over list item of dropdown menu.
     std::string getChosenItemTxt(); //returns selected item text
 
     void drawer(); //contains logic of drawing drop down menu
-    void drawTo(sf::RenderWindow& window);  //draws menu in buffer
+    void drawTo(sf::RenderWindow &window);  //draws menu in buffer
 };
 
 #endif // !DROPDOWNMENU_H

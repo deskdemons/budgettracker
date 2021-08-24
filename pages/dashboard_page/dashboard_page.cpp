@@ -6,11 +6,11 @@ DashboardPage::DashboardPage() {
 }
 
 void DashboardPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
-   // std::cout<<"gloabal solti"<<globalUser.userId<<std::endl<<globalUser.username<<std::endl<<globalUser.fullname<<std::endl<<globalUser.balance<<std::endl;
+    // std::cout<<"gloabal solti"<<globalUser.userId<<std::endl<<globalUser.username<<std::endl<<globalUser.fullname<<std::endl<<globalUser.balance<<std::endl;
     //drawer();
-    switch(event.type){
+    switch (event.type) {
         case sf::Event::TextEntered:
-           // drawer();
+            // drawer();
             //code
             drawer();
             break;
@@ -26,7 +26,7 @@ void DashboardPage::drawer() {
     //top bar
     topbarDashboard.setViewText("Dashboard Page");
     //piechart
-    std::cout<<globalUser.username<<std::endl;
+    std::cout << globalUser.username << std::endl;
     topbarDashboard.setUsername(globalUser.username);
 
 }

@@ -2,6 +2,7 @@
 #define BUDGETTRACKER_SIGNUP_PAGE_H
 
 #pragma  once
+
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include "../../gui/textbox/textbox.h"
@@ -9,12 +10,12 @@
 #include "../../gui/banner/banner.h"
 #include "../../gui/rounded_rectangle/roundedRectangle.h"
 
-class SignupPage{
-    bool isWrongUsername,isUserMade;
-    std::string uname,fname,pass;
+class SignupPage {
+    bool isWrongUsername, isUserMade;
+    std::string uname, fname, pass;
     RoundedRectangle backgroundRect;
     Button SignupPageShowBox;
-    Banner wrongUsername,userMade;
+    Banner wrongUsername, userMade;
     Textbox username;
     Textbox fullname;
     Textbox password;
@@ -34,8 +35,6 @@ public:
     void drawTo(sf::RenderWindow &window);
 
 };
-
-
 
 
 #endif //BUDGETTRACKER_SIGNUP_PAGE_H

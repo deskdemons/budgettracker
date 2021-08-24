@@ -4,8 +4,8 @@
 
 Budget::Budget() {};
 
-Budget::Budget(int id_input, int user_id_input, const std::string& item_name_input, const std::string& category_input,
-               const std::string& datetime_input, const std::string& amount_input) {
+Budget::Budget(int id_input, int user_id_input, const std::string &item_name_input, const std::string &category_input,
+               const std::string &datetime_input, const std::string &amount_input) {
     id = id_input;
     user_id = user_id_input;
     item_name = item_name_input;

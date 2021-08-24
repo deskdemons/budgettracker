@@ -11,26 +11,31 @@
 #include "../../gui/topbar/topbar.h"
 #include "../../gui/dropdown_menu/dropdownMenu.h"
 
-class AddIncomePage{
+class AddIncomePage {
     Topbar topbarAddExpense;
     sf::CircleShape addCircle;
-    sf::RectangleShape dropdownButtonShape,dropdownButtonShape2;
+    sf::RectangleShape dropdownButtonShape, dropdownButtonShape2;
     sf::Texture dropdownButtonTexture;
     sf::Texture addPic;
-    DropdownMenu currencyMenu,categoryMenu;
-    Textbox titleBox,amountBox;
+    DropdownMenu currencyMenu, categoryMenu;
+    Textbox titleBox, amountBox;
     Button addButton;
-    std::string providedTitle,providedCategory,providedCurrency;
+    std::string providedTitle, providedCategory, providedCurrency;
     double providedAmount;
-    sf::Text titleText,currencyText,categoryText,amountText,amountWarning,zeroWarning;
+    sf::Text titleText, currencyText, categoryText, amountText, amountWarning, zeroWarning;
     sf::Font font;
+
     double strToDou(std::string s);
+
     std::vector<std::string> categoryVector;
 
 public:
     AddIncomePage();
+
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
+
     void drawer();
+
     void drawTo(sf::RenderWindow &window);
 };
 
