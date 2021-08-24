@@ -1,4 +1,3 @@
-
 #ifndef BUDGETTRACKER_SIGNUP_PAGE_H
 #define BUDGETTRACKER_SIGNUP_PAGE_H
 
@@ -9,8 +8,6 @@
 #include "../../gui/button/button.h"
 #include "../../gui/banner/banner.h"
 #include "../../gui/rounded_rectangle/roundedRectangle.h"
-
-//bool  Auth_SignupMode ;
 
 class SignupPage{
     bool isWrongUsername,isUserMade;
