@@ -18,6 +18,7 @@ int main() {
     window.create(sf::VideoMode(1280, 720), "setBudGet", sf::Style::Default, settings);
     window.setPosition(centerWindow);	//centerwindow is defined above. it's position is set so that the window is displayed symmetrically on the screen
     window.setKeyRepeatEnabled(true);
+    window.setFramerateLimit(60);
 
     Sidebar s1;
     LoginPage l1;
