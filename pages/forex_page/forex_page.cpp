@@ -162,6 +162,7 @@ void ForexPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                     event.text.unicode == '8' ||
                     event.text.unicode == '9' ||
                     event.text.unicode == '0' ||
+                    event.text.unicode == '.' ||
                     event.text.unicode == BACKSPACE_KEY) {
                     t_amount_text_box_warning.setString("");
                     t_amount_text_box.typedOn(event);

@@ -2,7 +2,7 @@
 #include "login_page.h"
 #include "../../utility/utility.h"
 LoginPage::LoginPage() {    //constructor
-    isAuth = false;  //when program first starts, its not logged in, so false
+    isAuth = true;  //when program first starts, its not logged in, so false
     isWrong = false;
     Util_SignupMode = false;
     drawer();   //drawer is called after object is contructed. obviously, because after construction of object, we need to draw what the page has

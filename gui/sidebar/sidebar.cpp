@@ -243,7 +243,13 @@ void Sidebar::drawTo(sf::RenderWindow &window) {
     addIncome.drawTo(window);
     seeReport.drawTo(window);
     forex.drawTo(window);
+
+    if(is_backing_up){
+        backup.setButtonText("Backed Up");
+        backup.setPadding(30,0);
+    }
     backup.drawTo(window);
+
     logout.drawTo(window);
 }
 

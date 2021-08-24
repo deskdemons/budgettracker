@@ -5,5 +5,7 @@
 
 extern User globalUser;
 extern bool Util_SignupMode;
+extern bool is_backing_up;
+extern bool is_restoring_data;
 
 #endif //BUDGETTRACKER_UTILITY_H
