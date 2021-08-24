@@ -124,6 +124,7 @@ void SignupPage::drawer() {
     loginButton.setPosition(sf::Vector2f(1100, 50));
     loginButton.setDimension(sf::Vector2f(150,40));
     loginButton.setOutLineColor(sf::Color::Red);
+    loginButton.setRadius(10);
     loginButton.setBgColor(sf::Color::Red);
     loginButton.setPadding(45,0);
     loginButton.setFontColor(sf::Color::White);

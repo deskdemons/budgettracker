@@ -8,14 +8,16 @@ class Login
 {
 public:
     std::string username, password,fullname;
+    User u1;
     bool isGen;
-    int userId,balance;
+    int userId;
+    float balance;
     int strToInt(std::string);
+    float strToFloat(std::string);
     Login(std::string,std::string);
     Login();
     bool fileExsistanceAssert();
     User returnUserObject();
-
 
 protected:
 

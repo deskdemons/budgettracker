@@ -12,7 +12,6 @@
 #include "utility/utility.h"
 
 int main() {
-
     sf::RenderWindow window;
     window.setFramerateLimit(60);
     sf::ContextSettings settings;
@@ -59,6 +58,7 @@ int main() {
                     }
                     if(openedTab == "Dashboard"){
                         d1.eventHandler(event, window);
+                        //d1.drawer();
                     }
                     else if(openedTab == "Add Expense"){
                         e1.eventHandler(event, window);
@@ -81,7 +81,7 @@ int main() {
         if(l1.isLoggedIn() == false && Util_SignupMode == false){
             l1.drawTo(window);
         }
-        else if (Util_SignupMode == true){
+        else if (Util_SignupMode    == true){
             su1.drawTo(window);
         }
         else{

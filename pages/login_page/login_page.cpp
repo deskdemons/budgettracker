@@ -1,10 +1,10 @@
 #include "../../cclasses/users/login/login.h"
 #include "login_page.h"
-#include "../signup_page/signup_page.h"
 #include "../../utility/utility.h"
 LoginPage::LoginPage() {    //constructor
     isAuth = false;  //when program first starts, its not logged in, so false
     isWrong = false;
+    Util_SignupMode = false;
     drawer();   //drawer is called after object is contructed. obviously, because after construction of object, we need to draw what the page has
 }
 
@@ -39,6 +39,9 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                     Login l1(uname, pass);
                     isAuth = l1.isGen ;
                     isWrong = !l1.isGen;
+                    if (l1.isGen){
+                        globalUser = l1.u1;
+                    }
                     std::cout<<"username:" <<username.getText()<<std::endl;
                     std::cout<<"password:" <<password.getText()<<std::endl;
                 }

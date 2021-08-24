@@ -1,11 +1,10 @@
 #include "topbar.h"
-#include "../banner/banner.h"
+#include "../../utility/utility.h"
 
 Topbar::Topbar() {
     // TODO this is just temporary it is to be done while making whole system
     viewName = "Page-Name";
-    username = "User-Name";
-
+    uname = "User-Name";
     drawer();
 
 }
@@ -27,7 +26,7 @@ void Topbar::drawer(){
     b2.setOutLineColor(sf::Color(76,76,76));
     b2.setDimension(sf::Vector2f(1280-640,50));
     b2.setPadding(350,0);
-    b2.setBannerText(username);
+    b2.setBannerText(uname);
 
     userPic.loadFromFile("img/icon.png");
     userPic.setSmooth(true);
@@ -50,6 +49,6 @@ void Topbar::setViewText(std::string viewText) {
 }
 
 void Topbar::setUsername(std::string userName) {
-    this->username = userName;
+    uname = userName;
     drawer();
 }

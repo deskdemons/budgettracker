@@ -47,11 +47,11 @@ Login::Login(std::string u,std::string p)
     Authentication a;
     std::string encryptedPassword;
     isGen = a.isGenuine(uname,pass);
-    if(isGen == true){
+    if(isGen){
         std::cout<<"right";
         setupass(uname,pass);
         getData(uname);
-        User u = returnUserObject();
+        u1 = returnUserObject();
         std::cout<<"\nUser's username = "<<username;
         std::cout<<"\nUser's Fullname = "<<fullname;
         std::cout<<"\nUser's UserID = "<<userId;
@@ -79,7 +79,7 @@ void Login::getData(std::string username){
             std::string temp = vecData[i][0];
             userId = strToInt(temp);
             std::string money = vecData[i][4];
-            balance = strToInt(money);
+            balance = strToFloat(money);
             break;
         }
     }
@@ -123,6 +123,13 @@ int Login::strToInt(std::string s){
     return x;
 }
 
+float Login::strToFloat(std::string r) {
+    std::stringstream st(r);
+    float x = 0.0;
+    st >> x;
+    return x;
+}
+
 // sets username and password to the object which are data members
 void Login::setupass(std::string uname,std::string pass){
     username= uname;
@@ -131,8 +138,8 @@ void Login::setupass(std::string uname,std::string pass){
 
 // returns user object by retrieving all the data
 User Login::returnUserObject(){
-    User u;
-    u.setData(username,fullname,userId,balance);
-    return u;
+    User x;
+    x.setData(username,fullname,userId,balance);
+    return x;
 }
 
