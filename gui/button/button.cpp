@@ -2,23 +2,23 @@
 
 
 void Button::setButtonText(std::string buttonText) {
-	setBannerText(buttonText);
+    setBannerText(buttonText);
 }
 
-bool Button::isMouseOver(sf::RenderWindow& window) {
-	int mouseX = sf::Mouse::getPosition(window).x;
-	int mouseY = sf::Mouse::getPosition(window).y;
+bool Button::isMouseOver(sf::RenderWindow &window) {
+    int mouseX = sf::Mouse::getPosition(window).x;
+    int mouseY = sf::Mouse::getPosition(window).y;
 
-	int txtPosX = position.x;
-	int txtPosY = position.y;
+    int txtPosX = position.x;
+    int txtPosY = position.y;
 
-	int txtxPosWidth = position.x + dimension.x;
-	int txtyPosHeight = position.y + dimension.y;
+    int txtxPosWidth = position.x + dimension.x;
+    int txtyPosHeight = position.y + dimension.y;
 
-	if (mouseX < txtxPosWidth && mouseX > txtPosX && mouseY < txtyPosHeight && mouseY > txtPosY) {
-		return true;
-	}
-	return false;
+    if (mouseX < txtxPosWidth && mouseX > txtPosX && mouseY < txtyPosHeight && mouseY > txtPosY) {
+        return true;
+    }
+    return false;
 }
 
 

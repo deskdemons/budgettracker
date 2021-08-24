@@ -18,7 +18,7 @@ DropdownMenu::DropdownMenu() {
     position = sf::Vector2f(100, 500);
     dimension = sf::Vector2f(200, 35);
     dropItemDimension = sf::Vector2f(200, 30);
-    dropItemBgColor = sf::Color(240,240,240);
+    dropItemBgColor = sf::Color(240, 240, 240);
     radius = 0;
     font.loadFromFile("arial.ttf");
     fontSize = 20;
@@ -30,12 +30,12 @@ DropdownMenu::DropdownMenu() {
     toggleDropDimension = sf::Vector2f(35, 35);
     toggleDropRadius = 0;
     toggleDropFont.loadFromFile("arial.ttf");
-    toggleDropFontSize=20;
-    toggleDropFontColor=sf::Color::Black;
-    toggleDropBgColor= sf::Color(100,100,100);
+    toggleDropFontSize = 20;
+    toggleDropFontColor = sf::Color::Black;
+    toggleDropBgColor = sf::Color(100, 100, 100);
     toggleDropOutLineThickness = 1;
-    toggleDropOutLineColor= sf::Color::Black;
-    toggleDropPadding=sf::Vector2f(12,0);
+    toggleDropOutLineColor = sf::Color::Black;
+    toggleDropPadding = sf::Vector2f(12, 0);
 
     isOpen = false;
 
@@ -45,7 +45,7 @@ DropdownMenu::DropdownMenu() {
 }
 
 
-void DropdownMenu::drawer(){
+void DropdownMenu::drawer() {
     chosenItem.setBannerText(chosenText);
     chosenItem.setPosition(position);
     chosenItem.setDimension(dimension);
@@ -56,16 +56,18 @@ void DropdownMenu::drawer(){
     chosenItem.setBgColor(bgColor);
     chosenItem.setOutLineThickness(outLineThickness);
     chosenItem.setOutLineColor(outLineColor);
-    chosenItem.setPadding(padding.x,padding.y);
+    chosenItem.setPadding(padding.x, padding.y);
     if (chosenText == "") {
         hint.setString(hintText);
-        hint.setPosition(sf::Vector2f(position.x + hintTextPadding.x, hintTextPadding.y + position.y + ((dimension.y) / 2) - (hintTextFontSize / 1.5f)));
+        hint.setPosition(sf::Vector2f(position.x + hintTextPadding.x,
+                                      hintTextPadding.y + position.y + ((dimension.y) / 2) -
+                                      (hintTextFontSize / 1.5f)));
         hint.setFillColor(hintTextFontColor);
         hint.setFont(font);
         hint.setCharacterSize(hintTextFontSize);
     }
 
-    toggleDrop.setPosition(sf::Vector2f(position.x+dimension.x, position.y));
+    toggleDrop.setPosition(sf::Vector2f(position.x + dimension.x, position.y));
     toggleDrop.setBannerText("v");
     toggleDrop.setDimension(sf::Vector2f(toggleDropDimension));
     toggleDrop.setRadius(toggleDropRadius);
@@ -98,115 +100,136 @@ void DropdownMenu::drawer(){
 
 }
 
-void DropdownMenu::setDropMenuList(std::vector<std::string> dropList){
+void DropdownMenu::setDropMenuList(std::vector<std::string> dropList) {
     this->dropList = dropList;
     dropButton = new Button[dropList.size()];
     drawer();
 }
-void DropdownMenu::setPosition(sf::Vector2f position){
+
+void DropdownMenu::setPosition(sf::Vector2f position) {
     this->position = position;
     drawer();
 }
-void DropdownMenu::setDimension(sf::Vector2f dimension){
+
+void DropdownMenu::setDimension(sf::Vector2f dimension) {
     this->dimension = dimension;
     drawer();
 }
-void DropdownMenu::setRadius(int radius){
+
+void DropdownMenu::setRadius(int radius) {
     this->radius = radius;
     drawer();
 }
-void DropdownMenu::setFont(sf::Font font){
+
+void DropdownMenu::setFont(sf::Font font) {
     this->font = font;
     drawer();
 }
-void DropdownMenu::setFontSize(int fontSize){
+
+void DropdownMenu::setFontSize(int fontSize) {
     this->fontSize = fontSize;
     drawer();
 }
-void DropdownMenu::setFontColor(sf::Color fontColor){
+
+void DropdownMenu::setFontColor(sf::Color fontColor) {
     this->fontColor = fontColor;
     drawer();
 }
-void DropdownMenu::setBgColor(sf::Color bgColor){
+
+void DropdownMenu::setBgColor(sf::Color bgColor) {
     this->bgColor = bgColor;
     drawer();
 }
-void DropdownMenu::setOutLineThickness(int outLineThickness){
+
+void DropdownMenu::setOutLineThickness(int outLineThickness) {
     this->outLineThickness = outLineThickness;
     drawer();
 }
-void DropdownMenu::setOutLineColor(sf::Color outLineColor){
+
+void DropdownMenu::setOutLineColor(sf::Color outLineColor) {
     this->outLineColor = outLineColor;
     drawer();
 }
-void DropdownMenu::setPadding(sf::Vector2f padding){
+
+void DropdownMenu::setPadding(sf::Vector2f padding) {
     this->padding = padding;
     drawer();
 }
 
-void DropdownMenu::setDropItemDimension(sf::Vector2f dropItemDimension){
+void DropdownMenu::setDropItemDimension(sf::Vector2f dropItemDimension) {
     this->dropItemDimension = dropItemDimension;
     drawer();
 }
-void DropdownMenu::setDropItemBgColor(sf::Color dropItemBgColor){
+
+void DropdownMenu::setDropItemBgColor(sf::Color dropItemBgColor) {
     this->dropItemBgColor = dropItemBgColor;
     drawer();
 }
 
-void DropdownMenu::setHintText(std::string hintText){
+void DropdownMenu::setHintText(std::string hintText) {
     this->hintText = hintText;
     drawer();
 }
-void DropdownMenu::setHintTextFontSize(int hintTextFontSize){
+
+void DropdownMenu::setHintTextFontSize(int hintTextFontSize) {
     this->hintTextFontSize = hintTextFontSize;
     drawer();
 }
-void DropdownMenu::setHintTextFontColor(sf::Color hintTextFontColor){
+
+void DropdownMenu::setHintTextFontColor(sf::Color hintTextFontColor) {
     this->hintTextFontColor = hintTextFontColor;
     drawer();
 }
-void DropdownMenu::setHintTextPadding(sf::Vector2f hintTextPadding){
+
+void DropdownMenu::setHintTextPadding(sf::Vector2f hintTextPadding) {
     this->hintTextPadding = hintTextPadding;
     drawer();
 }
 
-void DropdownMenu::setToggleDropDimension(sf::Vector2f toggleDropDimension){
+void DropdownMenu::setToggleDropDimension(sf::Vector2f toggleDropDimension) {
     this->toggleDropDimension = toggleDropDimension;
     drawer();
 }
-void DropdownMenu::setToggleDropRadius(int toggleDropRadius){
+
+void DropdownMenu::setToggleDropRadius(int toggleDropRadius) {
     this->toggleDropRadius = toggleDropRadius;
     drawer();
 }
-void DropdownMenu::setToggleDropFont(sf::Font toggleDropFont){
-    this->toggleDropFont = toggleDropFont ;
-    drawer();
-}
-void DropdownMenu::setToggleDropFontSize(int toggleDropFontSize){
-    this->toggleDropFontSize = toggleDropFontSize;
-    drawer();
-}
-void DropdownMenu::setToggleDropFontColor(sf::Color toggleDropFontColor){
-    this->toggleDropFontColor = toggleDropFontColor;
-    drawer();
-}
-void DropdownMenu::setToggleDropBgColor(sf::Color toggleDropBgColor){
-    this->toggleDropBgColor = toggleDropBgColor;
-    drawer();
-}
-void DropdownMenu::setToggleDropOutLineThickness(int toggleDropOutLineThickness){
-    this->toggleDropOutLineThickness = toggleDropOutLineThickness;
-    drawer();
-}
-void DropdownMenu::setToggleDropOutLineColor(sf::Color toggleDropOutLineColor){
-    this->toggleDropOutLineColor = toggleDropOutLineColor;
-    drawer();
-}
-void DropdownMenu::setToggleDropPadding(sf::Vector2f toggleDropPadding){
-    this->toggleDropPadding = toggleDropPadding;
+
+void DropdownMenu::setToggleDropFont(sf::Font toggleDropFont) {
+    this->toggleDropFont = toggleDropFont;
     drawer();
 }
 
+void DropdownMenu::setToggleDropFontSize(int toggleDropFontSize) {
+    this->toggleDropFontSize = toggleDropFontSize;
+    drawer();
+}
+
+void DropdownMenu::setToggleDropFontColor(sf::Color toggleDropFontColor) {
+    this->toggleDropFontColor = toggleDropFontColor;
+    drawer();
+}
+
+void DropdownMenu::setToggleDropBgColor(sf::Color toggleDropBgColor) {
+    this->toggleDropBgColor = toggleDropBgColor;
+    drawer();
+}
+
+void DropdownMenu::setToggleDropOutLineThickness(int toggleDropOutLineThickness) {
+    this->toggleDropOutLineThickness = toggleDropOutLineThickness;
+    drawer();
+}
+
+void DropdownMenu::setToggleDropOutLineColor(sf::Color toggleDropOutLineColor) {
+    this->toggleDropOutLineColor = toggleDropOutLineColor;
+    drawer();
+}
+
+void DropdownMenu::setToggleDropPadding(sf::Vector2f toggleDropPadding) {
+    this->toggleDropPadding = toggleDropPadding;
+    drawer();
+}
 
 
 bool DropdownMenu::isMouseOverToggle(sf::RenderWindow &window) {
@@ -221,7 +244,7 @@ void DropdownMenu::toggleDropDown() {
     drawer();
 }
 
-bool DropdownMenu::isMouseOverItem(sf::RenderWindow& window) {
+bool DropdownMenu::isMouseOverItem(sf::RenderWindow &window) {
     if (isOpen) {
         for (int i = 0; i < dropList.size(); i++) {
             if (dropButton[i].isMouseOver(window)) {
@@ -235,12 +258,12 @@ bool DropdownMenu::isMouseOverItem(sf::RenderWindow& window) {
 
         }
         return false;
-    }
-    else{
+    } else {
         return false;
 
     }
 }
+
 std::string DropdownMenu::getChosenItemTxt() {
     return chosenText;
 }
@@ -253,6 +276,6 @@ void DropdownMenu::drawTo(sf::RenderWindow &window) {
         for (int i = 0; i < dropList.size(); i++)
             dropButton[i].drawTo(window);
     }
-    if(chosenText == "")
+    if (chosenText == "")
         window.draw(hint);
 }

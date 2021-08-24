@@ -9,9 +9,12 @@ private:
     std::string category;
     Money amount;
 public:
-    PieChart(const std::string&, Money);
+    PieChart(const std::string &, Money);
+
     std::string get_category();
+
     Money get_amount();
+
     double get_nrs_eq();
 };
 

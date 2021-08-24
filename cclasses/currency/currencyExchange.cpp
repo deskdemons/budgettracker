@@ -22,7 +22,7 @@ float currencyExchange::currencyConverter(float val, std::string fromCur, std::s
     initialValue = val;
     fromRate = getRate(fromCur);
     toRate = getRate(toCur);
-    nepVal = val/fromRate;   //temp NPR value to ease in exchanging
+    nepVal = val / fromRate;   //temp NPR value to ease in exchanging
     converted = nepVal * toRate;
     //std::cout<<"fromRate "<<fromRate<<"\ntorate "<<toRate<<"\nnepVal "<<nepVal<<std::endl;
     return converted;
@@ -30,9 +30,9 @@ float currencyExchange::currencyConverter(float val, std::string fromCur, std::s
 
 //It returns rate of the required 2 currencies compared to NPR
 float currencyExchange::getRate(std::string name) {
-    float fromRate,toRate;
+    float fromRate, toRate;
     for (int i = 0; i < info.size(); ++i) {
-        if (name == info[i][0]){
+        if (name == info[i][0]) {
             std::string temp = info[i][1];
             std::stringstream st(temp);
             float x = 0.0;
@@ -44,20 +44,18 @@ float currencyExchange::getRate(std::string name) {
 }
 
 // makes file and add data if needed
-bool currencyExchange::fileExistanceAssert()  {
+bool currencyExchange::fileExistanceAssert() {
     {
         const char *fname = "curRate.csv";
 
         std::fstream fs;
         fs.open(fname, std::ios::in);
 
-        if (!fs)
-        {
+        if (!fs) {
             // File doesnot exist
             //Create a file
             std::ofstream fout(fname);
-            if (fout)
-            {
+            if (fout) {
                 // If the creation is successful
                 fout << "NPR,1\n"
                         "USD,0.0084\n"
@@ -71,9 +69,7 @@ bool currencyExchange::fileExistanceAssert()  {
                 fout.close();
             }
             return false;
-        }
-        else
-        {
+        } else {
             return true;
         }
     }

@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BUDGETTRACKER_FOREX_PAGE_H
 #define BUDGETTRACKER_FOREX_PAGE_H
+
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include "../../gui/textbox/textbox.h"
@@ -10,7 +11,7 @@
 #include "../../gui/dropdown_menu/dropdownMenu.h"
 #include "../../gui/table/table.h"
 
-class ForexPage{
+class ForexPage {
     Table table;
     Topbar topbarForex;
     sf::Text output_1, output_2;
@@ -26,14 +27,22 @@ class ForexPage{
     std::string converted_value_str;
 
     Button convert_button;
+
     double stringToDouble(std::string s);
+
     std::string doubleToString(double num);
+
 public:
     ForexPage();
+
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
+
     void convert_value();
+
     void drawer();
+
     void drawTo(sf::RenderWindow &window);
 };
+
 #endif
 

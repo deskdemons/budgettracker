@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BUDGETTRACKER_DASHBOARD_PAGE_H
 #define BUDGETTRACKER_DASHBOARD_PAGE_H
+
 #include <SFML/Graphics.hpp>
 #include<iostream>
 
@@ -9,7 +10,7 @@
 #include "../../gui/gui_graphs/guiBarGraph.h"
 #include "../../gui/table/table.h"
 
-class DashboardPage{
+class DashboardPage {
     //forpiechart
     std::vector<double> piePercents;
     std::vector<sf::Color> pieColors;
@@ -28,8 +29,11 @@ class DashboardPage{
     Topbar topbarDashboard;
 public:
     DashboardPage();
+
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
+
     void drawer();
+
     void drawTo(sf::RenderWindow &window);
 };
 

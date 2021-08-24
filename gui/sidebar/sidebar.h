@@ -1,12 +1,13 @@
 #ifndef SIDEBAR_H
 #define SIDEBAR_H
+
 #include<iostream>
 #include <sstream>
 #include "../rounded_rectangle/roundedRectangle.h"
 #include "../button/button.h"
 
-class Sidebar{
-    std::string amt;    //amount of money user has as balance
+class Sidebar {
+    std::string sidebar_top_amount_string;    //amount of money user has as balance
     std::string cur;    //currency of that money. maybe usd or npr
     std::string balanceTxt; // "current balance" text.
     std::string chosenTab;  //name of chosen tab as a string. it can be used to make particular page visible
@@ -43,12 +44,14 @@ class Sidebar{
     Button logout;
 public:
     Sidebar();  //default constructor
-    std::string floatToString(float num) ;
+    std::string floatToString(float num);
+
     void setAmount(std::string amt);    // setter for user balance amount
     void setCurrency(std::string cur);  // setter for balance currency
     void unselectedTabMaker();  // used internally for making all tabs normal and making selected tab diff color
     bool isMouseOverTab(sf::RenderWindow &window);  // bool for is mouse over any of the tabs
     bool isMouseOverBackup(sf::RenderWindow &window);
+
     bool isMouseOverLogout(sf::RenderWindow &window);
 
     std::string getChosenTab(); // returns chosen tab as a string

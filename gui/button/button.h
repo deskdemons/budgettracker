@@ -7,12 +7,15 @@
 #include "../rounded_rectangle/roundedRectangle.h"
 #include "../banner/banner.h"
 
-class Button : public Banner{	//inherited from banner class. button and banner are almost similar except for which button is clickable
-											
+class Button
+        : public Banner {    //inherited from banner class. button and banner are almost similar except for which button is clickable
+
 public:
-	//since, it is inherited from banner, so all the setters of banner can be used for button
-	void setButtonText(std::string);
-	bool isMouseOver(sf::RenderWindow& window);	//is mouse over button
+    //since, it is inherited from banner, so all the setters of banner can be used for button
+    void setButtonText(std::string);
+
+    bool isMouseOver(sf::RenderWindow &window);    //is mouse over button
 
 };
+
 #endif

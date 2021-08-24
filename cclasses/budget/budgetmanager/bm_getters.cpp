@@ -12,22 +12,22 @@ std::string BudgetManager::get_file_name() {
     return file_name;
 }
 
-std::vector<std::string> BudgetManager::get_category_list(){
+std::vector<std::string> BudgetManager::get_category_list() {
     std::vector<std::string> category_list;
 
-    for (int i=0; i< all_budget.size();i++){
+    for (int i = 0; i < all_budget.size(); i++) {
         Budget temp = all_budget[i];
         std::string category = temp.get_category();
         // Check if that category is already in the list
         bool is_present = false;
-        for (int j =0; j< category_list.size(); j++){
-            if (category_list[j] == category){
+        for (int j = 0; j < category_list.size(); j++) {
+            if (category_list[j] == category) {
                 is_present = true;
                 break;
             }
         }
 
-        if (!is_present && temp.get_money().is_expense()){
+        if (!is_present && temp.get_money().is_expense()) {
             category_list.push_back(category);
         }
 
