@@ -6,12 +6,15 @@
 
 ServerConnection::ServerConnection() {
     // We initialize the server to run in port 4444 and listen to it
+    std::cout << "Server Constructed" << std::endl;
     port = 44444;
     listener.listen(port);
     listener.accept(socket);
 }
 
 void ServerConnection::run_server() {
+    std::cout << "Server Started" << std::endl;
+
     // Here we store the data that is in process of being received to an array of objects which in case is chars
     // as we are communication between server and client in chars
 
@@ -44,11 +47,13 @@ void ServerConnection::run_server() {
         else if (mode == 'r'){
             socket.receive(buffer_chars, sizeof (buffer_chars), received);
             if(received > 0) {
+                std::cout << "RECIEVED A CONNECTION IN SOCKET" << std::endl;
                 // G COMMAND [get]
                 // This command will send the data of budgets from server, i.e. for restoring the db in client side
                 if (buffer_chars[0] == 'g'){
                     // Send full csv file contents
                     text = read_full_budget_file();
+                    std::cout << text << std::endl;
                     socket.send(text.c_str(), text.length()+1);
                     // The mode will again be r after sending the data since,
                     // i.e. the server will reset back to its original configuration
@@ -89,8 +94,8 @@ void ServerConnection::run_server() {
 
 
                         // This is for the last line, since are close the loop once no "\n" are found in the code
-                        Budget temp_bud(full_string);
-                        budgets_from_client.push_back(temp_bud);
+//                        Budget temp_bud(full_string);
+//                        budgets_from_client.push_back(temp_bud);
 
                         // Update the server database with the data from the client
                         update_current_data(budgets_from_client);
@@ -112,7 +117,7 @@ void ServerConnection::run_server() {
 }
 
 std::string ServerConnection::read_full_budget_file() {
-    BudgetManager bdb(0);
+    BudgetManager bdb(1);
 
     std::vector<Budget> all_user_contents =  bdb.all_users();
 
@@ -135,7 +140,7 @@ void ServerConnection::update_current_data(std::vector<Budget> received_data) {
     // We need to make sure the file exists before trying to delete it
     file_exist_assert();
     int removed_status = std::remove("budget.csv");
-    if (removed_status != 1){
+    if (removed_status == 1){
         throw ("Old file could not be removed");
     }
     // write the initial line
@@ -146,6 +151,7 @@ void ServerConnection::update_current_data(std::vector<Budget> received_data) {
 
     // loop through the vector and add it to the file
     Budget empty_budget_object;
+    fout << "pk,user_id,title,category,datetime,currency"<<std::endl;
     int i;
     for (i = 0; i < received_data.size() - 1; i++) {
         fout << received_data[i].serialize(received_data[i].get_user_id()) << std::endl;

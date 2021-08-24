@@ -11,6 +11,7 @@
 #include "pages/see_report_page/see_report_page.h"
 #include "utility/utility.h"
 #include "networking/server/ServerConnection.h"
+#include "cclasses/budget/budgetmanager/budgetmanager.h"
 
 int main() {
     bool is_server = true;
@@ -113,8 +114,10 @@ int main() {
 
         }
     }else{
-        ServerConnection sc;
-        sc.run_server();
+            BudgetManager bdb(1);
+            ServerConnection seonnrver_c;
+            seonnrver_c.run_server();
+
     }
 
 }
