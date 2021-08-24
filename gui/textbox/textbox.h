@@ -44,19 +44,19 @@ public:
 	Textbox();	//default constructor with default values. you can see in cpp file
 	Textbox(sf::Vector2f position, sf::Vector2f dimension, int radius, std::string hintText ,sf::Font& hintFont, int hintFontSize, sf::Color hintFontColor,std::string dataType, sf::Font& font, int fontSize, int maxLen, sf::Color fontColor, sf::Color bgColor, int borderThickness, sf::Color borderColor, int paddingLeft, int paddingTop); //this is constructor //position, dimension, radius, font, size of txt, max length of txt, txtColor, bgColor, outLineThickness, outLineColor
 	
-	void setSelected(bool);	//sets true if given textbox is selected by using mouse click over the textbox
+	void setSelected(bool);	//sets true if given t_amount_text_box is selected by using mouse click over the t_amount_text_box
 	bool isFocus();	// returns boolean variable "selected"
 	void typedOn(sf::Event); // every event is send here and if event is keypress, then it does its internal work as defined
 	void deleteLastChar();	//deletes last char when backspace is pressed
 	void displayLogic(std::string disStr);	//logic to make secure datatype appear hidden as *
 	void inputLogic(int);	//converts ascii into char and injects character stream to string
-	bool isMouseOver(sf::RenderWindow& );//bool is mouse is over textbox or not
+	bool isMouseOver(sf::RenderWindow& );//bool is mouse is over t_amount_text_box or not
 
 	std::string getText();	// getter that returns the entered text so far
 
 	void setPosition(sf::Vector2f );	//setters. example: textbox1.setButtonText("submit");
-	void setDimension(sf::Vector2f );	//width, height of textbox in vector2f form
-	void setRadius(int);	//radius of curvature of cornor of textbox
+	void setDimension(sf::Vector2f );	//width, height of t_amount_text_box in vector2f form
+	void setRadius(int);	//radius of curvature of cornor of t_amount_text_box
 	void setHintText(std::string hintText);
 	void setHintFont(sf::Font&);	//hint text font
 	void setHintFontSize(int);	//hint text font size
@@ -64,14 +64,14 @@ public:
 	void setDataType(std::string);	// either "normal" or "secure",  default is normal if not mentioned
 	void setFont(sf::Font&);	//text font
 	void setFontSize(int);	//text font size
-	void setMaxLen(int);	//maximum length of characters that can be entered in textbox
+	void setMaxLen(int);	//maximum length of characters that can be entered in t_amount_text_box
 	void setFontColor(sf::Color);
-	void setBgColor(sf::Color);	//textbox bg color
-	void setOutLineThickness(int);	//textbox border thickness
-	void setOutLineColor(sf::Color);	//textbox border color
+	void setBgColor(sf::Color);	//t_amount_text_box bg color
+	void setOutLineThickness(int);	//t_amount_text_box border thickness
+	void setOutLineColor(sf::Color);	//t_amount_text_box border color
 	void setPadding(int, int);	//(left padding, right padding) for text inside button w.r.t border
 
-	void drawTo(sf::RenderWindow&); // renders textbox . example: textbox1.drawTo(window);
+	void drawTo(sf::RenderWindow&); // renders t_amount_text_box . example: textbox1.drawTo(window);
 };
 
 #endif

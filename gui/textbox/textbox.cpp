@@ -142,7 +142,7 @@ void Textbox::inputLogic(int charTyped) {
 			deleteLastChar();
 		}
 	}
-	// Set the textbox text:
+	// Set the t_amount_text_box text:
 	displayLogic(text.str());
 }
 
