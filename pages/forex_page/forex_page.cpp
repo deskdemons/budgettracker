@@ -94,50 +94,50 @@ ForexPage::ForexPage() {
     convert_button.setPosition(sf::Vector2f(740, 280));
     convert_button.setBgColor(sf::Color(157, 140, 241));
 
-//    std::vector<std::vector<std::string> > curr_exchange_list;
-//    std::vector<std::string> list_item;
-//    list_item.push_back("SN.");
-//    list_item.push_back("From");
-//    list_item.push_back("To");
-//    list_item.push_back("Rate");
-//    curr_exchange_list.push_back(list_item);
-//
-//    int sn_no = 0;
-//    for (int loop_index = 0; loop_index < v_cur.size(); loop_index++) {
-//        for (int loop_index_2 = 0; loop_index_2 < v_cur.size(); loop_index_2++) {
-//            if (v_cur[loop_index].getCurType() != v_cur[loop_index_2].getCurType()){
-//                sn_no ++;
-//                std::vector<std::string> temp;
-//                temp.push_back(doubleToString(sn_no));
-//                temp.push_back(v_cur[loop_index].getCurType());
-//                temp.push_back(v_cur[loop_index_2].getCurType());
-//
-//                currencyExchange exc;
-//                temp.push_back(
-//                        doubleToString(
-//                                exc.currencyConverter(
-//                                        1,
-//                                        v_cur[loop_index].getCurType(),
-//                                        v_cur[loop_index_2].getCurType()
-//                                        )));
-//                curr_exchange_list.push_back(temp);
-//            }
-//        }
-//    }
-//
-//    std::cout << "Size of table is " << curr_exchange_list.size() << std::endl;
-//
-//    table.setContents(curr_exchange_list);
-//    table.setTableBodyRowNum(4);
-//    table.setPosition(sf::Vector2f(220,400));
-//
-//    std::vector<int> col_width_vect;
-//    col_width_vect.push_back(50);
-//    col_width_vect.push_back(315);
-//    col_width_vect.push_back(315);
-//    col_width_vect.push_back(315);
-//    table.setColumnWidth(col_width_vect);
-//
+    std::vector<std::vector<std::string> > curr_exchange_list;
+    std::vector<std::string> list_item;
+    list_item.push_back("SN.");
+    list_item.push_back("From");
+    list_item.push_back("To");
+    list_item.push_back("Rate");
+    curr_exchange_list.push_back(list_item);
+
+    int sn_no = 0;
+    for (int loop_index = 0; loop_index < v_cur.size(); loop_index++) {
+        for (int loop_index_2 = 0; loop_index_2 < v_cur.size(); loop_index_2++) {
+            if (v_cur[loop_index].getCurType() != v_cur[loop_index_2].getCurType()){
+                sn_no ++;
+                std::vector<std::string> temp;
+                temp.push_back(doubleToString(sn_no));
+                temp.push_back(v_cur[loop_index].getCurType());
+                temp.push_back(v_cur[loop_index_2].getCurType());
+
+                currencyExchange exc;
+                temp.push_back(
+                        doubleToString(
+                                exc.currencyConverter(
+                                        1,
+                                        v_cur[loop_index].getCurType(),
+                                        v_cur[loop_index_2].getCurType()
+                                        )));
+                curr_exchange_list.push_back(temp);
+            }
+        }
+    }
+
+    std::cout << "Size of table is " << curr_exchange_list.size() << std::endl;
+
+    table.setContents(curr_exchange_list);
+    table.setTableBodyRowNum(4);
+    table.setPosition(sf::Vector2f(220,400));
+
+    std::vector<int> col_width_vect;
+    col_width_vect.push_back(75);
+    col_width_vect.push_back(315);
+    col_width_vect.push_back(315);
+    col_width_vect.push_back(315);
+    table.setColumnWidth(col_width_vect);
+
     drawer();
 }
 
@@ -195,13 +195,13 @@ void ForexPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                 convert_value();
                 output_2.setString(converted_value_str + " " + dropdown_currency_list_2.getChosenItemTxt());
             }
-//            else if(table.isMouseOverUp(window)){
-//                table.setTableLevelMinus();
-//                table.drawer();
-//            } else if(table.isMouseOverDown(window)){
-//                table.setTableLevelPlus();
-//                table.drawer();
-//            }
+            else if(table.isMouseOverUp(window)){
+                table.setTableLevelMinus();
+                table.drawer();
+            } else if(table.isMouseOverDown(window)){
+                table.setTableLevelPlus();
+                table.drawer();
+            }
             else {
                 t_amount_text_box.setSelected(false);
             }
@@ -239,7 +239,7 @@ void ForexPage::drawTo(sf::RenderWindow &window) {
     dropdown_currency_list.drawTo(window);
     dropdown_currency_list_2.drawTo(window);
 
-//    table.drawTo(window);
+    table.drawTo(window);
 }
 
 void ForexPage::convert_value() {

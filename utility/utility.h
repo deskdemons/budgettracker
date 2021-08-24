@@ -11,6 +11,6 @@ extern bool is_restoring_data;
 void backup_network_sa();
 
 void restore_network_sa();
-
+void update_global_user_with_latest_data();
 
 #endif //BUDGETTRACKER_UTILITY_H

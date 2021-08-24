@@ -30,7 +30,7 @@ class ForexPage {
 
     double stringToDouble(std::string s);
 
-    std::string doubleToString(double num);
+    static std::string doubleToString(double num);
 
 public:
     ForexPage();

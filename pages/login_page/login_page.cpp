@@ -18,45 +18,45 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                 password.typedOn(event);
             }
             break;
-        case sf::Event::MouseButtonPressed:
-            if (signupButton.isMouseOver(window)) {
-                std::cout << "hello world" << std::endl;
-                Util_SignupMode = true;
-            }
-            if (username.isMouseOver(window)) {
-                username.setSelected(true);
-                password.setSelected(false);
-            } else if (password.isMouseOver(window)) {
-                username.setSelected(false);
-                password.setSelected(true);
-            } else if (loginButton.isMouseOver(window)) {
-                uname = username.getText();
-                pass = password.getText();
-                if (uname != "" && pass != "") {
-                    loginButton.setOutLineThickness(3);
-                    loginButton.setOutLineColor(sf::Color::Red);
-                    Login l1(uname, pass);
-                    isAuth = l1.isGen;
-                    isWrong = !l1.isGen;
-                    if (l1.isGen) {
-                        globalUser = l1.u1;
+            case sf::Event::MouseButtonPressed:
+                if (signupButton.isMouseOver(window)) {
+                    std::cout << "hello world" << std::endl;
+                    Util_SignupMode = true;
+                }
+                if (username.isMouseOver(window)) {
+                    username.setSelected(true);
+                    password.setSelected(false);
+                } else if (password.isMouseOver(window)) {
+                    username.setSelected(false);
+                    password.setSelected(true);
+                } else if (loginButton.isMouseOver(window)) {
+                    uname = username.getText();
+                    pass = password.getText();
+                    if (uname != "" && pass != "") {
+                        loginButton.setOutLineThickness(3);
+                        loginButton.setOutLineColor(sf::Color::Red);
+                        Login l1(uname, pass);
+                        isAuth = l1.isGen;
+                        isWrong = !l1.isGen;
+                        if (l1.isGen) {
+                            globalUser = l1.u1;
+                            update_global_user_with_latest_data();
+                        }
                     }
+                } else if (backupButton.isMouseOver(window)) {
+                    if (!is_backing_up) {
+                        std::cout << "BACKUP LOGIN BTN PRESSED" << std::endl;
+                        backup_network_sa();
+                    }
+                } else if (restoreButton.isMouseOver(window)) {
+                    std::cout << "RESTORE LOGIN BTN PRESSED" << std::endl;
+                    is_restoring_data = false;
+                    restore_network_sa();
+                } else {
+                    username.setSelected(false);
+                    password.setSelected(false);
                 }
-            } else if (backupButton.isMouseOver(window)) {
-                if (!is_backing_up) {
-                    std::cout << "BACKUP LOGIN BTN PRESSED" << std::endl;
-                    is_backing_up = true;
-                    backup_network_sa();
-                }
-            } else if (restoreButton.isMouseOver(window)) {
-                std::cout << "RESTORE LOGIN BTN PRESSED" << std::endl;
-                is_restoring_data = false;
-                restore_network_sa();
-            } else {
-                username.setSelected(false);
-                password.setSelected(false);
-            }
-            break;
+                break;
     }
 }
 
