@@ -2,6 +2,7 @@
 #define BUDGETTRACKER_SERVERCONNECTION_H
 
 #include "SFML/Network.hpp"
+#include "../../cclasses/budget/budget.h"
 
 class ServerConnection {
 private:

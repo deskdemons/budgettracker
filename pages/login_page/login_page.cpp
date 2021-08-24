@@ -45,6 +45,17 @@ void LoginPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                     std::cout<<"username:" <<username.getText()<<std::endl;
                     std::cout<<"password:" <<password.getText()<<std::endl;
                 }
+                else if(backupButton.isMouseOver(window)){
+                    if(!is_backing_up){
+                        std::cout<< "BACKUP LOGIN BTN PRESSED" << std::endl;
+                        is_backing_up = true;
+                        backup_network_sa();
+                    }
+                } else if(restoreButton.isMouseOver(window)){
+                    std::cout<< "RESTORE LOGIN BTN PRESSED" << std::endl;
+                    is_restoring_data = false;
+                    restore_network_sa();
+                }
                 else{
                     username.setSelected(false);
                     password.setSelected(false);
@@ -129,8 +140,19 @@ void LoginPage::drawTo(sf::RenderWindow &window){
     username.drawTo(window);
     password.drawTo(window);
     loginButton.drawTo(window);
+
+    if(is_backing_up){
+        backupButton.setButtonText("Backed Up!");
+        backupButton.setPadding(22,0);
+    }
+
     backupButton.drawTo(window);
     signupButton.drawTo(window);
+
+    if(is_restoring_data){
+        restoreButton.setButtonText("Restored!");
+        restoreButton.setPadding(22,0);
+    }
     restoreButton.drawTo(window);
     if (isWrong == true){
         wrongCredentials.drawTo(window);
