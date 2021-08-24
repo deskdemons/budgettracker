@@ -54,6 +54,8 @@ int main() {
                             std::cout<<"cout: backup button clicked"<<std::endl;
                         }
                         else if(s1.isMouseOverLogout(window)){
+                            l1.setTextBoxEmpty();
+                            l1.setIsAuth(false);
                             std::cout<<"cout: logout button clicked"<<std::endl;
                         }
                     }

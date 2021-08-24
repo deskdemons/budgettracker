@@ -30,6 +30,9 @@ public:
 
     bool isLoggedIn();
 
+    //for logout logic
+    void setIsAuth(bool isAuthVal);
+    void setTextBoxEmpty();
     void drawer();  //should contain logic of drawing stuffs
     void drawTo(sf::RenderWindow &window);
 

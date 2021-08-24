@@ -54,6 +54,8 @@ public:
 
 	std::string getText();	// getter that returns the entered text so far
 
+	void setMakeTextboxEmpty();
+
 	void setPosition(sf::Vector2f );	//setters. example: textbox1.setButtonText("submit");
 	void setDimension(sf::Vector2f );	//width, height of textbox in vector2f form
 	void setRadius(int);	//radius of curvature of cornor of textbox

@@ -58,6 +58,12 @@ bool LoginPage::isLoggedIn() {
     return isAuth;
 }
 
+void LoginPage::setTextBoxEmpty(){
+       username.setMakeTextboxEmpty();
+       password.setMakeTextboxEmpty();
+       drawer();
+}
+
 void LoginPage::drawer() {
     loginPageShowBox.setBgColor(sf::Color::Black);
     loginPageShowBox.setFontColor(sf::Color::White);
@@ -122,6 +128,10 @@ void LoginPage::drawer() {
     restoreButton.setRadius(10);
     restoreButton.setFontColor(sf::Color::White);
     restoreButton.setButtonText("Restore");
+}
+
+void LoginPage::setIsAuth(bool isAuthVal){
+    this->isAuth = isAuthVal;
 }
 
 void LoginPage::drawTo(sf::RenderWindow &window){

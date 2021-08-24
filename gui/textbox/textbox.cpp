@@ -167,6 +167,12 @@ std::string Textbox::getText() {
 	return text.str();
 }
 
+void Textbox::setMakeTextboxEmpty(){
+    text.str("");
+    secureText.str("");
+    displayLogic(text.str());
+    setSelected(false);
+}
 
 void Textbox::setPosition(sf::Vector2f position) {
 	this->position = position;
