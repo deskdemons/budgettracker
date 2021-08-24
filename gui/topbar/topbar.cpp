@@ -37,6 +37,7 @@ void Topbar::drawer(){
 }
 
 void Topbar::drawTo(sf::RenderWindow& window) {
+    setUsername(globalUser.username);
     b1.drawTo(window);
     b2.drawTo(window);
     window.draw(userShape);
