@@ -14,19 +14,6 @@
 #include "networking/client/ClientConnection.h"
 #include "cclasses/budget/budgetmanager/budgetmanager.h"
 
-void data_update(){
-    if(!is_backing_up){
-        is_backing_up = true;
-        ClientConnection cc;
-        cc.update_with_data_from_server();
-    }
-}
-
-void my_code_to_server(){
-    ClientConnection cc;
-    BudgetManager bdb(1);
-    cc.send_to_server(bdb.all_users());
-}
 
 int main() {
     bool is_server = false;
@@ -73,8 +60,7 @@ int main() {
                             }
                             else if(s1.isMouseOverBackup(window)){
                                 std::cout<<"cout: backup button clicked"<<std::endl;
-                                data_update();
-
+                                backup_network_sa();
                             }
                             else if(s1.isMouseOverLogout(window)){
                                 std::cout<<"cout: logout button clicked"<<std::endl;
