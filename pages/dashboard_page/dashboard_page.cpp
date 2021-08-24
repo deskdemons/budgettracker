@@ -12,18 +12,23 @@ void DashboardPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
         case sf::Event::TextEntered:
            // drawer();
             //code
+            drawer();
             break;
         case sf::Event::MouseButtonPressed:
             //code
-            //drawer();
+
+            drawer();
             break;
     }
 }
 
 void DashboardPage::drawer() {
+    //top bar
     topbarDashboard.setViewText("Dashboard Page");
+    //piechart
     std::cout<<globalUser.username<<std::endl;
     topbarDashboard.setUsername(globalUser.username);
+
 }
 
 void DashboardPage::drawTo(sf::RenderWindow &window) {
