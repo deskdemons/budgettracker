@@ -17,6 +17,8 @@ class ForexPage {
     sf::Text output_1, output_2;
     sf::Text text_amount, text_from, text_to, text_table_title, t_amount_text_box_warning;
     RoundedRectangle rounded_rectangle;
+    sf::RectangleShape dropdownButtonShape, dropdownButtonShape2;
+    sf::Texture dropdownButtonTexture;
     sf::Font font;
     Textbox t_amount_text_box;
     DropdownMenu dropdown_currency_list, dropdown_currency_list_2;

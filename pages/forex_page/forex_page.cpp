@@ -35,18 +35,18 @@ ForexPage::ForexPage() {
     text_to.setFillColor(sf::Color::Black);
 
     output_1.setString("");
-    output_1.setPosition(250, 240);
+    output_1.setPosition(500, 230);
     output_1.setCharacterSize(20);
     output_1.setFont(font);
     output_1.setFillColor(sf::Color::Black);
 
     output_2.setString("");
-    output_2.setPosition(250, 280);
+    output_2.setPosition(500, 270);
     output_2.setCharacterSize(40);
     output_2.setFont(font);
     output_2.setFillColor(sf::Color::Black);
 
-    rounded_rectangle.setPosition(sf::Vector2f(220, 210));
+    rounded_rectangle.setPosition(sf::Vector2f(470, 200));
     rounded_rectangle.setDimension(sf::Vector2f(500, 180));
     rounded_rectangle.setBgColor(sf::Color::White);
     rounded_rectangle.setOutLineColor(sf::Color::Black);
@@ -56,18 +56,32 @@ ForexPage::ForexPage() {
     dropdown_currency_list.setDropItemDimension(sf::Vector2f(250, 30));
     dropdown_currency_list.setToggleDropDimension(sf::Vector2f(50, 50));
     dropdown_currency_list.setToggleDropBgColor(sf::Color::White);
+    dropdown_currency_list.setToggleDropFontColor(sf::Color::White);
     dropdown_currency_list.setToggleDropFontSize(40);
     dropdown_currency_list.setRadius(5);
     dropdown_currency_list.setToggleDropRadius(5);
+
+    dropdownButtonTexture.loadFromFile("img/dropdownarrowicon1.png");
+    dropdownButtonShape.setFillColor(sf::Color::White);
+    dropdownButtonShape.setSize(sf::Vector2f(50, 50));
+    dropdownButtonShape.setPosition(sf::Vector2f(790,120));
+    dropdownButtonShape.setTexture(&dropdownButtonTexture);
+
 
     dropdown_currency_list_2.setPosition(sf::Vector2f(920, 120));
     dropdown_currency_list_2.setDimension(sf::Vector2f(250, 50));
     dropdown_currency_list_2.setDropItemDimension(sf::Vector2f(250, 30));
     dropdown_currency_list_2.setToggleDropDimension(sf::Vector2f(50, 50));
     dropdown_currency_list_2.setToggleDropBgColor(sf::Color::White);
+    dropdown_currency_list_2.setToggleDropFontColor(sf::Color::White);
     dropdown_currency_list_2.setToggleDropFontSize(40);
     dropdown_currency_list_2.setRadius(5);
     dropdown_currency_list_2.setToggleDropRadius(5);
+
+    dropdownButtonShape2.setFillColor(sf::Color::White);
+    dropdownButtonShape2.setSize(sf::Vector2f(50, 50));
+    dropdownButtonShape2.setPosition(sf::Vector2f(1170, 120));
+    dropdownButtonShape2.setTexture(&dropdownButtonTexture);
 
     dropdown_currency_list.setHintText("From Currency");
     dropdown_currency_list_2.setHintText("To Currency");
@@ -234,10 +248,12 @@ void ForexPage::drawTo(sf::RenderWindow &window) {
     window.draw(output_1);
     window.draw(output_2);
 
-    convert_button.drawTo(window);
+    //convert_button.drawTo(window);
 
     dropdown_currency_list.drawTo(window);
     dropdown_currency_list_2.drawTo(window);
+    window.draw(dropdownButtonShape);
+    window.draw(dropdownButtonShape2);
 
     table.drawTo(window);
 }
