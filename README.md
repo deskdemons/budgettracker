@@ -2,25 +2,39 @@
 
 In today&#39;s competitive world, there is a race for existence in which those who have the will to come forward succeed. The project is a bridge between theoretical and practical work. We have been immeasurably enriched to be working under the supervision of Daya Sagar Baral sir for providing us with the opportunity to do this project and giving all the guidance required to ignite this project. We are extremely grateful to him for providing us with nice support and guidance. We are highly indebted to our teacher Ganesh Gautam for his guidance on the basics of programming. Although the exact contents of his teachings may not be applied to this project, the fundamental concepts learned during his lectures and classes were essential for completing this project. At times, our studies carried out quite a burden to our parents, friends and our classmates, hence we would like to thank them for their understanding and support. We are also extremely thankful to the Pulchowk campus for providing us with the opportunity to do this project. We are extremely privileged to have access to a massive source of documentation and tutorial on the internet. Google and YouTube were extremely valuable sources of guidance for providing a direction to this project. They have enabled us to broaden the horizon of the limits of our ideas. Without the internet, we could not imagine transforming our software idea into a reality. Last but not the least, we would like to thank everyone who is involved in the project directly or indirectly.
 
+---
+
 **Abstract**
 
+---
+
+
 **Table of Contents**
+
+---
+
 
 **Objectives**
 
 The main objectives of this project are: - To implement the object-oriented methodology and make its concept clear, - To explore the features of C++ language, - To be able to use header files to increase the reusability of our code. - To be familiar with using external libraries and learn to build graphics software using libraries such as SFML, - To build an attractive UI for the users to help them interact easily with our software.
 
+---
+
+
 **Introduction**
 
 Set-Bud-Get is a simple software to track the budget and expenses of a user to help them manage their finance and prevent them from making financial mistakes. It is a cross-platform software for users using either Windows or Linux.
 
-A user can plan his budget while tracking his/her expenses and income. We also provide information about their expense pattern in the form of bar diagrams and pie charts. Users can log in to their respective accounts and add, edit, delete their entries. We are also including a feature for users to see the rate of foreign currencies and convert from one currency to another.
+A user can plan his budget while tracking his/her expenses and income. We will also provide information about their expense pattern in the form of bar diagrams and pie charts. Users can log in to their respective accounts and add, edit, delete their entries. We are also including a feature for users to see the rate of foreign currencies and convert from one currency to another.
 
 Only authorized users can access the software as they will be required to log in with a password to access the data within it. Users can choose not to add a password if they so desire. The data [Password] will be encrypted, such that no unauthorized users can access the software.
 
 We have provided a nice UI for the user so that they can easily navigate through our app. Users will be able to see their monthly expenses in a pie chart according to their expense category and their yearly expense in the form of a bar diagram to compare their monthly expenses. Users can easily view their financial budget reports in form of CSV files format. Users are also able to choose the currency they desire while registering and exporting their transactions.
 
 We have also implemented a backup and restore function that backs up the data and restores the data from the server. The server needs to run the server binary and have a port available for the client to have a TCP connection with. With this, users will then be able to back up their data to a server device and the client would be able to restore using that data.
+
+---
+
 
 **Application**
 
@@ -30,13 +44,25 @@ Initially, Set-Bud-Get software is going to have limited scope. Since currently 
 
 The software can also be further expanded such that multiple users can simultaneously edit the same data. Hence, it would be more useful for larger institutions. Although initially this project will have limited scope, however, the prime aspect of this project will be education thus, it is a good initial step.
 
+---
+
+
 **Literature survey**
+
+---
+
 
 **Methodology**
 
 This project is going to be implemented in C++ 98 standard, using the Simple and Fast Multimedia Library for GUI purposes. CLion is the IDE that is going to be used. For the version control system, git will be used to manage and track the changes to the codebase. The code repository will be stored in GitHub, via which the team will collaborate. This project is intended to run in multiple operating systems, i.e., Windows and Linux, hence the two binaries will be made, each for its respective platform. The project has been divided into small modules, where each team member will handle his or her module, although all team members understand the entire codebase. The main module that handles the data storage is planned to be implemented initially. The data interaction will be handled through the class, where there will be a member function that will filter and retrieve the data from the storage.
 
+---
+
+
 **Implementation**
+
+---
+
 
 **Description**
 
@@ -50,21 +76,35 @@ Users can also back it up to a server and restore their data from it if the serv
 
 Thus, this program simply keeps track of the budget enabling the user to add and append expenses and see reports based on the user&#39;s monthly and yearly financial transactions accompanied by additional features like a currency converter, back up to and restore from the server.
 
-**Block Diagram**
+---
 
-![](RackMultipart20210825-4-72pd0z_html_9713e6c8a035f11d.png)
+
+**Block Diagram**
+![SetBudGet-Client Server Communication](https://user-images.githubusercontent.com/69170305/130853944-83872acc-61a4-4b44-8a92-337348a84168.png)
+![SetBudGet-Flow-chart app](https://user-images.githubusercontent.com/69170305/130853971-581351cc-ef55-4049-9f29-53fa8b0596e8.png)
+
+---
+
 
 **Results**
 
+---
+
+
 **Screenshots**
+
+---
+
 
 **Login Screen:**
 
-![](RackMultipart20210825-4-72pd0z_html_bb1bad94ac275021.png)
 
 **Login Screen (Wrong authentication)**
 
 ![](RackMultipart20210825-4-72pd0z_html_737bdb639535e6b5.png)
+
+---
+
 
 **Signup Page**
 
@@ -74,6 +114,9 @@ Thus, this program simply keeps track of the budget enabling the user to add and
 
 ![](RackMultipart20210825-4-72pd0z_html_a556a9e4edbdfa07.png)
 
+---
+
+
 **Adding Expense:**
 
 ![](RackMultipart20210825-4-72pd0z_html_85e08b840dba493.png)
@@ -81,6 +124,9 @@ Thus, this program simply keeps track of the budget enabling the user to add and
 **Adding Income:**
 
 ![](RackMultipart20210825-4-72pd0z_html_c7281f6a5f21f54d.png)
+
+---
+
 
 **Dashboard Page:**
 
@@ -90,12 +136,18 @@ Thus, this program simply keeps track of the budget enabling the user to add and
 
 ![](RackMultipart20210825-4-72pd0z_html_f4c9fa1495b54e0a.png)
 
+---
+
+
 **See Report [Monthly]**
  ![](RackMultipart20210825-4-72pd0z_html_1fe782f15bf1cf32.png)
 
 **See Report [Yearly]:**
 
 ![](RackMultipart20210825-4-72pd0z_html_6fc8d11fd0d3987a.png)
+
+---
+
 
 **Problems Faced and solutions**
 
@@ -114,13 +166,22 @@ We were able to overcome the hurdles we experienced while developing this softwa
 
 Our journey was filled with ups and downs but we kept our cool and completed this project successfully.
 
+---
+
+
 **Limitations and future enhancements**
 
 As we know a system can never reach perfection, Our program by any means is not free of bugs and loopholes but we have tried our best to minimize it. There are a lot of shortcomings in our projects like not being able to connect to 2 users at the same time, slow startup, simple encryption of passwords, and a lot more. The following points summarize the project&#39;s limitations and likely improvements:
 
 -
 
+---
+
+
 **Conclusion and recommendations**
+
+---
+
 
 **References**
 
