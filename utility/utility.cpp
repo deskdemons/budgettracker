@@ -8,7 +8,12 @@ User globalUser;
 void update_global_user_with_latest_data(){
     std::cout<<"update_global_user_with_latest_data run" << std::endl;
     BudgetManager bdb(globalUser.userId);
-    globalUser.balance = bdb.get_total_for_current_user().get_nrs_eq_amt();
+    Money total_for_global_user = bdb.get_total_for_current_user();
+    if (total_for_global_user.is_expense()){
+        globalUser.balance = -1 * total_for_global_user.get_nrs_eq_amt();
+    } else {
+        globalUser.balance = total_for_global_user.get_nrs_eq_amt();
+    }
     std::cout<<"update_global_user_with_latest_data completed with"<< globalUser.balance << std::endl;
 }
 
