@@ -16,11 +16,13 @@ Signup::Signup(std::string u ,std::string p,std::string f):username(u),password(
     if (valid){
         addDataToCsv(username,password,fullname);
         isDone = true;
+        wrongUsername = false;
         //Login l;
     }
     else{
         std::cout<<"\nPlease Try Different Username.\n\n";
         wrongUsername = true;
+        isDone = false;
         //Signup s;
     }
 }
@@ -40,7 +42,7 @@ Signup::Signup()
     }
     else{
         std::cout<<"\nPlease Try Different Username.\n\n";
-        Signup s;
+//        Signup s;
     }
 }
 
