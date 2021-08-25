@@ -19,68 +19,68 @@ void SignupPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                 password.typedOn(event);
             }
             break;
-        case sf::Event::MouseButtonPressed:
-            if (fullname.isMouseOver(window)) {
-                fullname.setSelected(true);
-                username.setSelected(false);
-                password.setSelected(false);
-            } else if (username.isMouseOver(window)) {
-                fullname.setSelected(false);
-                username.setSelected(true);
-                password.setSelected(false);
-            } else if (password.isMouseOver(window)) {
-                fullname.setSelected(false);
-                username.setSelected(false);
-                password.setSelected(true);
-            } else if (loginButton.isMouseOver(window)) {
-                std::cout << "Login Button Pressed" << std::endl;
-                Util_SignupMode = false;
-            } else if (signupButton.isMouseOver(window)) {
-                uname = username.getText();
-                pass = password.getText();
-                fname = fullname.getText();
-                signupButton.setOutLineThickness(3);
-                signupButton.setOutLineColor(sf::Color::Red);
-                Signup s(uname, pass, fname);
-                isWrongUsername = s.wrongUsername;
-                isUserMade = s.isDone;
-                if (isUserMade == true) {
-                    signupButton.setOutLineColor(sf::Color::Blue);
-                }
-                else if(signupButton.isMouseOver(window)){
-                    signupButton.setOutLineThickness(3);
-                    signupButton.setOutLineColor(sf::Color::Red);
-                    std::string full = fullname.getText();
+            case sf::Event::MouseButtonPressed:
+                if (fullname.isMouseOver(window)) {
+                    fullname.setSelected(true);
+                    username.setSelected(false);
+                    password.setSelected(false);
+                } else if (username.isMouseOver(window)) {
+                    fullname.setSelected(false);
+                    username.setSelected(true);
+                    password.setSelected(false);
+                } else if (password.isMouseOver(window)) {
+                    fullname.setSelected(false);
+                    username.setSelected(false);
+                    password.setSelected(true);
+                } else if (loginButton.isMouseOver(window)) {
+                    std::cout << "Login Button Pressed" << std::endl;
+                    Util_SignupMode = false;
+                } else if (signupButton.isMouseOver(window)) {
                     uname = username.getText();
                     pass = password.getText();
                     fname = fullname.getText();
-                    Signup s(uname,pass,full);
+                    signupButton.setOutLineThickness(3);
+                    signupButton.setOutLineColor(sf::Color::Red);
+                    Signup s(uname, pass, fname);
                     isWrongUsername = s.wrongUsername;
-
-                    if(s.isDone){
-                        std::cout << "TRUE"<< std::endl;
-                    } else{
-                        std::cout << "False"<< std::endl;
-                    }
-
                     isUserMade = s.isDone;
-                    if (isUserMade == true){
+                    if (isUserMade == true) {
                         signupButton.setOutLineColor(sf::Color::Blue);
                     }
-                    std::cout<<"username:" <<full<<std::endl;
-                    std::cout<<"username:" <<username.getText()<<std::endl;
-                    std::cout<<"password:" <<password.getText()<<std::endl;
-                }
-                else{
-                    fullname.setSelected(false);
-                    username.setSelected(false);
-                    password.setSelected(false);
-                }
-                break;
+                    else if(signupButton.isMouseOver(window)){
+                        signupButton.setOutLineThickness(3);
+                        signupButton.setOutLineColor(sf::Color::Red);
+                        std::string full = fullname.getText();
+                        uname = username.getText();
+                        pass = password.getText();
+                        fname = fullname.getText();
+                        Signup s(uname,pass,full);
+                        isWrongUsername = s.wrongUsername;
 
+                        if(s.isDone){
+                            std::cout << "TRUE"<< std::endl;
+                        } else{
+                            std::cout << "False"<< std::endl;
+                        }
+
+                        isUserMade = s.isDone;
+                        if (isUserMade == true){
+                            signupButton.setOutLineColor(sf::Color::Blue);
+                        }
+                        std::cout<<"username:" <<full<<std::endl;
+                        std::cout<<"username:" <<username.getText()<<std::endl;
+                        std::cout<<"password:" <<password.getText()<<std::endl;
+                    }
+                    else{
+                        fullname.setSelected(false);
+                        username.setSelected(false);
+                        password.setSelected(false);
+                    }
+                    break;
+
+                }
     }
 }
-
 bool SignupPage::isLoggedIn() {
     return false;
 }

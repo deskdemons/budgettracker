@@ -3,9 +3,9 @@ project(BudgetTracker)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(SFML_INCLUDE_DIR "C:/SDK/SFML-2.5.1/include")
-set(SFML_LIBRARY_DIR "C:/SDK/SFML-2.5.1/lib")
-set(SFML_DIR "C:/SDK/SFML-2.5.1/lib/cmake/SFML")
+set(SFML_INCLUDE_DIR "D:/clionSfml/SFML-2.5.1 64bit/include")
+set(SFML_LIBRARY_DIR "D:/clionSfml/SFML-2.5.1 64bit/lib")
+set(SFML_DIR "D:/clionSfml/SFML-2.5.1 64bit/lib/cmake/SFML")
 
 link_directories(SFML_LIBRARY_DIR)
 include_directories(SFML_INCLUDE_DIR)
