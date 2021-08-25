@@ -228,7 +228,7 @@ void SeeReportPage::valueAssigner(){        //should be called when page changes
             DateTime dtCurrent;
             DateTime dtBudget;
             dtBudget.deserialize(allDtVecBudgetBarG[i][j].get_datettime().getDateTime());
-            if(dtBudget.get_year() == dtCurrent.get_year()){
+            if(dtBudget.get_year() == dtCurrent.get_year() && allDtVecBudgetBarG[i][j].get_money().getType_eORi() == "e"){
                 vecBudgetBarG[i].push_back(allDtVecBudgetBarG[i][j]);
             }
         }

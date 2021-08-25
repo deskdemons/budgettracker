@@ -115,9 +115,9 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
         tableContents.push_back(rowHeader); //pushing header
 
         std::vector<std::string> colBody;
-        for(int i=0; i<vecBudget.size();i++){
+        for(int i=vecBudget.size()-1; i>0;i--){
             colBody.clear();
-            colBody.push_back(i_to_s(i+1));
+            colBody.push_back(i_to_s(vecBudget.size()-i));
             colBody.push_back(itemName[i]);
             colBody.push_back(dateAndTime[i]);
             colBody.push_back(dTS(moneyAmt[i]));
@@ -282,7 +282,7 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
             DateTime dtCurrent;
             DateTime dtBudget;
             dtBudget.deserialize(allDtVecBudgetBarG[i][j].get_datettime().getDateTime());
-            if(dtBudget.get_year() == dtCurrent.get_year()){
+            if(dtBudget.get_year() == dtCurrent.get_year() && allDtVecBudgetBarG[i][j].get_money().getType_eORi() == "e"){
                 vecBudgetBarG[i].push_back(allDtVecBudgetBarG[i][j]);
             }
         }
