@@ -171,6 +171,7 @@ void AddIncomePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
 
 void AddIncomePage::drawer() {
     topbarAddExpense.setViewText("Add Income");
+    topbarAddExpense.setUsername(globalUser.username);
     topbarAddExpense.drawer();
 }
 

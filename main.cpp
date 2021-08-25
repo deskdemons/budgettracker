@@ -48,20 +48,7 @@ int main() {
                 } else if (Util_SignupMode == true) {
                     su1.eventHandler(event, window);
                 } else {
-                    if (event.type == sf::Event::MouseButtonPressed) {
-                        if (s1.isMouseOverTab(window)) {
-                            //nothing needs to be done
-                        }
-                        else if(s1.isMouseOverBackup(window)){
-                            std::cout<<"cout: backup button clicked"<<std::endl;
-                            backup_network_sa();
-                        }
-                        else if(s1.isMouseOverLogout(window)){
-                            l1.setTextBoxEmpty();
-                            l1.setIsAuth(false);
-                            std::cout<<"cout: logout button clicked"<<std::endl;
-                        }
-                    }
+
                     if(openedTab != "Dashboard"){
                         if(d1.dashState() == true){
                             std::cout<<"if: making dashboard false"<<std::endl;
@@ -98,6 +85,22 @@ int main() {
                         }
 
                         sr1.eventHandler(event, window);
+                    }
+                    if (event.type == sf::Event::MouseButtonPressed) {
+                        if (s1.isMouseOverTab(window)) {
+                            //nothing needs to be done
+                        }
+                        else if(s1.isMouseOverBackup(window)){
+                            std::cout<<"cout: backup button clicked"<<std::endl;
+                            backup_network_sa();
+                        }
+                        else if(s1.isMouseOverLogout(window)){
+                            l1.setTextBoxEmpty();
+                            l1.setIsAuth(false);
+                            d1.dashBool(false);
+                            sr1.setReportBool(false);
+                            std::cout<<"cout: logout button clicked"<<std::endl;
+                        }
                     }
                 }
             }

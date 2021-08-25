@@ -203,6 +203,7 @@ void AddExpensePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
 
 void AddExpensePage::drawer() {
     topbarAddExpense.setViewText("Add Expense");
+    topbarAddExpense.setUsername(globalUser.username);
     topbarAddExpense.drawer();
 }
 
