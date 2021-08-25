@@ -65,6 +65,11 @@ int main() {
                             d1.dashBool(false);
                         }
                     }
+                    if(openedTab != "See Report"){
+                        if(sr1.seeReportBool() == true){
+                            sr1.setReportBool(false);
+                        }
+                    }
                     if(openedTab == "Dashboard"){
                         std::cout<<"should run continuously"<<std::endl;
                         if(d1.dashState() == false){
@@ -86,6 +91,11 @@ int main() {
                         f1.eventHandler(event, window);
                     }
                     else if(openedTab == "See Report"){
+                        if(sr1.seeReportBool() == false){
+                            sr1.valueAssigner();
+                            sr1.drawer();
+                            sr1.setReportBool(true);
+                        }
                         sr1.eventHandler(event, window);
                     }
                 }
