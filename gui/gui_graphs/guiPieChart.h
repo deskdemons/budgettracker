@@ -1,8 +1,10 @@
 #ifndef GUIPIECHART_H
 #define GUIPIECHART_H
+
 #include<iostream>
 #include <SFML/Graphics.hpp>
 #include "../banner/banner.h"
+
 #define PI 3.14159265
 
 class GuiPieChart {
@@ -28,27 +30,42 @@ class GuiPieChart {
 
 public:
     GuiPieChart();  //default constructor
-    GuiPieChart(double radius, sf::Vector2f centerPosition, std::vector<sf::Color> colors, std::vector<double> percentages, std::vector<std::string> labelsText, sf::Vector2f labelPosition, sf::Vector2f labelBoxDimension, int labelVerticalSpacing, int labelBoxRadius, sf::Font& labelFont, int labelFontSize, sf::Color labelFontColor, int labelBoxOutLineThickness, sf::Color labelBoxOutLineColor); //non default constructor
+    GuiPieChart(double radius, sf::Vector2f centerPosition, std::vector<sf::Color> colors,
+                std::vector<double> percentages, std::vector<std::string> labelsText, sf::Vector2f labelPosition,
+                sf::Vector2f labelBoxDimension, int labelVerticalSpacing, int labelBoxRadius, sf::Font &labelFont,
+                int labelFontSize, sf::Color labelFontColor, int labelBoxOutLineThickness,
+                sf::Color labelBoxOutLineColor); //non default constructor
     //below are corresponding setter of above variable. you can easily see the parameter names
     void setRadius(double radius);
+
     void setPosition(sf::Vector2f centerPosition);  // position of center of pie-chart
-    void setColor( std::vector<sf::Color> colorsVector);   //example: std::vector<std::string> col = ({sf::Color::Red, sf::Color(144,55,22)});. have to use push_back to make vector in c++98
+    void setColor(
+            std::vector<sf::Color> colorsVector);   //example: std::vector<std::string> col = ({sf::Color::Red, sf::Color(144,55,22)});. have to use push_back to make vector in c++98
     void setPercentages(std::vector<double> percentages);   //example: std::vector<double> per = ({60,40});
 
-    void setLabelTexts(std::vector<std::string> labelTexts);    //example: std::vector<std::string> labtxt = ({"clothing","bus fair"});
+    void setLabelTexts(
+            std::vector<std::string> labelTexts);    //example: std::vector<std::string> labtxt = ({"clothing","bus fair"});
     void setLabelPosition(sf::Vector2f labelPosition);  //absolute position of a bunch of label texts
     void setLabelBoxDimension(sf::Vector2f labelBoxDimension);
+
     void setLabelVerticalSpacing(int labelVerticalSpacing);
+
     void setLabelBoxRadius(int labelBoxRadius);
-    void setLabelFont(sf::Font& labelFont);
+
+    void setLabelFont(sf::Font &labelFont);
+
     void setLabelFontSize(int labelFontSize);
+
     void setLabelFontColor(sf::Color labelFontColor);
+
     void setLabelBoxOutLineThickness(int labelBoxOutlineThickness);
+
     void setLabelBoxOutlineColor(sf::Color labelBoxOutLineColor);
 
 
     void drawer();
-    void drawTo(sf::RenderWindow&);
+
+    void drawTo(sf::RenderWindow &);
 };
 
 

@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BUDGETTRACKER_DASHBOARD_PAGE_H
 #define BUDGETTRACKER_DASHBOARD_PAGE_H
+
 #include <SFML/Graphics.hpp>
 #include<iostream>
 
@@ -20,6 +21,7 @@ class DashboardPage{
     std::vector<double> moneyAmt;
     //std::vector<double> eqMoneyAmt;//for charts
     std::vector<std::string> moneyCurrency;
+
 
     //forpiechart
     std::vector<double> piePercents;
@@ -57,7 +59,9 @@ class DashboardPage{
     Topbar topbarDashboard;
 public:
     DashboardPage();
+
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
+
     void valueAssigner();
 
     void dashBool(bool state);
@@ -65,7 +69,9 @@ public:
 
     std::vector<Budget> filterByMonth(std::vector<Budget> budgetOfUser, int month);
 
+
     void drawer();
+
     void drawTo(sf::RenderWindow &window);
 };
 

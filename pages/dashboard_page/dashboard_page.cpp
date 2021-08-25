@@ -30,9 +30,9 @@ DashboardPage::DashboardPage() {
 }
 
 void DashboardPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
-   // std::cout<<"gloabal solti"<<globalUser.userId<<std::endl<<globalUser.username<<std::endl<<globalUser.fullname<<std::endl<<globalUser.balance<<std::endl;
+    // std::cout<<"gloabal solti"<<globalUser.userId<<std::endl<<globalUser.username<<std::endl<<globalUser.fullname<<std::endl<<globalUser.balance<<std::endl;
     //drawer();
-    switch(event.type){
+    switch (event.type) {
         case sf::Event::TextEntered:
             //code
             //drawer();
@@ -331,7 +331,9 @@ void DashboardPage::drawer() {
     std::cout<<"drawer of dashboard"<<std::endl;
     //top bar
     topbarDashboard.setViewText("Dashboard Page");
+
     std::cout<<globalUser.username<<std::endl;
+
     topbarDashboard.setUsername(globalUser.username);
 
     //rounded rectangles

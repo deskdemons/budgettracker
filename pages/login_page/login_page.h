@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BUDGETTRACKER_LOGIN_PAGE_H
 #define BUDGETTRACKER_LOGIN_PAGE_H
+
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include "../../gui/textbox/textbox.h"
@@ -9,7 +10,7 @@
 #include "../../gui/rounded_rectangle/roundedRectangle.h"
 #include "../signup_page/signup_page.h"
 
-class LoginPage{
+class LoginPage {
     SignupPage s;
     bool isAuth, isWrong;
     std::string uname, pass;
@@ -37,4 +38,5 @@ public:
     void drawTo(sf::RenderWindow &window);
 
 };
+
 #endif //BUDGETTRACKER_LOGIN_PAGE_H

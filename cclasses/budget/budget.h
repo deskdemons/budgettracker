@@ -21,8 +21,8 @@ public:
 
     explicit Budget(const std::string &from_csv_line);
 
-    Budget(int id_input, int user_id_input, const std::string& item_name_input, const std::string& category_input,
-           const std::string& datetime_input, const std::string& amount_input);
+    Budget(int id_input, int user_id_input, const std::string &item_name_input, const std::string &category_input,
+           const std::string &datetime_input, const std::string &amount_input);
 
     void display_information();
 
@@ -41,6 +41,7 @@ public:
     std::string get_category();
 
     std::string serialize(int);
+
     std::string serialize();
 
     Money get_money();

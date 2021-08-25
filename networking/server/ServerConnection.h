@@ -2,6 +2,7 @@
 #define BUDGETTRACKER_SERVERCONNECTION_H
 
 #include "SFML/Network.hpp"
+#include "../../cclasses/budget/budget.h"
 
 class ServerConnection {
 private:
@@ -10,6 +11,7 @@ private:
     sf::TcpSocket socket;
 
     std::string read_full_budget_file();
+
     static void file_exist_assert();
 
 public:
@@ -19,7 +21,8 @@ public:
 
     // Getters and Setters for port variables
     int get_port() const;
-    void set_port( int );
+
+    void set_port(int);
 
     // Starts accepting and responding to connections
     // Server will not listen to any messages before we start run_server

@@ -25,16 +25,16 @@ std::string Budget::serialize(int current_user_id) {
 std::string Budget::serialize() {
     std::string temp;
     temp = integer_to_string_budget(id) +
-            "," +
-            integer_to_string_budget(user_id) +
-            "," +
-            item_name +
-            "," +
-            category +
-            "," +
-            datetime.getDateTime() +
-            "," +
-            amount.getMoney();
+           "," +
+           integer_to_string_budget(user_id) +
+           "," +
+           item_name +
+           "," +
+           category +
+           "," +
+           datetime.getDateTime() +
+           "," +
+           amount.getMoney();
     return temp;
 }
 

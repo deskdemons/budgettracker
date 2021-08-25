@@ -54,7 +54,8 @@ public:
     std::vector<std::string> get_category_list();
 
     // Graphs [Bar and Pie]
-    std::vector<BarGraph > get_graph_yearly_values();
+    std::vector<BarGraph> get_graph_yearly_values();
+
     std::vector<PieChart> get_graph_monthly_values();
 };
 

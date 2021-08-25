@@ -1,12 +1,13 @@
 #ifndef SFMLSIKDAI_TOPBAR_H
 #define SFMLSIKDAI_TOPBAR_H
+
 #include "../banner/banner.h"
 
-class Topbar{
+class Topbar {
 private:
 
 public:
-    Banner b1,b2;
+    Banner b1, b2;
     std::string uname;
     std::string viewName;
     sf::CircleShape userShape; //circle shape for user profile
@@ -16,8 +17,9 @@ public:
     void setUsername(std::string userName);
 
     void drawer();
+
     Topbar();// constructor which makes all the topBar when object is made
-    void drawTo(sf::RenderWindow&); // to Render in the window
+    void drawTo(sf::RenderWindow &); // to Render in the window
 };
 
 

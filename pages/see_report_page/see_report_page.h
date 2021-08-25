@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BUDGETTRACKER_SEE_REPORT_PAGE_H
 #define BUDGETTRACKER_SEE_REPORT_PAGE_H
+
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include "../../gui/textbox/textbox.h"
@@ -51,15 +52,20 @@ class SeeReportPage{
     Button monthly;
     Button yearly;
 
+
     Topbar topbarSeeReport;
 public:
     SeeReportPage();
+
     void eventHandler(sf::Event &event, sf::RenderWindow &window);
+
     void valueAssigner();
     std::vector<Budget> filterByMonth(std::vector<Budget> budgetOfUser, int month);
     void setReportBool(bool state);
     bool seeReportBool();
+
     void drawer();
+
     void drawTo(sf::RenderWindow &window);
 };
 

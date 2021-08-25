@@ -1,6 +1,6 @@
 #include "PieChart.h"
 
-PieChart::PieChart(const std::string& cat, Money money) {
+PieChart::PieChart(const std::string &cat, Money money) {
     category = cat;
     amount = money;
 }

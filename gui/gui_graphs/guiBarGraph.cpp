@@ -1,6 +1,8 @@
 #include "guiBarGraph.h"
 #include <sstream>
+
 #include<cmath>
+
 
 GuiBarGraph::GuiBarGraph() { //default constructor
     position = sf::Vector2f(100, 100);
@@ -17,7 +19,9 @@ GuiBarGraph::GuiBarGraph() { //default constructor
     length = val.size();
 
 
-    sf::Color arrCol[] = { sf::Color::Red,sf::Color::Green,sf::Color::Yellow,sf::Color::Blue,sf::Color::Magenta,sf::Color::Cyan,sf::Color::Black,sf::Color(235, 164, 52),sf::Color(52, 235, 168),sf::Color(201, 20, 126),sf::Color(69, 120, 230),sf::Color(219, 105, 39) };
+    sf::Color arrCol[] = {sf::Color::Red, sf::Color::Green, sf::Color::Yellow, sf::Color::Blue, sf::Color::Magenta,
+                          sf::Color::Cyan, sf::Color::Black, sf::Color(235, 164, 52), sf::Color(52, 235, 168),
+                          sf::Color(201, 20, 126), sf::Color(69, 120, 230), sf::Color(219, 105, 39)};
     std::vector<sf::Color> col;
     for (int i = 0; i < sizeof(arrCol) / sizeof(arrCol[0]); i++)
         col.push_back(arrCol[i]);
@@ -26,7 +30,8 @@ GuiBarGraph::GuiBarGraph() { //default constructor
 
     unrepeatedColors = col;
 
-    std::string txtBottom[] = { "Bottom 1","Bottom 2","Bottom 3","bottom 4","Bottom 5","Bottom 6","Bottom 7","Bottom 8","Bottom 9","Bottom 10","Bottom 11","Bottom 12" };
+    std::string txtBottom[] = {"Bottom 1", "Bottom 2", "Bottom 3", "bottom 4", "Bottom 5", "Bottom 6", "Bottom 7",
+                               "Bottom 8", "Bottom 9", "Bottom 10", "Bottom 11", "Bottom 12"};
     std::vector<std::string> bottomText;
     for (int k = 0; k < sizeof(txtBottom) / sizeof(txtBottom[0]); k++)
         bottomText.push_back(txtBottom[k]);
@@ -43,7 +48,7 @@ GuiBarGraph::GuiBarGraph() { //default constructor
     titlePaddingLeft = 0;
     titlePaddingTop = 10;
 
-    std::string txtLab[] = { "LabelText 1","LabelText 2","LabelText 3","LabelText 4"};
+    std::string txtLab[] = {"LabelText 1", "LabelText 2", "LabelText 3", "LabelText 4"};
     std::vector<std::string> labText;
     for (int k = 0; k < sizeof(txtLab) / sizeof(txtLab[0]); k++)
         labText.push_back(txtLab[k]);
@@ -52,7 +57,7 @@ GuiBarGraph::GuiBarGraph() { //default constructor
     unrepeatedLabelTexts = labText;
 
     totalWidth = (barWidth + barSpacing) * length; //unit space * length = total width
-    labelPosition = sf::Vector2f(position.x + totalWidth + ( 0.1f* (barWidth + barSpacing) * length), position.y + 10);
+    labelPosition = sf::Vector2f(position.x + totalWidth + (0.1f * (barWidth + barSpacing) * length), position.y + 10);
     labelBoxDimension = sf::Vector2f(20, 20);
     labelVerticalSpacing = 40;
     labelBoxRadius = 3;
@@ -95,8 +100,9 @@ void GuiBarGraph::drawer() {
     verticalScaleLine.setPosition(position);
     verticalScaleLine.setSize(sf::Vector2f(2, barMaxHeight + (barMaxHeight * 0.1)));
     verticalScaleLine.setFillColor(verticalAxisColor);
-    horizontalScaleLine.setPosition(sf::Vector2f(position.x, position.y+ barMaxHeight + (barMaxHeight * 0.1f)));
-    horizontalScaleLine.setSize(sf::Vector2f((barWidth + barSpacing) * length +( 0.1f* (barWidth + barSpacing) * length), 2));
+    horizontalScaleLine.setPosition(sf::Vector2f(position.x, position.y + barMaxHeight + (barMaxHeight * 0.1f)));
+    horizontalScaleLine.setSize(
+            sf::Vector2f((barWidth + barSpacing) * length + (0.1f * (barWidth + barSpacing) * length), 2));
     horizontalScaleLine.setFillColor(horizontalAxisColor);
 
 
@@ -111,7 +117,8 @@ void GuiBarGraph::drawer() {
         double eachBarHeight = (values[c] / maxVal) * barMaxHeight;
         //bars and its bottom title
         bars[c].setBannerText(eachBarBottomTitle[c]);
-        bars[c].setPosition(sf::Vector2f(position.x + barSpacing + ((barSpacing+barWidth)*c), position.y + (0.1*barMaxHeight)+barMaxHeight-eachBarHeight));
+        bars[c].setPosition(sf::Vector2f(position.x + barSpacing + ((barSpacing + barWidth) * c),
+                                         position.y + (0.1 * barMaxHeight) + barMaxHeight - eachBarHeight));
         bars[c].setDimension(sf::Vector2f(barWidth, eachBarHeight));
         bars[c].setRadius(barRadius);
         bars[c].setFont(titleFont);
@@ -120,11 +127,13 @@ void GuiBarGraph::drawer() {
         bars[c].setBgColor(colors[c]);
         bars[c].setOutLineThickness(barOutLineThickness);
         bars[c].setOutLineColor(barOutLineColor);
-        bars[c].setPadding(titlePaddingLeft, titlePaddingTop + (eachBarHeight/2));
+        bars[c].setPadding(titlePaddingLeft, titlePaddingTop + (eachBarHeight / 2));
 
         //texts on top of each bar
+
         barTopTexts[c].setString(doubleToStringBar(round(values[c])));
         barTopTexts[c].setPosition(sf::Vector2f(position.x + barSpacing + ((barSpacing + barWidth) * c), position.y + (0.1 * barMaxHeight) + barMaxHeight - eachBarHeight - (barTopTextFontSize*1.5f)));
+
         barTopTexts[c].setFont(barTopTextFont);
         barTopTexts[c].setCharacterSize(barTopTextFontSize);
         barTopTexts[c].setFillColor(barTopTextFontColor);
@@ -191,116 +200,137 @@ void GuiBarGraph::setToggleLabel(bool toggleLabel) {
     drawer();
 }
 
-void GuiBarGraph::setBarValues(std::vector<double> barValues){
+void GuiBarGraph::setBarValues(std::vector<double> barValues) {
     this->values = barValues;
     length = barValues.size();
     bars = new Banner[length];
     barTopTexts = new sf::Text[length]; //new array having length no. of elements
     totalWidth = (barWidth + barSpacing) * length;
-    labelPosition = sf::Vector2f(position.x + totalWidth + ( 0.1f* (barWidth + barSpacing) * length), position.y + 10);
+    labelPosition = sf::Vector2f(position.x + totalWidth + (0.1f * (barWidth + barSpacing) * length), position.y + 10);
     drawer();
 }
-void GuiBarGraph::setBarColors(std::vector<sf::Color> barColors){
+
+void GuiBarGraph::setBarColors(std::vector<sf::Color> barColors) {
     this->colors = barColors;
     labels = new Banner[colors.size()];
     drawer();
 }
-void GuiBarGraph::setEachBarBottomTitle(std::vector<std::string> eachBarBottomTitle){
-    this->eachBarBottomTitle =eachBarBottomTitle;
+
+void GuiBarGraph::setEachBarBottomTitle(std::vector<std::string> eachBarBottomTitle) {
+    this->eachBarBottomTitle = eachBarBottomTitle;
     drawer();
 }
 
-void GuiBarGraph::setPosition(sf::Vector2f position){
+void GuiBarGraph::setPosition(sf::Vector2f position) {
     this->position = position;
-    labelPosition = sf::Vector2f(position.x + totalWidth + ( 0.1f* (barWidth + barSpacing) * length), position.y + 10);
+    labelPosition = sf::Vector2f(position.x + totalWidth + (0.1f * (barWidth + barSpacing) * length), position.y + 10);
     drawer();
 }
-void GuiBarGraph::setBarWidth(int barWidth){
+
+void GuiBarGraph::setBarWidth(int barWidth) {
     this->barWidth = barWidth;
     totalWidth = (barWidth + barSpacing) * length;
-    labelPosition = sf::Vector2f(position.x + totalWidth + ( 0.1f* (barWidth + barSpacing) * length), position.y + 10);
+    labelPosition = sf::Vector2f(position.x + totalWidth + (0.1f * (barWidth + barSpacing) * length), position.y + 10);
     drawer();
 }
-void GuiBarGraph::setBarSpacing(int barSpacing){
+
+void GuiBarGraph::setBarSpacing(int barSpacing) {
     this->barSpacing = barSpacing;
     totalWidth = (barWidth + barSpacing) * length;
-    labelPosition = sf::Vector2f(position.x + totalWidth + ( 0.1f* (barWidth + barSpacing) * length), position.y + 10);
+    labelPosition = sf::Vector2f(position.x + totalWidth + (0.1f * (barWidth + barSpacing) * length), position.y + 10);
     drawer();
 }
-void GuiBarGraph::setBarMaxHeight(int barMaxHeight){
+
+void GuiBarGraph::setBarMaxHeight(int barMaxHeight) {
     this->barMaxHeight = barMaxHeight;
     drawer();
 }
-void GuiBarGraph::setBarRadius(int barRadius){
+
+void GuiBarGraph::setBarRadius(int barRadius) {
     this->barRadius = barRadius;
     drawer();
 }
 
 
 //bottom title
-void GuiBarGraph::setTitleFont(sf::Font titleFont){
+void GuiBarGraph::setTitleFont(sf::Font titleFont) {
     this->titleFont = titleFont;
     drawer();
 }
-void GuiBarGraph::setTitleFontSize(int titleFontSize){
+
+void GuiBarGraph::setTitleFontSize(int titleFontSize) {
     this->titleFontSize = titleFontSize;
     drawer();
 }
-void GuiBarGraph::setTitleFontColor(sf::Color titleFontColor){
+
+void GuiBarGraph::setTitleFontColor(sf::Color titleFontColor) {
     this->titleFontColor = titleFontColor;
     drawer();
 }
-void GuiBarGraph::setBarOutLineThickness(int barOutLineThickness){
+
+void GuiBarGraph::setBarOutLineThickness(int barOutLineThickness) {
     this->barOutLineThickness = barOutLineThickness;
     drawer();
 }
-void GuiBarGraph::setBarOutLineColor(sf::Color barOutLineColor){
+
+void GuiBarGraph::setBarOutLineColor(sf::Color barOutLineColor) {
     this->barOutLineColor = barOutLineColor;
     drawer();
 }
-void GuiBarGraph::setTitlePadding(sf::Vector2f titlePadding){
+
+void GuiBarGraph::setTitlePadding(sf::Vector2f titlePadding) {
     this->titlePaddingLeft = titlePadding.x;
     this->titlePaddingTop = titlePadding.y;
     drawer();
 }
+
 //label representing color
 void GuiBarGraph::setLabelTexts(std::vector<std::string> labelTexts) {
     this->labelTexts = labelTexts;
     //labels = new Banner[colors.size()];
     drawer();
 }
-void GuiBarGraph::setLabelPosition(sf::Vector2f labelPosition){
+
+void GuiBarGraph::setLabelPosition(sf::Vector2f labelPosition) {
     this->labelPosition = labelPosition;
     drawer();
 }
+
 void GuiBarGraph::setLabelBoxDimension(sf::Vector2f labelBoxDimension) {
     this->labelBoxDimension = labelBoxDimension;
     drawer();
 }
+
 void GuiBarGraph::setLabelVerticalSpacing(int labelVerticalSpacing) {
     this->labelVerticalSpacing = labelVerticalSpacing;
     drawer();
 }
+
 void GuiBarGraph::setLabelBoxRadius(int labelBoxRadius) {
     this->labelBoxRadius = labelBoxRadius;
     drawer();
 }
-void GuiBarGraph::setLabelFont(sf::Font& labelFont) {
+
+void GuiBarGraph::setLabelFont(sf::Font &labelFont) {
     this->labelFont = labelFont;
     drawer();
 }
+
 void GuiBarGraph::setLabelFontSize(int labelFontSize) {
     this->labelFontSize = labelFontSize;
     drawer();
 }
+
 void GuiBarGraph::setLabelFontColor(sf::Color labelFontColor) {
     this->labelFontColor = labelFontColor;
     drawer();
 }
+
 void GuiBarGraph::setLabelBoxOutLineThickness(int labelBoxOutlineThickness) {
     this->labelBoxOutLineThickness = labelBoxOutLineThickness;
     drawer();
 }
+
 void GuiBarGraph::setLabelBoxOutlineColor(sf::Color labelBoxOutLineColor) {
     this->labelBoxOutLineColor = labelBoxOutLineColor;
     drawer();
@@ -311,32 +341,35 @@ void GuiBarGraph::setBarTopTextFont(sf::Font barTopTextFont) {
     this->barTopTextFont = barTopTextFont;
     drawer();
 }
+
 void GuiBarGraph::setBarTopTextFontSize(int barTopTextFontSize) {
     this->barTopTextFontSize = barTopTextFontSize;
     drawer();
 }
+
 void GuiBarGraph::setBarTopTextFontColor(sf::Color barTopTextFontColor) {
     this->barTopTextFontColor = barTopTextFontColor;
     drawer();
 }
 
-void GuiBarGraph::setVerticalScaleColor(sf::Color verticalScaleColor){
+void GuiBarGraph::setVerticalScaleColor(sf::Color verticalScaleColor) {
     this->verticalAxisColor = verticalScaleColor;
     drawer();
 }
-void GuiBarGraph::setHorizontalScaleColor(sf::Color horizontalScaleColor){
+
+void GuiBarGraph::setHorizontalScaleColor(sf::Color horizontalScaleColor) {
     this->horizontalAxisColor = horizontalScaleColor;
     drawer();
 }
 
-void GuiBarGraph::drawTo(sf::RenderWindow& window) {
+void GuiBarGraph::drawTo(sf::RenderWindow &window) {
     window.draw(verticalScaleLine);
     window.draw(horizontalScaleLine);
     for (int b = 0; b < values.size(); b++)
         bars[b].drawTo(window);
     for (int v = 0; v < values.size(); v++)
         window.draw(barTopTexts[v]);
-    if(toggleLabel){
+    if (toggleLabel) {
         for (int l = 0; l < unrepeatedLabelTexts.size(); l++)
             labels[l].drawTo(window);
     }
