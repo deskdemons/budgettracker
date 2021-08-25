@@ -1,6 +1,9 @@
 #include "guiBarGraph.h"
 #include <sstream>
 
+#include<cmath>
+
+
 GuiBarGraph::GuiBarGraph() { //default constructor
     position = sf::Vector2f(100, 100);
     barWidth = 40;
@@ -127,10 +130,10 @@ void GuiBarGraph::drawer() {
         bars[c].setPadding(titlePaddingLeft, titlePaddingTop + (eachBarHeight / 2));
 
         //texts on top of each bar
-        barTopTexts[c].setString(doubleToStringBar(values[c]));
-        barTopTexts[c].setPosition(sf::Vector2f(position.x + barSpacing + ((barSpacing + barWidth) * c),
-                                                position.y + (0.1 * barMaxHeight) + barMaxHeight - eachBarHeight -
-                                                (barTopTextFontSize * 1.5f)));
+
+        barTopTexts[c].setString(doubleToStringBar(round(values[c])));
+        barTopTexts[c].setPosition(sf::Vector2f(position.x + barSpacing + ((barSpacing + barWidth) * c), position.y + (0.1 * barMaxHeight) + barMaxHeight - eachBarHeight - (barTopTextFontSize*1.5f)));
+
         barTopTexts[c].setFont(barTopTextFont);
         barTopTexts[c].setCharacterSize(barTopTextFontSize);
         barTopTexts[c].setFillColor(barTopTextFontColor);

@@ -51,14 +51,36 @@ int main() {
                     if (event.type == sf::Event::MouseButtonPressed) {
                         if (s1.isMouseOverTab(window)) {
                             //nothing needs to be done
-                        } else if (s1.isMouseOverBackup(window)) {
-                            std::cout << "cout: backup button clicked" << std::endl;
+                        }
+                        else if(s1.isMouseOverBackup(window)){
+                            std::cout<<"cout: backup button clicked"<<std::endl;
                             backup_network_sa();
-                        } else if (s1.isMouseOverLogout(window)) {
-                            std::cout << "cout: logout button clicked" << std::endl;
+                        }
+                        else if(s1.isMouseOverLogout(window)){
+                            l1.setTextBoxEmpty();
+                            l1.setIsAuth(false);
+                            std::cout<<"cout: logout button clicked"<<std::endl;
                         }
                     }
-                    if (openedTab == "Dashboard") {
+                    if(openedTab != "Dashboard"){
+                        if(d1.dashState() == true){
+                            std::cout<<"if: making dashboard false"<<std::endl;
+                            d1.dashBool(false);
+                        }
+                    }
+                    if(openedTab != "See Report"){
+                        if(sr1.seeReportBool() == true){
+                            sr1.setReportBool(false);
+                        }
+                    }
+                    if(openedTab == "Dashboard"){
+                        std::cout<<"should run continuously"<<std::endl;
+                        if(d1.dashState() == false){
+                            std::cout<<"dashboard opened by first time or switching tab"<<std::endl;
+                            d1.valueAssigner();
+                            d1.drawer();
+                            d1.dashBool(true);
+                        }
                         d1.eventHandler(event, window);
                         //d1.drawer();
                     } else if (openedTab == "Add Expense") {
@@ -67,7 +89,14 @@ int main() {
                         i1.eventHandler(event, window);
                     } else if (openedTab == "Forex") {
                         f1.eventHandler(event, window);
-                    } else if (openedTab == "See Report") {
+                    }
+                    else if(openedTab == "See Report"){
+                        if(sr1.seeReportBool() == false){
+                            sr1.valueAssigner();
+                            sr1.drawer();
+                            sr1.setReportBool(true);
+                        }
+
                         sr1.eventHandler(event, window);
                     }
                 }

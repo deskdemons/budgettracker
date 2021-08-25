@@ -167,22 +167,22 @@ void Table::setContents(std::vector<std::vector<std::string> > contents) {
     this->contents = contents;
     totalCell = contents.size() * contents[0].size();
     tableCell = new Banner[totalCell];
-    drawer();
+    //drawer();
 }
 
 void Table::setPosition(sf::Vector2f position) {
     this->position = position;
-    drawer();
+    //drawer();
 }
 
 void Table::setTableBodyRowNum(int tableBodyRowNum) {
     this->tableBodyRowNum = tableBodyRowNum;
-    drawer();
+    //drawer();
 }
 
 void Table::setColumnWidth(std::vector<int> columnWidth) {
     this->columnWidth = columnWidth;
-    drawer();
+    //drawer();
 }
 
 void Table::setHeaderHeight(int headerHeight) {

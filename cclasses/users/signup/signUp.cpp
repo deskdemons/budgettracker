@@ -21,6 +21,7 @@ Signup::Signup(std::string u, std::string p, std::string f) : username(u), passw
         std::cout << "\nPlease Try Different Username.\n\n";
         isDone = false;
         wrongUsername = true;
+        isDone = false;
         //Signup s;
     }
 }
@@ -36,10 +37,6 @@ Signup::Signup() {
     bool valid = isUsernameValid(username);
     if (valid) {
         addDataToCsv(username, password, fullname);
-//        Login l;
-    } else {
-        std::cout << "\nPlease Try Different Username.\n\n";
-        Signup s;
     }
 }
 

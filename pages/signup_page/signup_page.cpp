@@ -47,13 +47,37 @@ void SignupPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
                 if (isUserMade == true) {
                     signupButton.setOutLineColor(sf::Color::Blue);
                 }
+                else if(signupButton.isMouseOver(window)){
+                    signupButton.setOutLineThickness(3);
+                    signupButton.setOutLineColor(sf::Color::Red);
+                    std::string full = fullname.getText();
+                    uname = username.getText();
+                    pass = password.getText();
+                    fname = fullname.getText();
+                    Signup s(uname,pass,full);
+                    isWrongUsername = s.wrongUsername;
 
-            } else {
-                fullname.setSelected(false);
-                username.setSelected(false);
-                password.setSelected(false);
-            }
-            break;
+                    if(s.isDone){
+                        std::cout << "TRUE"<< std::endl;
+                    } else{
+                        std::cout << "False"<< std::endl;
+                    }
+
+                    isUserMade = s.isDone;
+                    if (isUserMade == true){
+                        signupButton.setOutLineColor(sf::Color::Blue);
+                    }
+                    std::cout<<"username:" <<full<<std::endl;
+                    std::cout<<"username:" <<username.getText()<<std::endl;
+                    std::cout<<"password:" <<password.getText()<<std::endl;
+                }
+                else{
+                    fullname.setSelected(false);
+                    username.setSelected(false);
+                    password.setSelected(false);
+                }
+                break;
+
     }
 }
 

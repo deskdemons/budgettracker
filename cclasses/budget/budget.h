@@ -36,6 +36,8 @@ public:
 
     DateTime get_datettime();
 
+    std::string get_ItemName();
+
     std::string get_category();
 
     std::string serialize(int);

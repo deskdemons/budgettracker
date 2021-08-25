@@ -10,6 +10,8 @@ set(SFML_DIR "C:/SDK/SFML-2.5.1/lib/cmake/SFML")
 link_directories(SFML_LIBRARY_DIR)
 include_directories(SFML_INCLUDE_DIR)
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++ -static-libgcc")
+
 find_package(SFML 2.5.1 COMPONENTS system window graphics audio network)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++ -static-libgcc")
 

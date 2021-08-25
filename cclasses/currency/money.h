@@ -28,6 +28,10 @@ public:
 
     double get_nrs_eq_amt() const;
 
+    double getMoneyValue();
+
+    std::string getType_eORi();
+
     Currency get_currency();
 
     bool is_income();

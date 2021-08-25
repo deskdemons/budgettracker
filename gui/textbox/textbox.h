@@ -74,10 +74,26 @@ public:
     void setMaxLen(int);    //maximum length of characters that can be entered in t_amount_text_box
     void setFontColor(sf::Color);
 
-    void setBgColor(sf::Color);    //t_amount_text_box bg color
-    void setOutLineThickness(int);    //t_amount_text_box border thickness
-    void setOutLineColor(sf::Color);    //t_amount_text_box border color
-    void setPadding(int, int);    //(left padding, right padding) for text inside button w.r.t border
+
+	void setMakeTextboxEmpty();
+
+	void setPosition(sf::Vector2f );	//setters. example: textbox1.setButtonText("submit");
+	void setDimension(sf::Vector2f );	//width, height of textbox in vector2f form
+	void setRadius(int);	//radius of curvature of cornor of textbox
+	void setHintText(std::string hintText);
+	void setHintFont(sf::Font&);	//hint text font
+	void setHintFontSize(int);	//hint text font size
+	void setHintFontColor(sf::Color);	//hint text font Color
+	void setDataType(std::string);	// either "normal" or "secure",  default is normal if not mentioned
+	void setFont(sf::Font&);	//text font
+	void setFontSize(int);	//text font size
+	void setMaxLen(int);	//maximum length of characters that can be entered in textbox
+	void setFontColor(sf::Color);
+	void setBgColor(sf::Color);	//textbox bg color
+	void setOutLineThickness(int);	//textbox border thickness
+	void setOutLineColor(sf::Color);	//textbox border color
+	void setPadding(int, int);	//(left padding, right padding) for text inside button w.r.t border
+
 
     void drawTo(sf::RenderWindow &); // renders t_amount_text_box . example: textbox1.drawTo(window);
 };
