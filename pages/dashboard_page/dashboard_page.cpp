@@ -103,31 +103,32 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
         std::cout<<"for loop 1: "<<vecBudget[i].get_ItemName()<<vecBudget[i].get_category()<<vecBudget[i].get_datettime().getDateTime()<<vecBudget[i].get_money().getMoneyValue()<<vecBudget[i].get_money().get_currency().getCurType()<<std::endl;
     }
     tableContents.clear();
-    //table
-    std::vector<std::string> rowHeader;
-    rowHeader.push_back("S.N");
-    rowHeader.push_back("Title");
-    rowHeader.push_back("Date and Time");
-    rowHeader.push_back("Amount");
-    rowHeader.push_back("Currency");
+    if(vecBudget.size() !=0){
+        //table
+        std::vector<std::string> rowHeader;
+        rowHeader.push_back("S.N");
+        rowHeader.push_back("Title");
+        rowHeader.push_back("Date and Time");
+        rowHeader.push_back("Amount");
+        rowHeader.push_back("Currency");
 
-    tableContents.push_back(rowHeader); //pushing header
+        tableContents.push_back(rowHeader); //pushing header
 
-    std::vector<std::string> colBody;
-    for(int i=0; i<vecBudget.size();i++){
-        colBody.clear();
-        colBody.push_back(i_to_s(i+1));
-        colBody.push_back(itemName[i]);
-        colBody.push_back(dateAndTime[i]);
-        colBody.push_back(dTS(moneyAmt[i]));
-        colBody.push_back(moneyCurrency[i]);
-        tableContents.push_back(colBody);
-        //for(int j=0; j<colBody.size(); j++){
-          //  std::cout<<"for loop 2:"<<i<<": "<<tableContents[i][j]<<std::endl;
-        //}
+        std::vector<std::string> colBody;
+        for(int i=0; i<vecBudget.size();i++){
+            colBody.clear();
+            colBody.push_back(i_to_s(i+1));
+            colBody.push_back(itemName[i]);
+            colBody.push_back(dateAndTime[i]);
+            colBody.push_back(dTS(moneyAmt[i]));
+            colBody.push_back(moneyCurrency[i]);
+            tableContents.push_back(colBody);
+            //for(int j=0; j<colBody.size(); j++){
+            //  std::cout<<"for loop 2:"<<i<<": "<<tableContents[i][j]<<std::endl;
+            //}
 
+        }
     }
-
 
     // for piechart
 
@@ -164,11 +165,20 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
 
     pieLabels = unrepeatedCat;
 
+    std::vector<Budget> *vecBudgetPie;
+    std::vector<Budget> *allDtVecBudgetPie;
     std::cout<<"unreapeated category"<<unrepeatedCat.size()<<std::endl;
 
-    std::vector<Budget> vecBudgetPie[unrepeatedCat.size()];
-
-    std::vector<Budget> allDtVecBudgetPie[unrepeatedCat.size()];
+    //std::vector<Budget>vecBudgetPie[unrepeatedCat.size()] ;
+    //std::vector<Budget> allDtVecBudgetPie[unrepeatedCat.size()];
+    if(unrepeatedCat.size() == 0){
+        vecBudgetPie = new  std::vector<Budget>[1] ;
+        allDtVecBudgetPie = new std::vector<Budget>[1];
+    }else{
+        vecBudgetPie = new  std::vector<Budget>[unrepeatedCat.size()] ;
+        allDtVecBudgetPie = new std::vector<Budget>[unrepeatedCat.size()];
+    }
+    std::cout<<"passed through"<<std::endl;
 
     for(int i=0;i<unrepeatedCat.size();i++){
         allDtVecBudgetPie[i] = bdb.filter_by_category(unrepeatedCat[i]);
@@ -212,7 +222,7 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
     for(int i=0; i< piePercents.size(); i++){
         pieColors.push_back(pieDefaultColors[i]);
     }
-
+    std::cout<<"end of piechart"<<std::endl;
     //end of piechart logic
 
     //bargraph logic
@@ -230,7 +240,7 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
             std::cout<<"valid month:"<<dtBudget.get_month()<<std::endl;
         }
     }
-
+    std::cout<<"out valid bar month: "<<validBarMonth.size()<<std::endl;
     std::vector<int> unrepeatedMonths; //problems in piechart yet to be solved //there might not be problem actually. but still experiment with piechart
 
     if(validBarMonth.size() != 0){
@@ -249,12 +259,20 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
             }
         }
     }
-
+    std::cout<<"out of unrepeated months"<<std::endl;
     //barIntMonths = unrepeatedMonths;
 
-    std::vector<Budget> vecBudgetBarG[unrepeatedMonths.size()];
+    std::vector<Budget> *vecBudgetBarG;
 
-    std::vector<Budget> allDtVecBudgetBarG[unrepeatedMonths.size()];
+    std::vector<Budget> *allDtVecBudgetBarG;
+    if(unrepeatedMonths.size() == 0){
+        vecBudgetBarG = new std::vector<Budget>[1] ;
+        allDtVecBudgetBarG = new std::vector<Budget>[1];
+    }else{
+        vecBudgetBarG = new std::vector<Budget>[unrepeatedMonths.size()] ;
+        allDtVecBudgetBarG = new std::vector<Budget>[unrepeatedMonths.size()];
+    }
+    std::cout<<"vecBudgetBarG made"<<std::endl;
 
     for(int i=0;i<unrepeatedMonths.size();i++){
         allDtVecBudgetBarG[i] = filterByMonth(vecBudget,unrepeatedMonths[i]);
@@ -269,7 +287,7 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
             }
         }
     }
-
+    std::cout<<"loops for assigning vecBudgetBarG finished"<<std::endl;
     std::vector<double> totalBarAmt;
     for(int i=0; i<unrepeatedMonths.size();i++){
         double totalBarGAmt = 0;
@@ -281,28 +299,30 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
         totalBarAmt.push_back(totalBarGAmt);
     }
     int c=0;
-    for(int i=0; i<12;i++){
-        if(unrepeatedMonths[c] == i+1){
-            barValues.push_back(totalBarAmt[c]);
-            c++;
-        }else{
-            barValues.push_back(0.0);
+    if(unrepeatedMonths.size() != 0){
+        for(int i=0; i<12;i++){
+            if(unrepeatedMonths[c] == i+1){
+                barValues.push_back(totalBarAmt[c]);
+                c++;
+            }else{
+                barValues.push_back(0.0);
+            }
+            std::cout<<"bar values: "<<barValues[i]<<std::endl;
         }
-        std::cout<<"bar values: "<<barValues[i]<<std::endl;
+
+        std::cout<<"barValue.size:"<<barValues.size()<<std::endl;
+        //barValues = totalBarAmt;
+
+        for(int i=0; i<barValues.size();i++){
+            barColors.push_back(pieDefaultColors[i]);
+        }
+        std::string monthOfYear[] ={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        for(int i=0; i<barValues.size();i++){
+            BarBottomTitles.push_back(monthOfYear[i]);
+        }
     }
-    std::cout<<"barValue.size:"<<barValues.size()<<std::endl;
-    //barValues = totalBarAmt;
 
-    for(int i=0; i<barValues.size();i++){
-        barColors.push_back(pieDefaultColors[i]);
-    }
-    std::string monthOfYear[] ={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    for(int i=0; i<barValues.size();i++){
-        BarBottomTitles.push_back(monthOfYear[i]);
-    }
-
-
-
+    std::cout<<"end of value assigner"<<std::endl;
     shouldLoadGraphics = true;
 }
 
@@ -389,9 +409,9 @@ void DashboardPage::drawer() {
         bar.setBarSpacing(10);
         bar.setTitlePadding(sf::Vector2f(3,15));
     }else{
-        noBar.setPosition(sf::Vector2f(560, 200));
+        noBar.setPosition(sf::Vector2f(800, 200));
         noBar.setFont(font);
-        noBar.setString("No Expense This Month");
+        noBar.setString("No Expense This Year");
         noBar.setCharacterSize(40);
         noBar.setFillColor(sf::Color(140, 140, 140));
     }

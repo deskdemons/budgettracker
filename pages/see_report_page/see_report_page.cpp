@@ -112,9 +112,20 @@ void SeeReportPage::valueAssigner(){        //should be called when page changes
 
     std::cout<<"unreapeated category"<<unrepeatedCat.size()<<std::endl;
 
-    std::vector<Budget> vecBudgetPie[unrepeatedCat.size()];
+    std::vector<Budget> *vecBudgetPie;
+    std::vector<Budget> *allDtVecBudgetPie;
+    std::cout<<"unreapeated category"<<unrepeatedCat.size()<<std::endl;
 
-    std::vector<Budget> allDtVecBudgetPie[unrepeatedCat.size()];
+    //std::vector<Budget>vecBudgetPie[unrepeatedCat.size()] ;
+    //std::vector<Budget> allDtVecBudgetPie[unrepeatedCat.size()];
+    if(unrepeatedCat.size() == 0){
+        vecBudgetPie = new  std::vector<Budget>[1] ;
+        allDtVecBudgetPie = new std::vector<Budget>[1];
+    }else{
+        vecBudgetPie = new  std::vector<Budget>[unrepeatedCat.size()] ;
+        allDtVecBudgetPie = new std::vector<Budget>[unrepeatedCat.size()];
+    }
+
 
     for(int i=0;i<unrepeatedCat.size();i++){
         allDtVecBudgetPie[i] = bdb.filter_by_category(unrepeatedCat[i]);
@@ -198,9 +209,16 @@ void SeeReportPage::valueAssigner(){        //should be called when page changes
 
     //barIntMonths = unrepeatedMonths;
 
-    std::vector<Budget> vecBudgetBarG[unrepeatedMonths.size()];
+    std::vector<Budget> *vecBudgetBarG;
 
-    std::vector<Budget> allDtVecBudgetBarG[unrepeatedMonths.size()];
+    std::vector<Budget> *allDtVecBudgetBarG;
+    if(unrepeatedMonths.size() == 0){
+        vecBudgetBarG = new std::vector<Budget>[1] ;
+        allDtVecBudgetBarG = new std::vector<Budget>[1];
+    }else{
+        vecBudgetBarG = new std::vector<Budget>[unrepeatedMonths.size()] ;
+        allDtVecBudgetBarG = new std::vector<Budget>[unrepeatedMonths.size()];
+    }
 
     for(int i=0;i<unrepeatedMonths.size();i++){
         allDtVecBudgetBarG[i] = filterByMonth(vecBudget,unrepeatedMonths[i]);
@@ -226,27 +244,29 @@ void SeeReportPage::valueAssigner(){        //should be called when page changes
         }
         totalBarAmt.push_back(totalBarGAmt);
     }
-    int c=0;
-    for(int i=0; i<12;i++){
-        if(unrepeatedMonths[c] == i+1){
-            barValues.push_back(totalBarAmt[c]);
-            c++;
-        }else{
-            barValues.push_back(0.0);
+    if(unrepeatedMonths.size() != 0){
+        int c=0;
+        for(int i=0; i<12;i++){
+            if(unrepeatedMonths[c] == i+1){
+                barValues.push_back(totalBarAmt[c]);
+                c++;
+            }else{
+                barValues.push_back(0.0);
+            }
+            std::cout<<"bar values: "<<barValues[i]<<std::endl;
         }
-        std::cout<<"bar values: "<<barValues[i]<<std::endl;
-    }
-    std::cout<<"barValue.size:"<<barValues.size()<<std::endl;
-    //barValues = totalBarAmt;
+        std::cout<<"barValue.size:"<<barValues.size()<<std::endl;
+        //barValues = totalBarAmt;
 
-    for(int i=0; i<barValues.size();i++){
-        barColors.push_back(pieDefaultColors[i]);
+        for(int i=0; i<barValues.size();i++){
+            barColors.push_back(pieDefaultColors[i]);
+        }
+        std::string monthOfYear[] ={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        for(int i=0; i<barValues.size();i++){
+            BarBottomTitles.push_back(monthOfYear[i]);
+        }
     }
-    std::string monthOfYear[] ={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    for(int i=0; i<barValues.size();i++){
-        BarBottomTitles.push_back(monthOfYear[i]);
-    }
-
+    shouldLoadGraphics = true;
 
 }
 
@@ -304,7 +324,7 @@ void SeeReportPage::drawer() {
         pie.setRadius(250);
         pie.setLabelFontSize(15);
     }else{
-        noPie.setPosition(sf::Vector2f(260, 290));
+        noPie.setPosition(sf::Vector2f(500, 400));
         noPie.setFont(font);
         noPie.setString("No Expense This Month");
         noPie.setCharacterSize(40);
@@ -325,9 +345,9 @@ void SeeReportPage::drawer() {
             bar.setBarSpacing(25);
             bar.setTitlePadding(sf::Vector2f(20,15));
         }else{
-            noBar.setPosition(sf::Vector2f(560, 290));
+            noBar.setPosition(sf::Vector2f(500, 400));
             noBar.setFont(font);
-            noBar.setString("No Expense This Month");
+            noBar.setString("No Expense This Year");
             noBar.setCharacterSize(40);
             noBar.setFillColor(sf::Color(140, 140, 140));
         }
@@ -339,7 +359,6 @@ void SeeReportPage::drawer() {
         r2.setRadius(0);
 
     }
-    shouldLoadGraphics = true;
 }
 
 void SeeReportPage::setReportBool(bool state){

@@ -125,6 +125,5 @@ int main() {
         }
 
         window.display();    //actually displaying things that is drawn in buffer
-
     }
 }
