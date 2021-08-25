@@ -62,16 +62,19 @@ void Banner::setPosition(sf::Vector2f position) {
     text.setPosition(sf::Vector2f(position.x + paddingL, paddingT + position.y + ((dimension.y) / 2) -
                                                          (fontSize / 1.5f))); //yet to make horizontall centered
     bannerBg.setPosition(position);
+    bannerBg.drawer();
 }
 
 void Banner::setDimension(sf::Vector2f dim) {
     this->dimension = dim;
     bannerBg.setDimension(dim);    //dimension only used for RoundedRectangle .
+    bannerBg.drawer();
 }
 
 void Banner::setRadius(int radius) {
     this->radius = radius;
     bannerBg.setRadius(radius);
+    bannerBg.drawer();
 }
 
 void Banner::setFont(sf::Font &font) {
@@ -92,16 +95,19 @@ void Banner::setFontColor(sf::Color fontColor) {
 void Banner::setBgColor(sf::Color bgColor) {
     this->bgColor = bgColor;
     bannerBg.setBgColor(bgColor);
+    bannerBg.drawer();
 }
 
 void Banner::setOutLineThickness(int outLineThickness) {
     this->outLineThickness = outLineThickness;
     bannerBg.setOutLineThickness(outLineThickness);
+    bannerBg.drawer();
 }
 
 void Banner::setOutLineColor(sf::Color outLineColor) {
     this->outLineColor = outLineColor;
     bannerBg.setOutLineColor(outLineColor);
+    bannerBg.drawer();
 }
 
 void Banner::setPadding(int paddingL, int paddingT) {

@@ -192,16 +192,19 @@ void Textbox::setPosition(sf::Vector2f position) {
     hint.setPosition(
             sf::Vector2f(position.x + paddingL, paddingT + position.y + ((dimension.y) / 2) - (hintFontSize / 1.5f)));
     txtbg.setPosition(position);
+    txtbg.drawer();
 }
 
 void Textbox::setDimension(sf::Vector2f dimension) {
     this->dimension = dimension;
     txtbg.setDimension(dimension);    //dimension only used for RoundedRectangle .
+    txtbg.drawer();
 }
 
 void Textbox::setRadius(int radius) {
     this->radius = radius;
     txtbg.setRadius(radius);
+    txtbg.drawer();
 }
 
 void Textbox::setHintText(std::string hintText) {
@@ -250,16 +253,19 @@ void Textbox::setFontColor(sf::Color fontColor) {
 void Textbox::setBgColor(sf::Color bgColor) {
     this->bgColor = bgColor;
     txtbg.setBgColor(bgColor);
+    txtbg.drawer();
 }
 
 void Textbox::setOutLineThickness(int outLineThickness) {
     this->outLineThickness = outLineThickness;
     txtbg.setOutLineThickness(outLineThickness);
+    txtbg.drawer();
 }
 
 void Textbox::setOutLineColor(sf::Color outLineColor) {
     this->outLineColor = outLineColor;
     txtbg.setOutLineColor(outLineColor);
+    txtbg.drawer();
 }
 
 void Textbox::setPadding(int paddingL, int paddingT) {

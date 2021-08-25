@@ -33,12 +33,14 @@ void Sidebar::drawer() {
     background.setBgColor(sf::Color(157, 140, 241));
     background.setRadius(0);
     background.setOutLineThickness(0);
+    background.drawer();
 
     balanceBackground.setPosition(sf::Vector2f(20, 20));
     balanceBackground.setDimension(sf::Vector2f(160, 160));
     balanceBackground.setBgColor(sf::Color::White);
     balanceBackground.setRadius(10);
     balanceBackground.setOutLineThickness(0);
+    balanceBackground.drawer();
 
     amount.setString(sidebar_top_amount_string);
     amount.setPosition(sf::Vector2f(55, 40));
@@ -139,12 +141,10 @@ void Sidebar::drawer() {
 
 void Sidebar::setAmount(std::string amt) {
     this->sidebar_top_amount_string = amt;
-    drawer();
 }
 
 void Sidebar::setCurrency(std::string cur) {
     this->cur = cur;
-    drawer();
 }
 
 void Sidebar::unselectedTabMaker() {

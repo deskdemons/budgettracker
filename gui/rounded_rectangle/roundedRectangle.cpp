@@ -67,32 +67,32 @@ void RoundedRectangle::drawer() {
 
 void RoundedRectangle::setPosition(sf::Vector2f position) {
     this->position = position;
-    drawer();
+
 }
 
 void RoundedRectangle::setDimension(sf::Vector2f dimension) {
     this->dimension = dimension;
-    drawer();
+
 }
 
 void RoundedRectangle::setRadius(int radius) {
     this->radius = radius;
-    drawer();
+
 }
 
 void RoundedRectangle::setBgColor(sf::Color bgColor) {
     this->bgColor = bgColor;
-    drawer();
+
 }
 
 void RoundedRectangle::setOutLineThickness(int outLineThickness) {
     this->outLineThickness = outLineThickness;
-    drawer();
+
 }
 
 void RoundedRectangle::setOutLineColor(sf::Color outLineColor) {
     this->outLineColor = outLineColor;
-    drawer();
+
 }
 
 

@@ -41,8 +41,10 @@ void DashboardPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
             //code
             if(transactionTable.isMouseOverUp(window)){
                 transactionTable.setTableLevelMinus();
+                transactionTable.drawer();
             }else if(transactionTable.isMouseOverDown(window)){
                 transactionTable.setTableLevelPlus();
+                transactionTable.drawer();
             }
             //drawer();
             break;
@@ -282,7 +284,7 @@ void DashboardPage::valueAssigner(){        //should be called when page changes
             DateTime dtCurrent;
             DateTime dtBudget;
             dtBudget.deserialize(allDtVecBudgetBarG[i][j].get_datettime().getDateTime());
-            if(dtBudget.get_year() == dtCurrent.get_year()){
+            if(dtBudget.get_year() == dtCurrent.get_year() && allDtVecBudgetBarG[i][j].get_money().getType_eORi()=="e"){
                 vecBudgetBarG[i].push_back(allDtVecBudgetBarG[i][j]);
             }
         }
@@ -352,9 +354,11 @@ void DashboardPage::drawer() {
     //top bar
     topbarDashboard.setViewText("Dashboard Page");
 
+
     std::cout<<globalUser.username<<std::endl;
 
     topbarDashboard.setUsername(globalUser.username);
+    topbarDashboard.drawer();
 
     //rounded rectangles
     r1.setPosition(sf::Vector2f(220,90));
@@ -362,18 +366,21 @@ void DashboardPage::drawer() {
     r1.setBgColor(sf::Color(227, 226, 232));
     r1.setOutLineThickness(0);
     r1.setRadius(0);
+    r1.drawer();
 
     r2.setPosition(sf::Vector2f(750,90));
     r2.setDimension(sf::Vector2f(510, 250));
     r2.setBgColor(sf::Color(227, 226, 232));
     r2.setOutLineThickness(0);
     r2.setRadius(0);
+    r2.drawer();
 
     r3.setPosition(sf::Vector2f(220,360));
     r3.setDimension(sf::Vector2f(1040, 350));
     r3.setBgColor(sf::Color(227, 226, 232));
     r3.setOutLineThickness(0);
     r3.setRadius(0);
+    r3.drawer();
 
     recentTransaction.setString("RECENT TRANSACTIONS");
     recentTransaction.setCharacterSize(30);
@@ -388,6 +395,7 @@ void DashboardPage::drawer() {
         pie.setColor(pieColors);
         pie.setLabelTexts(pieLabels);
         pie.setLabelFontSize(15);
+        pie.drawer();
     }else{
         noPie.setPosition(sf::Vector2f(260, 200));
         noPie.setFont(font);
@@ -408,6 +416,7 @@ void DashboardPage::drawer() {
         bar.setBarWidth(25);
         bar.setBarSpacing(10);
         bar.setTitlePadding(sf::Vector2f(3,15));
+        bar.drawer();
     }else{
         noBar.setPosition(sf::Vector2f(800, 200));
         noBar.setFont(font);

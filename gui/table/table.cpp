@@ -167,77 +167,62 @@ void Table::setContents(std::vector<std::vector<std::string> > contents) {
     this->contents = contents;
     totalCell = contents.size() * contents[0].size();
     tableCell = new Banner[totalCell];
-    drawer();
 }
 
 void Table::setPosition(sf::Vector2f position) {
     this->position = position;
-    drawer();
 }
 
 void Table::setTableBodyRowNum(int tableBodyRowNum) {
     this->tableBodyRowNum = tableBodyRowNum;
-    drawer();
 }
 
 void Table::setColumnWidth(std::vector<int> columnWidth) {
     this->columnWidth = columnWidth;
-    drawer();
 }
 
 void Table::setHeaderHeight(int headerHeight) {
     this->headerHeight = headerHeight;
-    drawer();
 }
 
 void Table::setBodyHeight(int bodyHeight) {
     this->bodyHeight = bodyHeight;
-    drawer();
 }
 
 void Table::setPaddingRow(int paddingRow) {
     this->paddingRow = paddingRow;
-    drawer();
 }
 
 void Table::setPaddingColumn(int paddingColumn) {
     this->paddingColumn = paddingColumn;
-    drawer();
 }
 
 void Table::setHeadFont(sf::Font headFont) {
     this->headFont = headFont;
-    drawer();
 }
 
 void Table::setHeadFontSize(int headFontSize) {
     this->headFontSize = headFontSize;
-    drawer();
 }
 
 void Table::setHeadFontColor(sf::Color headFontColor) {
     this->headFontColor = headFontColor;
-    drawer();
 }
 
 void Table::setHeadBgColor(sf::Color headBgColor) {
     this->headBgColor = headBgColor;
-    drawer();
 }
 
 void Table::setBodyFont(sf::Font bodyFont) {
     this->bodyFont = bodyFont;
-    drawer();
 }
 
 void Table::setBodyFontSize(int bodyFontSize) {
     this->bodyFontSize = bodyFontSize;
-    drawer();
 }
 
 void Table::setBodyFontColor(sf::Color bodyFontColor) {
     this->bodyFontColor = bodyFontColor;
-    drawer();
 }
 
 void Table::setBodyBgColor(sf::Color bodyBgColor) {
@@ -246,35 +231,29 @@ void Table::setBodyBgColor(sf::Color bodyBgColor) {
 
 void Table::setOutLineThickness(int outLineThickness) {
     this->outLineThickness = outLineThickness;
-    drawer();
 }
 
 void Table::setOutLineColor(sf::Color outLineColor) {
     this->outLineColor = outLineColor;
-    drawer();
 }
 
 void Table::setHeaderPadding(sf::Vector2f headerPadding) {
     this->headerPadding = headerPadding;
-    drawer();
 }
 
 void Table::setBodyPadding(sf::Vector2f bodyPadding) {
     this->bodyPadding = bodyPadding;
-    drawer();
 }
 
 void Table::setTableLevelPlus() {
     if (tableLevel < ceil((contents.size() - 1) / tableBodyRowNum)) {
         this->tableLevel = (this->tableLevel) + 1;
-        drawer();
     }
 }
 
 void Table::setTableLevelMinus() {
     if (tableLevel > 0) {
         this->tableLevel = (this->tableLevel) - 1;
-        drawer();
     }
 }
 
