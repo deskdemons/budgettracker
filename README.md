@@ -9,11 +9,6 @@ In today&#39;s competitive world, there is a race for existence in which those w
 ---
 
 
-**Table of Contents**
-
----
-
-
 **Objectives**
 
 The main objectives of this project are: - To implement the object-oriented methodology and make its concept clear, - To explore the features of C++ language, - To be able to use header files to increase the reusability of our code. - To be familiar with using external libraries and learn to build graphics software using libraries such as SFML, - To build an attractive UI for the users to help them interact easily with our software.
