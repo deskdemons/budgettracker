@@ -8,6 +8,10 @@ int Budget::get_user_id() const {
     return user_id;
 }
 
+std::string Budget::get_ItemName(){
+    return item_name;
+}
+
 std::string Budget::get_category() {
     return category;
 }

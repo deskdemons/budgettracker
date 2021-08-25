@@ -59,7 +59,20 @@ int main() {
                             std::cout<<"cout: logout button clicked"<<std::endl;
                         }
                     }
+                    if(openedTab != "Dashboard"){
+                        if(d1.dashState() == true){
+                            std::cout<<"if: making dashboard false"<<std::endl;
+                            d1.dashBool(false);
+                        }
+                    }
                     if(openedTab == "Dashboard"){
+                        std::cout<<"should run continuously"<<std::endl;
+                        if(d1.dashState() == false){
+                            std::cout<<"dashboard opened by first time or switching tab"<<std::endl;
+                            d1.valueAssigner();
+                            d1.drawer();
+                            d1.dashBool(true);
+                        }
                         d1.eventHandler(event, window);
                         //d1.drawer();
                     }

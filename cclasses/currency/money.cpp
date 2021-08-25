@@ -56,6 +56,13 @@ std::string Money::getMoney() {
     return currency.curType + "[" + doubleToString(value) + "]" + type;
 }
 
+double Money::getMoneyValue(){
+    return value;
+}
+std::string Money::getType_eORi(){
+    return type;
+}
+
 void Money::deserialize(const std::string &moneyStr) {
     int strLen = moneyStr.length();
     int lenStrMon = strLen - 6;

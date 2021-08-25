@@ -105,7 +105,7 @@ void GuiPieChart::drawer() {
         //making labels
 
         pieLabels[i];
-        pieLabels[i].setBannerText(doubleToStringGui(percentages[i]) + "% : " +labelTexts[i]);
+        pieLabels[i].setBannerText(doubleToStringGui((floor(percentages[i] *100))/100) + "% : " +labelTexts[i]);
         pieLabels[i].setPosition(sf::Vector2f(labelPosition.x, labelPosition.y  + (labelVerticalSpacing*i)));
         pieLabels[i].setDimension(labelBoxDimension);
         pieLabels[i].setRadius(labelBoxRadius);
