@@ -80,7 +80,11 @@ Thus, this program simply keeps track of the budget enabling the user to add and
 
 
 **Block Diagram**
+
 ![SetBudGet-Client Server Communication](https://user-images.githubusercontent.com/69170305/130853944-83872acc-61a4-4b44-8a92-337348a84168.png)
+
+---
+
 ![SetBudGet-Flow-chart app](https://user-images.githubusercontent.com/69170305/130853971-581351cc-ef55-4049-9f29-53fa8b0596e8.png)
 
 ---
