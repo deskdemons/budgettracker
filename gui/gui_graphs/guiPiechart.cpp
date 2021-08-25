@@ -134,18 +134,17 @@ void GuiPieChart::drawer() {
 void GuiPieChart::setRadius(double radius) {
     this->radius = radius;
     labelPosition = sf::Vector2f(position.x + radius + 20, position.y - radius + 20);
-    drawer();
 }
 
 void GuiPieChart::setPosition(sf::Vector2f centerPosition) {
     this->position = centerPosition;
     labelPosition = sf::Vector2f(centerPosition.x + radius + 20, centerPosition.y - radius + 10);
-    drawer();
+
 }
 
 void GuiPieChart::setColor(std::vector<sf::Color> colorsVector) {
     this->colors = colorsVector;
-    drawer();
+
 }
 
 void GuiPieChart::setPercentages(std::vector<double> percentages) {
@@ -153,57 +152,55 @@ void GuiPieChart::setPercentages(std::vector<double> percentages) {
     length = percentages.size();
     fan = new sf::VertexArray[length];
     pieLabels = new Banner[length];
-    drawer();
+
 }
 
 void GuiPieChart::setLabelTexts(std::vector<std::string> labelTexts) {
     this->labelTexts = labelTexts;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelPosition(sf::Vector2f labelPosition) {
     this->labelPosition = labelPosition;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelBoxDimension(sf::Vector2f labelBoxDimension) {
     this->labelBoxDimension = labelBoxDimension;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelVerticalSpacing(int labelVerticalSpacing) {
     this->labelVerticalSpacing = labelVerticalSpacing;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelBoxRadius(int labelBoxRadius) {
     this->labelBoxRadius = labelBoxRadius;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelFont(sf::Font &labelFont) {
     this->labelFont = labelFont;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelFontSize(int labelFontSize) {
     this->labelFontSize = labelFontSize;
-    drawer();
+
 }
 
 void GuiPieChart::setLabelFontColor(sf::Color labelFontColor) {
     this->labelFontColor = labelFontColor;
-    drawer();
 }
 
 void GuiPieChart::setLabelBoxOutLineThickness(int labelBoxOutlineThickness) {
     this->labelBoxOutLineThickness = labelBoxOutlineThickness;
-    drawer();
 }
 
 void GuiPieChart::setLabelBoxOutlineColor(sf::Color labelBoxOutLineColor) {
     this->labelBoxOutLineColor = labelBoxOutLineColor;
-    drawer();
+
 }
 
 void GuiPieChart::drawTo(sf::RenderWindow &window) {

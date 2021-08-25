@@ -98,6 +98,7 @@ void SignupPage::drawer() {
     backgroundRect.setOutLineColor(sf::Color(234, 234, 234));
     backgroundRect.setRadius(20);
     backgroundRect.setPosition(sf::Vector2f(200, 150));
+    backgroundRect.drawer();
 
     fullname.setPosition(sf::Vector2f(450, 230));
     fullname.setHintText("fullname");

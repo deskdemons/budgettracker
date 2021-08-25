@@ -36,6 +36,7 @@ AddIncomePage::AddIncomePage() {
     currencyMenu.setToggleDropFontColor(sf::Color::White);
     currencyMenu.setRadius(5);
     currencyMenu.setToggleDropRadius(5);
+    currencyMenu.drawer();
 
     VectorCurrency vc;
     std::vector<Currency> v_cur = vc.getAll();
@@ -170,7 +171,7 @@ void AddIncomePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
 
 void AddIncomePage::drawer() {
     topbarAddExpense.setViewText("Add Income");
-
+    topbarAddExpense.drawer();
 }
 
 void AddIncomePage::drawTo(sf::RenderWindow &window) {

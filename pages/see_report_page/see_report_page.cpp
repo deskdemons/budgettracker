@@ -290,6 +290,7 @@ void SeeReportPage::drawer() {
     topbarSeeReport.setViewText("See Report");
     std::cout<<globalUser.username<<std::endl;
     topbarSeeReport.setUsername(globalUser.username);
+    topbarSeeReport.drawer();
 
     monthly.setPosition(sf::Vector2f(220,90));
     monthly.setDimension(sf::Vector2f(510, 50));
@@ -315,6 +316,7 @@ void SeeReportPage::drawer() {
         r1.setBgColor(sf::Color(227, 226, 232));
         r1.setOutLineThickness(0);
         r1.setRadius(0);
+        r1.drawer();
     //piechart
     if(piePercents.size() != 0){
         pie.setPercentages(piePercents);
@@ -323,6 +325,7 @@ void SeeReportPage::drawer() {
         pie.setLabelTexts(pieLabels);
         pie.setRadius(250);
         pie.setLabelFontSize(15);
+        pie.drawer();
     }else{
         noPie.setPosition(sf::Vector2f(500, 400));
         noPie.setFont(font);
@@ -344,6 +347,7 @@ void SeeReportPage::drawer() {
             bar.setBarWidth(50);
             bar.setBarSpacing(25);
             bar.setTitlePadding(sf::Vector2f(20,15));
+            bar.drawer();
         }else{
             noBar.setPosition(sf::Vector2f(500, 400));
             noBar.setFont(font);
@@ -357,6 +361,7 @@ void SeeReportPage::drawer() {
         r2.setBgColor(sf::Color(227, 226, 232));
         r2.setOutLineThickness(0);
         r2.setRadius(0);
+        r2.drawer();
 
     }
 }

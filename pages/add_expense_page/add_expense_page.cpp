@@ -43,6 +43,7 @@ AddExpensePage::AddExpensePage() {
     currencyMenu.setRadius(5);
     currencyMenu.setToggleDropRadius(5);
 
+
     VectorCurrency vc;
     std::vector<Currency> v_cur = vc.getAll();
     std::vector<std::string> v_cur_str;
@@ -52,6 +53,7 @@ AddExpensePage::AddExpensePage() {
 
     currencyMenu.setDropMenuList(v_cur_str);
     categoryMenu.setDropMenuList(categoryVector);
+    currencyMenu.drawer();
 
     dropdownButtonTexture.loadFromFile("img/dropdownarrowicon1.png");
     dropdownButtonShape.setFillColor(sf::Color::White);
@@ -76,6 +78,7 @@ AddExpensePage::AddExpensePage() {
     categoryMenu.setHintText("Category");
     categoryMenu.setRadius(5);
     categoryMenu.setToggleDropRadius(5);
+    categoryMenu.drawer();
 
     dropdownButtonShape2.setFillColor(sf::Color::White);
     dropdownButtonShape2.setSize(sf::Vector2f(50, 50));
@@ -200,7 +203,7 @@ void AddExpensePage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
 
 void AddExpensePage::drawer() {
     topbarAddExpense.setViewText("Add Expense");
-
+    topbarAddExpense.drawer();
 }
 
 void AddExpensePage::drawTo(sf::RenderWindow &window) {

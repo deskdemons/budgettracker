@@ -47,10 +47,8 @@ void Topbar::drawTo(sf::RenderWindow &window) {
 
 void Topbar::setViewText(std::string viewText) {
     this->viewName = viewText;
-    drawer();
 }
 
 void Topbar::setUsername(std::string userName) {
     uname = userName;
-    drawer();
 }

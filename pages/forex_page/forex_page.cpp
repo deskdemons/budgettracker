@@ -50,6 +50,7 @@ ForexPage::ForexPage() {
     rounded_rectangle.setDimension(sf::Vector2f(500, 180));
     rounded_rectangle.setBgColor(sf::Color::White);
     rounded_rectangle.setOutLineColor(sf::Color::Black);
+    rounded_rectangle.drawer();
 
     dropdown_currency_list.setPosition(sf::Vector2f(540, 120));
     dropdown_currency_list.setDimension(sf::Vector2f(250, 50));
@@ -61,11 +62,13 @@ ForexPage::ForexPage() {
     dropdown_currency_list.setRadius(5);
     dropdown_currency_list.setToggleDropRadius(5);
 
+
     dropdownButtonTexture.loadFromFile("img/dropdownarrowicon1.png");
     dropdownButtonShape.setFillColor(sf::Color::White);
     dropdownButtonShape.setSize(sf::Vector2f(50, 50));
     dropdownButtonShape.setPosition(sf::Vector2f(790,120));
     dropdownButtonShape.setTexture(&dropdownButtonTexture);
+
 
 
     dropdown_currency_list_2.setPosition(sf::Vector2f(920, 120));
@@ -102,6 +105,8 @@ ForexPage::ForexPage() {
 
     dropdown_currency_list.setDropMenuList(v_cur_str);
     dropdown_currency_list_2.setDropMenuList(v_cur_str);
+    dropdown_currency_list.drawer();
+    dropdown_currency_list_2.drawer();
 
     convert_button.setButtonText("Convert");
     convert_button.setOutLineColor(sf::Color(157, 140, 241));
@@ -151,6 +156,7 @@ ForexPage::ForexPage() {
     col_width_vect.push_back(315);
     col_width_vect.push_back(315);
     table.setColumnWidth(col_width_vect);
+    table.drawer();
 
     drawer();
 }
@@ -225,6 +231,7 @@ void ForexPage::eventHandler(sf::Event &event, sf::RenderWindow &window) {
 
 void ForexPage::drawer() {
     topbarForex.setViewText("Currency Converter");
+    topbarForex.drawer();
 }
 
 std::string ForexPage::doubleToString(double num) {
