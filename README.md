@@ -14,7 +14,7 @@ The main objectives of this project are: - To implement the object-oriented meth
 
 Set-Bud-Get is a simple software to track the budget and expenses of a user to help them manage their finance and prevent them from making financial mistakes. It is a cross-platform software for users using either Windows or Linux.
 
-A user can plan his budget while tracking his/her expenses and income. We will also provide information about their expense pattern in the form of bar diagrams and pie charts. Users can log in to their respective accounts and add, edit, delete their entries. We are also including a feature for users to see the rate of foreign currencies and convert from one currency to another.
+A user can plan his budget while tracking his/her expenses and income. We also provide information about their expense pattern in the form of bar diagrams and pie charts. Users can log in to their respective accounts and add, edit, delete their entries. We are also including a feature for users to see the rate of foreign currencies and convert from one currency to another.
 
 Only authorized users can access the software as they will be required to log in with a password to access the data within it. Users can choose not to add a password if they so desire. The data [Password] will be encrypted, such that no unauthorized users can access the software.
 
